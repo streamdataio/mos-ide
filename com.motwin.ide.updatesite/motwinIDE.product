@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Motwin IDE" uid="com.motwin.ide" id="com.motwin.ide.product.motwinIDE" application="org.eclipse.ui.ide.workbench" version="3.3.1.RELEASE" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="icons/eclipse_about.png"/>
+      <text>
+         Motwin IDE
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.7 -Xms40m -Xmx1024m -XX:MaxPermSize=256m</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="icons/eclipse16.png" i32="icons/eclipse32.png" i48="icons/eclipse48.png" i64="icons/eclipse64.png" i128="icons/eclipse128.png"/>
+
+   <splash
+      location="com.motwin.ide.product"
+      startupProgressRect="0,271,500,15"
+      startupMessageRect="7,190,493,20"
+      startupForegroundColor="FFFFFF" />
+   <launcher name="motwin-ide">
+      <linux icon="icons/eclipse.xpm"/>
+      <macosx icon="icons/eclipse.icns"/>
+      <solaris/>
+      <win useIco="true">
+         <ico path="icons/eclipse.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <intro introId="com.motwin.ide.intro"/>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.jdt"/>
+      <feature id="org.eclipse.help"/>
+      <feature id="com.motwin.ide.feature" version="3.3.1.RELEASE"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
+      <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
+   </features>
+
+   <configurations>
+      <plugin id="com.motwin.ide.product" autoStart="false" startLevel="5" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <property name="eclipse.p2.data.area" value="@config.dir/../p2/" />
+      <property name="eclipse.p2.profile" value="SDKProfile" />
+      <property name="osgi.instance.area.default" value="@user.home/workspace" />
+   </configurations>
+
+</product>

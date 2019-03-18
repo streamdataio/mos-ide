@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      		
+      <category
+            id="com.motwin.ide.server.ui.samples"
+            name="Motwin Server Samples"/>
+      
+      
+      <!-- NEW MOTWIN PROJECT -->
+      <wizard
+            category="com.motwin.ide.ui"
+            class="com.motwin.ide.server.ui.wizards.EmptyProjectWizard"
+            finalPerspective="com.springsource.sts.ide.perspective"
+            icon="icons/motwin_newprj_wiz.gif"
+            id="com.motwin.ide.server.ui.wizards.EmptyProjectWizard"
+            name="Server Project"
+            project="true">
+      </wizard>
+      
+      <!-- HELLOWORLD SAMPLE -->
+      <wizard
+            category="com.motwin.ide.server.ui.samples"
+            class="com.motwin.ide.server.ui.wizards.HelloworldSampleWizard"
+            finalPerspective="com.springsource.sts.ide.perspective"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.server.ui.wizards.HelloworldSampleWizard"
+            name="Helloworld Sample"
+            project="true">
+      </wizard>
+      
+      <!-- RSS READER SAMPLE -->
+      <wizard
+            category="com.motwin.ide.server.ui.samples"
+            class="com.motwin.ide.server.ui.wizards.RssReaderSampleWizard"
+            finalPerspective="com.springsource.sts.ide.perspective"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.server.ui.wizards.RssReaderSampleWizard"
+            name="RSS Reader Sample"
+            project="true">
+      </wizard>
+      
+      <!-- REAL TIME PUSH SAMPLE -->
+      <wizard
+            category="com.motwin.ide.server.ui.samples"
+            class="com.motwin.ide.server.ui.wizards.RealTimePushSampleWizard"
+            finalPerspective="com.springsource.sts.ide.perspective"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.server.ui.wizards.RealTimePushSampleWizard"
+            name="Real-Time Push Sample"
+            project="true">
+      </wizard>
+      
+      <!-- NOTIF MANAGER DEMO -->
+      <wizard
+            category="com.motwin.ide.server.ui.samples"
+            class="com.motwin.ide.server.ui.wizards.NotifManagerDemoWizard"
+            finalPerspective="com.springsource.sts.ide.perspective"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.server.ui.wizards.NotifManagerDemoWizard"
+            name="Motwin Notification Manger Demo"
+            project="true">
+      </wizard>
+
+      <!-- CONTEXT AWARE SAMPLE -->
+      <wizard
+            category="com.motwin.ide.server.ui.samples"
+            class="com.motwin.ide.server.ui.wizards.ContextAwareSampleWizard"
+            finalPerspective="com.springsource.sts.ide.perspective"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.server.ui.wizards.ContextAwareSampleWizard"
+            name="Context Aware Sample"
+            project="true">
+      </wizard>      
+   </extension>
+   
+   
+   <extension point="org.springframework.ide.eclipse.beans.ui.namespaces">
+   
+     <namespace
+        name="application"
+        uri="http://central.motwin.net/schema/beans/application">
+     </namespace>
+     
+     <namespace
+        name="messaging"
+        uri="http://central.motwin.net/schema/beans/messaging">
+     </namespace>
+     
+     <namespace
+        name="requesting"
+        uri="http://central.motwin.net/schema/beans/requesting">
+     </namespace>
+   
+     <namespace
+        name="application"
+        uri="http://central.motwin.net/schema/beans/application/3.3.0">
+     </namespace>
+     
+     <namespace
+        name="messaging"
+        uri="http://central.motwin.net/schema/beans/messaging/3.3.0">
+     </namespace>
+     
+     <namespace
+        name="requesting"
+        uri="http://central.motwin.net/schema/beans/requesting/3.3.0">
+     </namespace>
+   
+	   <namespace
+	      name="virtualdb"
+	      uri="http://central.motwin.net/schema/virtualdb">
+	   </namespace>
+   
+   </extension>
+
+   
+   <extension point="org.springframework.ide.eclipse.beans.ui.editor.namespaces">
+
+    <namespace
+        uri="http://central.motwin.net/schema/beans/application/3.3.0"
+        contentAssistProcessor="com.motwin.ide.server.ui.editor.application.contentassist.ApplicationContentAssistProcessor"
+        labelProvider="com.motwin.ide.server.ui.editor.application.contentassist.ApplicationLabelProvider"
+        hyperLinkDetector="com.motwin.ide.server.ui.editor.application.contentassist.ApplicationHyperlinkDetector">
+    </namespace>
+    
+    <namespace
+        uri="http://central.motwin.net/schema/beans/application"
+        contentAssistProcessor="com.motwin.ide.server.ui.editor.application.contentassist.ApplicationContentAssistProcessor"
+        labelProvider="com.motwin.ide.server.ui.editor.application.contentassist.ApplicationLabelProvider"
+        hyperLinkDetector="com.motwin.ide.server.ui.editor.application.contentassist.ApplicationHyperlinkDetector">
+    </namespace>
+    
+    <namespace
+        uri="http://central.motwin.net/schema/beans/messaging/3.3.0"
+        contentAssistProcessor="com.motwin.ide.server.ui.editor.messaging.contentassist.MessagingContentAssistProcessor"
+        labelProvider="com.motwin.ide.server.ui.editor.messaging.contentassist.MessagingLabelProvider">
+    </namespace>
+    
+    <namespace
+        uri="http://central.motwin.net/schema/beans/messaging"
+        contentAssistProcessor="com.motwin.ide.server.ui.editor.messaging.contentassist.MessagingContentAssistProcessor"
+        labelProvider="com.motwin.ide.server.ui.editor.messaging.contentassist.MessagingLabelProvider">
+    </namespace>
+    
+    <namespace
+        uri="http://central.motwin.net/schema/beans/requesting/3.3.0"
+        contentAssistProcessor="com.motwin.ide.server.ui.editor.requesting.contentassist.RequestingContentAssistProcessor"
+        labelProvider="com.motwin.ide.server.ui.editor.requesting.contentassist.RequestingLabelProvider">
+    </namespace>
+    
+    <namespace
+        uri="http://central.motwin.net/schema/beans/requesting"
+        contentAssistProcessor="com.motwin.ide.server.ui.editor.requesting.contentassist.RequestingContentAssistProcessor"
+        labelProvider="com.motwin.ide.server.ui.editor.requesting.contentassist.RequestingLabelProvider">
+    </namespace>
+
+    <namespace
+        uri="http://central.motwin.net/schema/virtualdb"
+        contentAssistProcessor="com.motwin.ide.server.ui.editor.virtualdb.contentassist.VirtualdbContentAssistProcessor"
+        labelProvider="com.motwin.ide.server.ui.editor.virtualdb.contentassist.VirtualdbLabelProvider">
+    </namespace>
+     
+   </extension>
+   
+   <!--elementLocator="org.springframework.ide.eclipse.beans.ui.editor.namespaces.bean.BeansReferenceableElementsLocator"
+			hyperLinkDetector="org.springframework.ide.eclipse.beans.ui.editor.hyperlink.bean.BeansHyperlinkDetector"
+   -->
+   
+   <extension
+     point="com.springsource.sts.config.ui.formPages">
+         
+      <formPage
+            class="com.motwin.ide.server.ui.editor.virtualdb.views.VirtualdbFormPage"
+            id="com.motwin.ide.server.ui.editor.view.VirtualdbFormPage"
+            name="Motwin Virtual Database"
+            namespacePrefix="Motwin Virtual Database"
+            namespaceUri="http://central.motwin.net/schema/virtualdb">
+      </formPage>
+      
+      <formPage
+            class="com.motwin.ide.server.ui.editor.application.views.ApplicationFormPage"
+            id="com.motwin.ide.server.ui.editor.application.views.ApplicationFormPage"
+            name="Motwin Channel"
+            namespacePrefix="Motwin Channel"
+            namespaceUri="http://central.motwin.net/schema/beans/application/3.3.0">
+      </formPage>
+      
+      <formPage
+            class="com.motwin.ide.server.ui.editor.application.views.ApplicationFormPage"
+            id="com.motwin.ide.server.ui.editor.application.views.ApplicationFormPage"
+            name="Motwin Channel"
+            namespacePrefix="Motwin Channel"
+            namespaceUri="http://central.motwin.net/schema/beans/application">
+      </formPage>
+      
+      <formPage
+            class="com.motwin.ide.server.ui.editor.messaging.views.MessagingFormPage"
+            id="com.motwin.ide.server.ui.editor.messaging.views.MessagingFormPage"
+            name="Motwin Messaging"
+            namespacePrefix="Motwin Messaging"
+            namespaceUri="http://central.motwin.net/schema/beans/messaging/3.3.0">
+      </formPage>
+      
+      <formPage
+            class="com.motwin.ide.server.ui.editor.messaging.views.MessagingFormPage"
+            id="com.motwin.ide.server.ui.editor.messaging.views.MessagingFormPage"
+            name="Motwin Messaging"
+            namespacePrefix="Motwin Messaging"
+            namespaceUri="http://central.motwin.net/schema/beans/messaging">
+      </formPage>
+      
+      <formPage
+            class="com.motwin.ide.server.ui.editor.requesting.views.RequestingFormPage"
+            id="com.motwin.ide.server.ui.editor.requesting.views.RequestingFormPage"
+            name="Motwin Requesting"
+            namespacePrefix="Motwin Requesting"
+            namespaceUri="http://central.motwin.net/schema/beans/requesting/3.3.0">
+      </formPage>
+      
+      <formPage
+            class="com.motwin.ide.server.ui.editor.requesting.views.RequestingFormPage"
+            id="com.motwin.ide.server.ui.editor.requesting.views.RequestingFormPage"
+            name="Motwin Requesting"
+            namespacePrefix="Motwin Requesting"
+            namespaceUri="http://central.motwin.net/schema/beans/requesting">
+      </formPage>
+      
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <part
+            class="com.motwin.ide.server.ui.internal.editors.ServerDashboardPart"
+            id="com.motwin.ide.server.ui.dashboard.part.ua"
+            location="com.motwin.ide.dashboard.ui.page.overview.left"
+            page="com.motwin.ide.dashboard.ui.page.overview"
+            position="0">
+      </part>
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.newProject"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.server.ui.wizards.EmptyProjectWizard"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Server Project"
+            type="project">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.helloWorld"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.server.ui.wizards.HelloworldSampleWizard"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Server HelloWorld"
+            type="sample">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.rssReader"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.server.ui.wizards.RssReaderSampleWizard"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Server RSS Reader"
+            type="sample">
+      </uaLink>
+      <uaLink
+            id="motwin.ide.server.ui.dashboard.ualink.realTimePush"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.server.ui.wizards.RealTimePushSampleWizard"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Server Real-Time Push"
+            type="sample">
+      </uaLink>
+      <uaLink
+            id="motwin.ide.server.ui.dashboard.ualink.notifmanagerdemo"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.server.ui.wizards.NotifManagerDemoWizard"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Notif Manager Demo"
+            type="sample">
+      </uaLink>
+      <uaLink
+            id="motwin.ide.server.ui.dashboard.ualink.contextaware"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.server.ui.wizards.ContextAwareSampleWizard"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Context-Aware Demo"
+            type="sample">
+      </uaLink>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.wst.server.ui.ServersView">
+         <command
+               commandId="com.motwin.ide.server.ui.commands.runtime.openWebConsoleCommand"
+               id="com.motwin.ide.server.ui.popups.runtime.openWebConsoleCommand"
+               label="Open MOS Web Console"
+               style="push"
+               tooltip="Open MOS Web Console">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.motwin.ide.server.ui.commands.OpenWebConsoleCommand"
+            commandId="com.motwin.ide.server.ui.commands.runtime.openWebConsoleCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+         <command 
+         id="com.motwin.ide.server.ui.commands.runtime.openWebConsoleCommand" 
+         name="Open MOS Web Console"> 
+		</command>
+   </extension>
+</plugin>

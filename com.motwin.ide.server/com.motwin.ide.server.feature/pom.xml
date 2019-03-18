@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.motwin.ide.server</groupId>
+    <artifactId>com.motwin.ide.server.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <artifactId>com.motwin.ide.server.feature</artifactId>
+  <packaging>eclipse-feature</packaging>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <!-- workaround to replace updatesite url -->
+          <execution>
+            <id>prepare-package</id>
+            <phase>prepare-package</phase>
+            <configuration>
+              <target>
+                <replace file="feature.properties">
+                  <replacefilter token="_UPDATE_SITE_" value="${com.motwin.ide.updateSite}/${com.motwin.ide.updateSiteVersion}" />
+                </replace>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>package</id>
+            <phase>package</phase>
+            <configuration>
+              <target>
+                <replace file="feature.properties">
+                  <replacefilter token="${com.motwin.ide.updateSite}/${com.motwin.ide.updateSiteVersion}" value="_UPDATE_SITE_" />
+                </replace>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>  
+  
+</project>

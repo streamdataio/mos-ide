@@ -1,0 +1,145 @@
+@charset "utf-8";
+/* CSS Document */
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 1em 0;
+}
+
+h1,h2 {
+	color: #0099CC;
+	padding: 22px 0 20px 0;
+	font-size: 40px;
+	letter-spacing: 1px;
+}
+
+h1 {
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: solid 1px #0099CC;
+}
+
+h3 {
+	color: #0099CC;
+}
+/* Styles for Developer Guide page (exported from Word) */
+div.code,div.codeindent {
+	padding: 12px;
+	border: 1px solid #69c;
+	font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	white-space: pre;
+	white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
+	margin: 10px 0 20px 0;
+	background: #F2F2F2;
+}
+
+.code,.codechar {
+	font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+	font-weight: bold;
+}
+
+p.code,p.codeindent,p.Syntax,div.code p,div.codeindent p {
+	font-size: 9pt;
+	line-height: 1.5em;
+	font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+	font-weight: normal;
+}
+
+.wexp img {
+	margin: 20px;
+}
+
+.wexp span.inlineimage img {
+	margin: 0 5px;
+}
+
+.wexp p {
+	margin: 0 0 6px 0;
+	line-height: 1.4em;
+}
+
+.wexp table {
+	border-collapse: collapse;
+	border-color: #ccc;
+	margin: 15px 0;
+}
+
+.wexp table td {
+	padding: 10px;
+}
+
+.wexp h1 {
+	margin-bottom: 10px;
+	padding-bottom: 0;
+	border-bottom: solid 1px #8d8d8d;
+	font-size: 30px;
+	letter-spacing: 0;
+}
+
+.wexp h2 {
+	font-size: 22px;
+	letter-spacing: 0;
+}
+
+.wexp h3 {
+	color: #0099CC;
+	font-size: 18px;
+}
+
+.wexp h4 {
+	color: #0099CC;
+	font-size: 14px;
+}
+
+.wexp h5 {
+	font-size: 15px;
+	font-style: italic;
+}
+
+.wexp h6 {
+	color: #0099CC;
+	font-size: 13px;
+}
+
+.wexp p.Note {
+	padding: 5px 0 0 0;
+}
+
+.bluebutton {
+	background-color: #0095c7;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#00aae3),
+		to(#0082ae));
+	background-image: -webkit-linear-gradient(top, #00aae3, #0082ae);
+	background-image: -moz-linear-gradient(top, #00aae3, #0082ae);
+	background-image: -ms-linear-gradient(top, #00aae3, #0082ae);
+	background-image: -o-linear-gradient(top, #00aae3, #0082ae);
+	background-image: linear-gradient(to bottom, #00aae3, #0082ae);
+	border: none;
+	cursor: pointer;
+	-webkit-border-radius: 5px;
+	-webkit-appearance: none;
+	border-radius: 5px;
+	padding: 6px 8px;
+	text-transform: uppercase;
+	font-family: TitilliumText25L800wt;
+	font-size: 15px;
+}
+
+.bluebutton:hover {
+	background-color: #0095c7;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#009dd2),
+		to(#00749b));
+	background-image: -webkit-linear-gradient(top, #009dd2, #00749b);
+	background-image: -moz-linear-gradient(top, #009dd2, #00749b);
+	background-image: -ms-linear-gradient(top, #009dd2, #00749b);
+	background-image: -o-linear-gradient(top, #009dd2, #00749b);
+	background-image: linear-gradient(to bottom, #009dd2, #00749b);
+}
+
+.bluebutton a,a.bluebutton {
+	color: #ffffff !important;
+}

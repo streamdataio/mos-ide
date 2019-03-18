@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="New Motwin server project">
+   <intro>
+      <description>
+         This cheat sheet shows you how to create a simple Motwin server application.
+<br/><br/>
+Don&apos;t forget to check each step before going to the next one. 
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+      </description>
+   </intro>
+   <item dialog="true"
+         title="Open the new Motwin Server Project Wizard">
+      <description>
+        Select <b>&quot;File &gt; New &gt; Project...&quot;</b>, choose <b>&quot;Motwin &gt; Server Project&quot;</b> and click  <b>&quot;Next&quot;</b>. Or click the link below.
+      </description>
+      <command
+      		   required="true"
+               serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.server.ui.wizards.EmptyProjectWizard)"/>
+   </item>
+   <item
+         title="Give a Project Name">
+      <description>
+         Enter the project name as &quot;my-application&quot; and click the &quot;Next&quot;.
+      </description>
+   </item>            
+   <item
+         title="Fill in the Bundle Information">
+      <description>
+         You can change the default values of the Bundle Information or keep them as they are.
+      </description>
+   </item>
+   <item
+         title="Select the MOS Runtime">
+      <description>
+         Select your Virgo / MOS runtime, or create a new one by clicking &quot;New&quot; and following the steps in the New Runtime wizard.
+         <br/><br/>Selecting your MOS runtime enables you to configure your project classpath with the jar files that are deployed in your targeted MOS runtime.
+      </description>
+   </item>
+   <item title="Complete">
+   	   <description>
+   	   	Click &quot;Finish&quot; to create your Motwin server project.
+   	   </description>
+   	   <onCompletion>
+         Congratulations! You have just created a Motwin server project.
+         <br/><br/>You can open the <b>&quot;application.xml&quot;</b> file (in &quot;src/main/resources/META-INF/spring/&quot;) with the Spring Config Editor to start creating Motwin beans such as channels, interceptors, message processors, etc.
+         <br/><br/>The tabs <b>Motwin Channel</b>, <b>Motwin Messaging</b> and <b>Motwin Requesting</b> of the Spring Config Editor will guide you to create these Motwin beans.
+       </onCompletion>
+   </item>
+</cheatsheet>

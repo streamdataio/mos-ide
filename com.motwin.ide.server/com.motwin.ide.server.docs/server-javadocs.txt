@@ -1,0 +1,1 @@
+# Don't delete this file: it is used in a maven profile

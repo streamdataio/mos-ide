@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Motwin HTML5 Hello World application">
+   <intro>
+      <description>
+         This cheat sheet shows you how to create a simple Motwin HTML5 application and try it out. You will create an HTML5 Motwin project and see how to send and receive a message from the HTML5 application. This HelloWorld application is designed to interact with the Motwin Server helloWorld.  
+<br/><br/>
+Pre-requisites: 
+<br/>- Have the Motwin Server helloWorld running. You can refer to the cheatsheet &apos;Create a Hello World Motwin Server&apos; for help.
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to <b>check each step</b> before going to the next one.
+      </description>
+   </intro>
+   <item
+         title="Create a new Motwin HTML5 project" dialog="true">
+      <description>
+         We will start by creating a Motwin HTML5 project.
+      </description>
+      <subitem label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; HTML5 Project&quot; and click &quot;Next&quot;. Or click the arrow on the right.">
+         <command
+             required="false"
+             serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.html5.ui.wizards.EmptyProjectWizard)"/> 
+      </subitem>
+      <subitem
+            label="Enter the project name as &quot;Helloworld-1-HTML5&quot; and click &quot;Next&quot;.">
+      </subitem>
+      <subitem label="Accept the default preloaded value of &quot;Protocol&quot;. This property enables by default the use of the HTTP Connector so that the sample can be tested directly in a web browser."></subitem>
+      <subitem
+            label="Enter the URL of your Motwin server as &quot;Server URL&quot;, or leave the default one if you can access the Motwin test server. Same for the &quot;Server Port&quot;.">
+      </subitem>
+      <subitem label="Enter the appName as &quot;helloWorld&quot;.">
+      </subitem>
+      <subitem label="Enter the appVersion as &quot;3.2&quot;.">
+      </subitem>
+      <subitem label="Click &quot;Finish&quot;.">
+      </subitem>
+   </item>
+   <item title="Add jQuery, jQuery Mobile and Knockout JS">
+    <description>
+    Add the latest version of jQuery, jQuery Mobile and Knockout JS to the libraries directory of your project.
+    </description>
+    <subitem label="Download the latest version of jQuery (http://jquery.com), jQuery Mobile (http://jquerymobile.com) and Knockout JS (http://knockoutjs.com) from their own web sites and copy them to the libraries directory of your project, or click the arrow to automatically add them to your project.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.CopyJQueryDependenciesAction"/>
+    </subitem>
+    <subitem label="Modify index.html file by adding references to the downloaded files.">
+      <description>Once downloaded, you have to add references to the JS and CSS files.</description>
+    </subitem>
+   </item>
+   <item title="Enhance the index.html">
+    <description>
+    Let&apos;s modify the index.html file by adding two input fields: one to fill in a first name and the other one to fill in a last name. 
+    </description>
+    <subitem label="To do so, click the arrow on the right.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.CopyIndexHTMLAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 42, you will see the new body of the index.html.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.ShowHTMLBodyAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 55, you will see the use of the Knockout.js attribute &quot;data-bind&quot; to bind html components with Javascript structures.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.ShowDataBindAttrAction"/>
+    </subitem>
+    <subitem skip="true" label="You can open the index.html in a browser to see what it looks like. Right-click the &quot;index.html&quot; and select &quot;Open With &gt; Web Browser&quot; or click the arrow on the right.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.OpenIndexHTMLBrowserAction"/>
+    </subitem>
+   </item>
+   <item title="Use the Motwin SDK to connect to the MOS Server">
+    <description>
+      Until now, the &quot;Send&quot; button does nothing yet. Let&apos;s modify the application.js file so that we can send a request to the MOS Server and fill in the &quot;first name&quot; and &quot;last name&quot; input fields with the response.
+    </description>
+    <subitem label="To do so, click the arrow on the right.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.CopyApplicationJSAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 73, you will see how the ClientChannel is created via the Motwin SDK API.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.ShowClientChannelInitAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 80, you will see how the ClientChannel connection is created.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.ShowClientChannelConnectAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 37, you will see the definition of HelloWorldViewModel which binds the html components to javascript functions thanks to a javascript binding library (here, Knockout.js).">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.ShowHelloWorldViewModelAction"/>
+    </subitem>    
+    <subitem skip="true" label="If you look near line 41, you will see how the &quot;request content&quot; that will be sent to the MOS Server, is declared">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.ShowRequestContentAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 47, you will see how the &quot;request content&quot; is sent to the MOS Server via the channel and how the response from the server is handled.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.ShowRequestSendAction"/>
+    </subitem>
+   </item>
+   <item title="Let&apos;s test it!">
+    <description>
+      Let&apos;s test our HTML5 application within a web browser...
+    </description>
+    <subitem label="Right-click the &quot;index.html&quot; and select &quot;Open With &gt; Web Browser&quot; or click the arrow on the right. If ever the fields are not filled in with a &quot;John Doe&quot; example, click on the green arrow of the Eclipse browser toolbar to refresh the browser.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.helloworld" class="com.motwin.ide.html5.cheatsheets.samples.helloworld.actions.OpenIndexHTMLBrowserAction"/>
+    </subitem>
+    <subitem label="Click the &quot;Send&quot; button: you should see returned &quot;Doe&quot; as &quot;Firstname&quot; and &quot;John&quot; as &quot;Name&quot;."></subitem>
+   </item>
+   <item title="Let&apos;s export as a Native Project" dialog="true">
+    <description>Full HTML5/CSS3/JavaScript projects developed with Motwin HTML5 SDK can be exported to native
+      projects using Cordova/PhoneGap connector to connect to the server using standard sockets rather than WebSockets or HTTP.
+      <br/>
+      The bridges to the native platform are Apache Cordova plugins used to access the native network stack
+      of the device. These plugins are platform dependent. The Motwin HTML5 SDK is shipped with Android
+      and iOS versions.
+      <br/>
+    </description>
+      <subitem skip="true" label="In the Project Explorer, right-click the project and select &quot;Export&quot; and then &quot;Motwin HTML5 &gt; Export Web Content as Android Project&quot; or &quot;Motwin HTML5 &gt; Export Web Content as iOS Project&quot; depending your target mobile OS. And click on &quot;Next&quot;.">
+      </subitem>
+      <subitem skip="true" label="Navigate to the &quot;www&quot; folder in the HTML5 project and click &quot;Next&quot;."></subitem>
+      <subitem skip="true" label="Choose the location you want to create the Android or iOS project and click &quot;Next&quot;."></subitem>
+      <subitem skip="true" label="Set the Android / iOS application properties and click &quot;Finish&quot;. Then, follow the instructions of the popup window  &quot;Project Exported&quot;."></subitem>
+      <onCompletion>Congratulations! You have run the Motwin HTML5 Hello World and see how to export it into a native project! If you wish, you can continue with the other HTML5 tutorials.</onCompletion>
+   </item>
+</cheatsheet>

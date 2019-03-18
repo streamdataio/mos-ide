@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a new Motwin Message Processor">
+   <intro>
+      <description>
+      This cheat sheet shows you how to create a simple Motwin Message Processor.
+<br/><br/>
+Pre-requisites:
+<br/>- having a Motwin server application project created
+<br/>- having a Spring beans definition file with the Motwin namespaces declared. Such a file is created thanks to the New Motwin Server project wizard.  
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to check each step before going to the next one. 
+      </description>
+   </intro>
+   <item
+         title="Open the Spring Bean Definition file">
+      <description>
+         Open the Spring Bean Definition file (by default, the one generated with the New Motwin Server Project is named <b>application.xml</b>) with the Spring Config Editor (usually this is the default editor).
+         <br/>This should open an editor with several tabs:
+         <br/>- Source
+         <br/>- Namespaces
+         <br/>- Overview
+         <br/>- beans
+         <br/>- Motwin Channel
+         <br/>- <b>Motwin Messaging</b>
+         <br/>- Motwin Requesting
+         <br/>- ...
+      </description>
+   </item>
+   <item
+         title="Select the Motwin Messaging tab">
+      <description>
+      </description>
+   </item>
+   <item title="Click the New Processor button">
+   	  <description>
+   	  	Click the <b>&quot;New Processor&quot;</b> button: this opens a form to create a new Message Processor.
+   	  </description>
+   </item>
+   <item title="Declare the message type">
+   	  <description>
+   	  	Enter the type of message handled by the processor in the <b>type*</b> field (for instance, &quot;hello&quot;).
+   	  </description>
+   </item>
+   <item title="Click the class link" dialog="true">
+   	  <description>
+   	  	Click the <b>&quot;class&quot;</b> link to create a new message processor and fill in the wizard.
+   	  </description>
+   	  <onCompletion>
+   	  That's it you've created a Message Processor!
+   	  <br/>
+   	  <br/>Implement <b>processMessage</b> method to define how to handle incoming message. This method will be invoked when receiving a Message of the specified type from a remote device. 
+   	  </onCompletion>
+   	  <subitem label="Enter a package name or select an existing one">
+   	  </subitem>
+   	  <subitem label="Enter the class name of the Message Processor (for instance &quot;HelloMessageProcessor&quot;)">
+   	  </subitem>
+   	  <subitem label="In the Interfaces field, modify the generic parameter &lt;Object&gt; of the interface &quot;com.motwin.sdk.application.messaging.MessageProcessor&quot; with your domain POJO."
+   	           skip="true">
+   	  </subitem>
+   	  <subitem label="Click &quot;Finish&quot;.">
+   	  </subitem>
+   </item>
+</cheatsheet>

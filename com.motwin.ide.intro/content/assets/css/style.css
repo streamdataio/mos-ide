@@ -1,0 +1,97 @@
+@charset "utf-8";
+
+img.img-heading {
+  padding-right: 6px;
+  vertical-align: middle;
+}
+
+h2.col-top {
+	padding-left: 14px;
+	padding-right: 14px;
+	height: 65px;
+	padding-bottom: 0px;
+	padding-top: 18px;
+	width: 362px;
+	display: block;
+}
+
+#h3documentation {
+	font-size: 24px;
+}
+
+h3 {
+  padding-left: 10px;
+}
+
+div.span3 {
+  border-radius: 10px;
+  box-shadow: 1px 1px 12px #555;
+}
+
+div.server-panel {
+  background-color:	#0099CC;
+  background-image: linear-gradient(to bottom, #048CB9, #1CA4D1);  /* #0099CC*/
+  background-repeat: repeat-y;
+}
+
+div.server-panel a {
+  color: white;
+}
+
+div.android-panel {
+  background-color: #A2C537;	
+  background-image: linear-gradient(to bottom, #73A216, #A2C537);
+  background-repeat: repeat-y;
+}
+
+div.android-panel a {
+  color: black;
+}
+
+div.html5-panel {
+  background-color: #EC5C28;	
+  background-image: linear-gradient(to bottom, #F16529, #EF7039);  /* EC5C28*/
+  background-repeat: repeat-y;
+  /* background-color: #F16529; */
+}
+
+div.html5-panel a {
+  color: white;
+}
+
+
+div.resources-panel {
+  background-color: #6BA64D; 	 
+  background-image: linear-gradient(to bottom, #629D44, #6EA950);   /*  #6BA64D #3DB249*/
+  background-repeat: repeat-y;
+  overflow-wrap: break-word; 
+  -webkit-hyphens: auto; 
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+div.resources-panel a {
+  color: white;
+}
+
+
+div.got-to-workbench {
+	padding-left: 14px;
+	padding-right: 14px;
+	height: 65px;
+	padding-bottom: 0px;
+	padding-top: 22px;
+	float: right;
+}
+
+li {
+	margin: 0px;
+	padding: 0px;
+	background-repeat: no-repeat;
+	background-image: url(../img/bullet.png);
+	background-position: 0px 7px;
+	padding-left: 20px;
+	list-style-type: none;
+	line-height: 30px;
+}
+

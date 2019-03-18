@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.samples"
+            composite="false"
+            contentFile="cheatsheets/en/samples/notifmanagerdemo/notifmanagerdemo-server.xml"
+            id="com.motwin.ide.cheatsheets.samples.server.notifmanagerdemo"
+            name="Create a Notification Manager Demo Server application">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.notifmanagerdemo"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.cheatsheets.samples.server.notifmanagerdemo"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Notif Manager Demo"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

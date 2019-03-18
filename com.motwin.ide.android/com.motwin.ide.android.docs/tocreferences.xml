@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toc label="Android APIs" link_to="toc.xml#references">
+   <topic href="docs/html/references/api/Android_SDK_API_Documentation/index.html" label="SDK API">
+   </topic>
+   <topic href="docs/html/references/api/NotifManager_API_Documentation/index.html" label="NotifManager API">
+   </topic>
+   <topic href="docs/html/references/api/ContextAwareness_API_Documentation/index.html" label="Context Awareness API">
+   </topic>
+   
+</toc>

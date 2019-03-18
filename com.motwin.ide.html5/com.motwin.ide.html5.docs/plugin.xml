@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml">
+      </toc>
+      <toc
+            file="tocreferences.xml"
+            primary="false">
+      </toc>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.docs.devGuide"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Developer Guide"
+            type="doc"
+            listener="com.motwin.ide.dashboard.ui.links.HelpHyperlinkListener:/com.motwin.ide.docs/docs/html/topics/maintopic.html">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.docs.sdkAPI"
+            listener="com.motwin.ide.dashboard.ui.links.HelpHyperlinkListener:/com.motwin.ide.html5.docs/docs/html/references/api/HTML5_SDK_API_Documentation/index.html"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="SDK API"
+            type="doc">
+      </uaLink>
+   </extension>
+
+</plugin>

@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.motwin.ide</groupId>
+    <artifactId>com.motwin.ide.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <artifactId>com.motwin.ide.ui</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  
+  <build>
+    <resources>
+       <resource>
+         <directory>icons</directory>
+         <targetPath>icons</targetPath>
+         <filtering>false</filtering>
+      </resource>
+      <resource>
+         <directory>src/main/resources</directory>
+         <includes>
+           <include>**</include>
+         </includes>
+         <filtering>false</filtering>
+      </resource>
+    </resources>
+  </build>
+
+</project>

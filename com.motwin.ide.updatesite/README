@@ -1,0 +1,3 @@
+provisioning command:
+
+./eclipse -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/fbou/Documents/workspace-sts-2.7.2.RELEASE/com.mootwin.platform.ide.parent/com.mootwin.platform.ide.updatesite/target/com.mootwin.platform.ide.updatesite-1.0.1-SNAPSHOT.zip!/' -uninstallIU 'com.mootwin.platform.ide.feature.feature.group'

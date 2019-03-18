@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.motwin.ide.server.connectors</groupId>
+    <artifactId>com.motwin.ide.server.connectors.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <artifactId>com.motwin.ide.server.connectors.libs.sqlserver-jdbc-driver-osgify</artifactId>
+  <packaging>bundle</packaging>
+  
+  <properties>
+    <jtds.version>1.3.1</jtds.version>      
+  </properties>
+  
+  <build>
+    <finalName>jtds-${jtds.version}</finalName>
+      
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>net.sourceforge.jtds</groupId>
+                  <artifactId>jtds</artifactId>
+                  <version>${jtds.version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>2.3.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-Name>net.sourceforge.jtds</Bundle-Name>
+            <Bundle-SymbolicName>net.sourceforge.jtds</Bundle-SymbolicName>
+            <Bundle-Version>${jtds.version}</Bundle-Version>
+            <Export-Package>*</Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>

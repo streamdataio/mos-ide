@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="motwinIDE"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            description="%aboutText"
+		    provider-name="Motwin"
+            name="Motwin IDE">
+         <property
+               name="windowImages"
+               value="icons/eclipse16.png,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png,icons/eclipse128.png">
+         </property>
+         <property
+               name="aboutText"
+               value="%aboutText">
+         </property>
+         <property
+               name="appName"
+               value="Motwin IDE">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/eclipse_about.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="FFFFFF">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,190,493,20">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="0,271,500,15">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

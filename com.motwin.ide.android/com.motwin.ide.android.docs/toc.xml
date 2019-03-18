@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toc label="Motwin Android Guide" link_to="../com.motwin.ide.docs/toc.xml#guidesections">
+   <topic label="Android Platform">
+      <topic label="References">
+      	<anchor id="references"/>
+      </topic>
+   </topic>
+</toc>

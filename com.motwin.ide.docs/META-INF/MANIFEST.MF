@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin IDE Docs
+Bundle-SymbolicName: com.motwin.ide.docs;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.docs.internal.DocsPlugin
+Bundle-Vendor: Motwin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.jdt.core;bundle-version="3.8.0",
+ com.google.guava;bundle-version="11.0.1",
+ com.motwin.ide.core,
+ org.eclipse.help,
+ org.eclipse.core.resources;bundle-version="3.8.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.motwin.ide.docs,
+ com.motwin.ide.docs.exceptions
+Eclipse-BundleShape: dir

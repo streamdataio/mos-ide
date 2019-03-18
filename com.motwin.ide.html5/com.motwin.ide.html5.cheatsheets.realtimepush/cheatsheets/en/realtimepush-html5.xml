@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Real-Time Push Motwin HTML5 application">
+   <intro>
+     <description>
+This cheat sheet shows you how to create a simple Motwin HTML5 Real-Time Push application and try it out. You will create an HTML5 Motwin project and see how to use continuous query to push data from the MOS Server. This RealTimePush application is designed to interact with the Motwin Server RealTimePush Sample. 
+<br/><br/>
+Pre-requisites: 
+<br/>- Have the Motwin Server Real-Time Push Sample running. You can refer to the cheatsheet &apos;Create a Real-Time Push Motwin Server Sample&apos; for help.
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to <b>check each step</b> before going to the next one.
+      </description>
+   </intro>
+   <item
+         title="Create a new Motwin HTML5 project" dialog="true">
+      <description>
+         We will start by creating a Motwin HTML5 project.
+      </description>
+      <subitem label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; HTML5 Project&quot; and click &quot;Next&quot;. Or click the arrow on the right.">
+         <command
+             required="false"
+             serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.html5.ui.wizards.EmptyProjectWizard)"/> 
+      </subitem>
+      <subitem
+            label="Enter the project name as &quot;RealTimePush-HTML5&quot; and click &quot;Next&quot;.">
+      </subitem>
+      <subitem label="Accept the default preloaded value of &quot;Protocol&quot;. This property enables by default the use of the HTTP Connector so that the sample can be tested directly in a web browser."></subitem>
+      <subitem
+            label="Enter the URL of your Motwin server as &quot;Server URL&quot;, or leave the default one if you can access the Motwin test server. Same for the &quot;Server Port&quot;.">
+      </subitem>
+      <subitem label="Enter the appName as &quot;realTimePush&quot;.">
+      </subitem>
+      <subitem label="Enter the appVersion as &quot;3.2&quot;.">
+      </subitem>
+      <subitem label="Click &quot;Finish&quot;.">
+      </subitem>
+   </item>
+   <item title="Enhance the index.html">
+    <description>
+    Let&apos;s modify the index.html file by adding a table that will display a field &quot;value&quot; and its &quot;price&quot;. 
+    </description>
+    <subitem label="To do so, click the arrow on the right.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.CopyIndexHTMLAction"/>
+    </subitem>
+    <subitem label="Download jQuery from the website and copy it to the libs folder. jQuery is used to manipulate the HTML Documentation (DOM) using Javascript.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.CopyJQueryAction"/>
+    </subitem>
+    <subitem label="Add a CSS stylesheet to change the default look of the HTML list.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.CopyApplicationCSSAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 33, you will see the new body of the index.html. This parts will be used to display the list of values with their prices.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowHTMLBodyAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 38, you will see a empty HTML list that will be dynamically filled by the Javascript code source">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowDataBindAttrAction"/>
+    </subitem>
+    <subitem skip="true" label="You can open the index.html in a browser to see what it looks like. Right-click the &quot;index.html&quot; and select &quot;Open With &gt; Web Browser&quot; or click the arrow on the right.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.OpenIndexHTMLBrowserAction"/>
+    </subitem>
+   </item>
+   <item title="Use the Motwin SDK to connect to the MOS Server">
+    <description>
+      Until now, nothing is done yet to get the values and their prices. Let&apos;s modify the application.js file so that we can send a continuous query to the MOS Server to get the values with their prices updated in real-time.
+    </description>
+    <subitem label="To do so, click the arrow on the right.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.CopyApplicationJSAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 1, you will see the definition of ValueList which is in charge to update the html document (DOM) by providing function to insert, delete or update lines of a HTML list.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowValuesViewModelAction"/>
+    </subitem>    
+    <subitem skip="true" label="If you look near line 92, you will see how the ClientChannel is created via the Motwin SDK API.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowClientChannelInitAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 98, you will see how the ClientChannel connection is created.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowClientChannelConnectAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 105, you will see how to declare a continuous query that queries the MOS server to get all the values with their prices.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowCreateContinuousQueryAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 107, you will see how to subscribe the callback functions of the continuous query.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowContinousQueryCallbacksAction"/>
+    </subitem>
+    <subitem skip="true" label="If you look near line 127, you will see how to start the continuous query.">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.ShowContinousQueryStartAction"/>
+    </subitem>
+   </item>
+   <item title="Let&apos;s test it!">
+    <description>
+      Let&apos;s test our HTML5 application within a websocket-ready browser...
+    </description>
+    <subitem label="Right-click the &quot;index.html&quot; and select &quot;Open With &gt; Web Browser&quot; or click the arrow on the right. If ever the UI is not filled in with the values and their prices, click on the green arrow of the Eclipse browser toolbar to refresh the browser (also, do ensure the Real-Time Push server sample is started).">
+      <action pluginId="com.motwin.ide.html5.cheatsheets.realtimepush" class="com.motwin.ide.html5.cheatsheets.samples.realtimepush.actions.OpenIndexHTMLBrowserAction"/>
+    </subitem>
+    <subitem label="The application displays a list of values with their prices. From times to times, some prices change while the others don't: the Motwin SDK does not send all the values list with their price but it sends only what changes in real-time."></subitem>
+   </item>  
+   <item title="Let&apos;s export as a Native Project" dialog="true">
+    <description>Full HTML5/CSS3/JavaScript projects developed with Motwin HTML5 SDK can be exported to native
+      projects using Cordova/PhoneGap connector to connect to the server using standard sockets rather than WebSockets.
+      <br/>
+      The bridges to the native platform are Apache Cordova plugins used to access the native network stack
+      of the device. These plugins are platform dependent. The Motwin HTML5 SDK is shipped with Android
+      and iOS versions.
+      <br/>
+    </description>
+      <subitem skip="true" label="In the Project Explorer, right-click the project and select &quot;Export&quot; and then &quot;Motwin HTML5 &gt; Export Web Content as Android Project&quot; or &quot;Motwin HTML5 &gt; Export Web Content as iOS Project&quot; depending your target mobile OS. And click on &quot;Next&quot;.">
+      </subitem>
+      <subitem skip="true" label="Navigate to the &quot;www&quot; folder in the HTML5 project and click &quot;Next&quot;."></subitem>
+      <subitem skip="true" label="Choose the location you want to create the Android or iOS project and click &quot;Next&quot;."></subitem>
+      <subitem skip="true" label="Set the Android / iOS application properties and click &quot;Finish&quot;. Then, follow the instructions of the popup window  &quot;Project Exported&quot;."></subitem>
+      <onCompletion>Congratulations! You have run the Motwin HTML5 Real-Time Push application and see how to export it into a native project! If you wish, you can continue with the other HTML5 tutorials.</onCompletion>
+   </item>   
+</cheatsheet>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="com.motwin.ide.cheatsheets.platform.server.apps"
+            name="Motwin Server Applications"
+            parentCategory="com.motwin.ide.cheatsheets.platform">
+      </category>
+      <category
+            id="com.motwin.ide.cheatsheets.platform.server.runtime"
+            name="Motwin Server Runtime Use"
+            parentCategory="com.motwin.ide.cheatsheets.platform">
+      </category>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.server.apps"
+            composite="false"
+            contentFile="cheatsheets/en/new-project-server.xml"
+            id="com.motwin.ide.server.cheatsheets.newProject"
+            name="Create a new Motwin Server project">
+      </cheatsheet>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.server.runtime"
+            composite="false"
+            contentFile="cheatsheets/en/new-mos-runtime.xml"
+            id="com.motwin.ide.server.cheatsheets.runtime"
+            name="Create a new MOS Server Runtime">
+      </cheatsheet>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.server.apps"
+            composite="false"
+            contentFile="$nl$/cheatsheets/en/new-message-processor.xml"
+            id="com.motwin.ide.server.cheatsheets.newMessageProcessor"
+            name="Create a new Motwin Message Processor">
+      </cheatsheet>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.server.apps"
+            composite="false"
+            contentFile="$nl$/cheatsheets/en/new-request-processor.xml"
+            id="com.motwin.ide.server.cheatsheets.newRequestProcessor"
+            name="Create a new Motwin Request Processor">
+      </cheatsheet>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.server.apps"
+            composite="false"
+            contentFile="$nl$/cheatsheets/en/new-channel-processor.xml"
+            id="com.motwin.ide.server.cheatsheets.newChannelProcessor"
+            name="Create a new Motwin Channel Processor">
+      </cheatsheet>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.server.apps"
+            composite="false"
+            contentFile="$nl$/cheatsheets/en/new-channel-interceptor.xml"
+            id="com.motwin.ide.server.cheatsheets.newChannelInterceptor"
+            name="Create a new Motwin Channel Processor">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.newProject"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.server.cheatsheets.newProject"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="New Motwin Server Project"
+            type="cheatsheet">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.runtime"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.server.cheatsheets.runtime"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="New MOS Server Runtime"
+            type="cheatsheet">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.newChannelProcessor"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.server.cheatsheets.newChannelProcessor"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="New Channel Processor"
+            type="cheatsheet">
+      </uaLink>
+            <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.newChannelInterceptor"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.server.cheatsheets.newChannelInterceptor"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="New Channel Interceptor"
+            type="cheatsheet">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.newMessageProcessor"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.server.cheatsheets.newMessageProcessor"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="New Message Processor"
+            type="cheatsheet">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.newRequestProcessor"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.server.cheatsheets.newRequestProcessor"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="New Request Processor"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

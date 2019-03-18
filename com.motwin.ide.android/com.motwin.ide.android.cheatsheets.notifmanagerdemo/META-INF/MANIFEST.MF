@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin Android Notification Manager Demo CheatSheet
+Bundle-SymbolicName: com.motwin.ide.android.cheatsheets.notifmanagerdemo;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.android.cheatsheets.notifmanagerdemo.internal.NotifManagerDemoCheatSheetPlugin
+Bundle-Vendor: Motwin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.cheatsheets;bundle-version="3.4.0",
+ com.motwin.ide.cheatsheets,
+ org.eclipse.jdt.core;bundle-version="3.8.0",
+ org.eclipse.core.resources;bundle-version="3.8.0",
+ org.slf4j.api;bundle-version="1.6.4",
+ org.eclipse.jface.text;bundle-version="3.8.1",
+ com.motwin.ide.android.cheatsheets,
+ com.motwin.ide.dashboard.ui;resolution:=optional,
+ com.google.guava;bundle-version="11.0.1",
+ org.jdom;bundle-version="1.1.1",
+ org.eclipse.core.filesystem;bundle-version="1.3.200"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

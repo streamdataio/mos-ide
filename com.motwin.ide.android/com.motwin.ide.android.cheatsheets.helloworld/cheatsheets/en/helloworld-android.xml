@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Motwin Android Hello World application">
+   <intro>
+      <description>
+         This cheat sheet shows you how to create a simple Motwin Android application and try it out. You will create an Android Motwin project and see how to send and receive a message from the mobile application. 
+<br/><br/>
+Pre-requisites: 
+<br/>- Have the Motwin Server helloWorld-application running. You can refer to the cheatsheet &apos;Create a Hello World Motwin Server application&apos; for help.
+<br/><br/>- Have the Google Android (ADT) Eclipse plugin installed (http://developer.android.com/tools/sdk/eclipse-adt.html).
+<br/><br/>- Have an Android SDK installed <b>API Level 4 or higher</b> and operational (http://developer.android.com/sdk/index.html).
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to <b>check each step</b> before going to the next one.
+      </description>
+   </intro>
+   <item
+         title="Create a new Motwin Android project" dialog="true">
+      <description>
+         We will start by creating a Motwin Android project.
+      </description>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Android Project&quot; and click &quot;Next&quot;. Or click the arrow on the right.">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.android.ui.wizards.EmptyProjectWizard)"/>
+      </subitem>
+      <subitem
+            label="Enter the project name as &quot;HelloWorld1-Android&quot;.">
+      </subitem>
+      <subitem
+            label="Select an Android SDK API Level 4 or higher and click &quot;Next&quot;.">
+      </subitem>
+      <subitem
+            label="Enter the project package as &quot;com.motwin.android.sample&quot;.">
+      </subitem>
+      <subitem
+            label="Enter the URL of your Motwin server as &quot;Server URL&quot;, or leave the default one if you can access the Motwin test server. Same for the &quot;Server Port&quot;."
+            skip="true">
+      </subitem>
+      <subitem
+            label="Enter the appName as &quot;helloWorld&quot;.">
+      </subitem>
+      <subitem
+            label="Enter the appVersion as &quot;3.2&quot;.">
+      </subitem>
+      <subitem
+            label="Click &quot;Finish&quot;.">
+      </subitem>
+   </item>
+   <item
+         title="Remove the Default Classes">
+      <description>
+         By default, the wizard creates default classes (Activity, etc.) that we won&apos;t use here. You need to delete them before going on. Click the link below to do so.
+      </description>
+      <action pluginId="com.motwin.ide.android.cheatsheets.helloworld"
+			   class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.RemoveDefaultAction" />  
+   </item>
+   <item
+         title="Create the Data Model Class">
+       <action pluginId="com.motwin.ide.android.cheatsheets.helloworld"
+			   class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.DataModelCopyAction" />   
+      <description>
+        This operation will be done for you by clicking the link below. <br/>This action will create a simple POJO &quot;Person&quot; with a &quot;name&quot; and &quot;firstName&quot; fields.
+      </description>
+   </item>
+   <item
+         title="Create an Activity" dialog="true">
+      <description>Let&apos;s create an Activity that will handle a request on the Person POJO.</description>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Other&quot; and then &quot;Android &gt; Android Activity&quot;. Or click the arrow to the right.">
+         	<action pluginId="com.motwin.ide.android.cheatsheets.helloworld"
+			   class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.OpenNewActivityWizardAction" />
+      </subitem>
+       <subitem
+            label="Select &quot;BlankActivity&quot; and click &quot;Next&quot;.">
+      </subitem>
+      <subitem
+            label="Enter the activity name as &quot;HelloApp1&quot;.">
+      </subitem>
+      <subitem
+            label="Enter the layout name as &quot;main&quot;.">
+ 	 </subitem>
+      <subitem
+            label="Enter the title as &quot;HelloApp1&quot;.">
+      </subitem>
+      <subitem
+            label="Check &quot;Launcher Activity&quot;.">
+      </subitem>     
+      <subitem
+            label="Click &quot;Finish&quot; and open the class &quot;HelloApp1&quot;.">
+      </subitem>
+      <subitem
+            label="Make the &quot;HelloApp1&quot; implement &quot;com.motwin.android.network.request.Request.Callback&lt;Person,Person&gt;&quot; as &quot;Interfaces&quot; and add the default unimplemented methods. Et voilà! You&apos;ve got an empty Activity ready to react to a request that deals with a POJO &quot;Person&quot;.">
+      </subitem>      
+      <subitem
+            label="Click the arrow on the right to generate the code of the Activity that sends a request to the server and handles the response.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.helloworld" class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.HelloApp1CopyAction"/>
+      </subitem>
+      <subitem
+            label="If you look near line 81 of the Activity, you will see how the ClientChannel is created via a factory."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.helloworld" class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.ShowClientChannelInitAction"/>
+      </subitem>
+      <subitem
+            label="If you look near line 118 of the Activity, you will see how to connect and disconnect the ClientChannel (in the onStart() and onStop() methods)."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.helloworld" class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.ShowClientChannelConnectAction"/>
+      </subitem> 
+      <subitem
+            label="If you look near line 108, you will see how to send a request through the ClientChannel."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.helloworld" class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.ShowRequestSendAction"/>
+      </subitem>
+      <subitem
+            label="If you look near line 134, you will see how the Activity gets the server response and fills the user interface with it."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.helloworld" class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.ShowRequestContentAction"/>
+     </subitem>
+   </item>
+   <item
+         title="Declaring a Custom Network Mapping">
+      <description>
+         The &quot;Person&quot; POJO we created earlier is the data that is exchanged between the Motwin Android application and the Motwin server application. A name must be given to any object sent through the ClientChannel so that both the Android application and the server application know which object to serialize/deserialize. 
+<br/><br/>This is done in the mapping file <b>mapping.properties</b> under the <b>assets</b> directory. 
+      </description>
+      <subitem
+            label="Open the mapping file &quot;mapping.properties&quot;. Or click the arrow to the right.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.helloworld" class="com.motwin.ide.android.cheatsheets.samples.helloworld.actions.OpenMappingPropertiesAction"/>
+      </subitem>
+      <subitem
+            label="Uncomment/add the following declaration: &quot;Person=com.motwin.android.sample.Person&quot;.">
+      </subitem>
+      <onCompletion>The key is named &quot;Person&quot; because that&apos;s the name of the channel declared in the server application (see the Hello World Motwin Server sample). That&apos;s it!</onCompletion>
+   </item>    
+   <item
+         title="Let&apos;s test it!">
+      <description>
+         Let&apos;s test our Android application...
+      </description>
+      <subitem
+            label="Right click on the &quot;HelloApp1&quot; project and select &quot;Run as... &gt; Android Application&quot;. This should open the Android Emulator and run our Android Application.">
+      </subitem>      
+      <subitem
+            label="Enter the firstname as &quot;John&quot;.">
+		</subitem>            
+      <subitem
+            label="Enter the name as &quot;Doe&quot;.">
+      </subitem>
+      <subitem
+            label="Click the &quot;Request One Name&quot; button: you should see returned &quot;Doe&quot; as &quot;Firstname&quot; and &quot;John&quot; as &quot;Name&quot;.">
+      </subitem>
+      <onCompletion>Congratulations! You have run the Motwin Android Hello World! If you wish, you can continue with the other Android tutorials.</onCompletion>
+   </item>
+</cheatsheet>

@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin RealTime Push Sample Cheat Sheet
+Bundle-SymbolicName: com.motwin.ide.server.cheatsheets.realtimepush;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.server.cheatsheets.samples.realtimepush.internal.RealTimePushCheatSheetPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.cheatsheets;bundle-version="3.4.0",
+ com.motwin.ide.cheatsheets,
+ com.motwin.ide.server.cheatsheets,
+ com.motwin.ide.dashboard.ui,
+ org.eclipse.jdt.core;bundle-version="3.8.0",
+ org.eclipse.core.resources;bundle-version="3.8.0",
+ org.eclipse.virgo.ide.ui;bundle-version="1.0.0",
+ org.eclipse.virgo.util.osgi.manifest;bundle-version="3.5.0",
+ org.eclipse.virgo.ide.manifest.core;bundle-version="1.0.0",
+ com.google.guava;bundle-version="11.0.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.motwin.ide.server.cheatsheets.samples.realtimepush.actions
+Bundle-Vendor: Motwin

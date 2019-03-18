@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.samples"
+            composite="false"
+            contentFile="cheatsheets/en/helloworld-android.xml"
+            id="com.motwin.ide.android.cheatsheets.samples.helloworld"
+            name="Create a Hello World Motwin Android application">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.cheatsheets.helloWorld1"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.android.cheatsheets.samples.helloworld"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Android HelloWorld 1"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

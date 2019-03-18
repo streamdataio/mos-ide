@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="com.motwin.ide.cheatsheets.extension"
+         name="Motwin CheatSheets Extension"
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="com.motwin.ide.cheatsheets.platform"
+            name="Motwin Application Development">
+      </category>
+      <category
+            id="com.motwin.ide.cheatsheets.platform.samples"
+            name="Motwin Samples"
+            parentCategory="com.motwin.ide.cheatsheets.platform">
+      </category>
+   </extension>
+
+</plugin>

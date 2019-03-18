@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="com.motwin.ide.cheatsheets.android.apps"
+            name="Motwin Android Applications"
+            parentCategory="com.motwin.ide.cheatsheets.platform">
+      </category>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.android.apps"
+            composite="false"
+            contentFile="cheatsheets/en/new-android-project.xml"
+            id="com.motwin.ide.android.cheatsheets.newProject"
+            name="Create a new Motwin Android project">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.newProject"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.android.cheatsheets.newProject"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="New Motwin Android Project"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

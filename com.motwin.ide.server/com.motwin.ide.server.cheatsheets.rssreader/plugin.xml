@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.samples"
+            composite="false"
+            contentFile="cheatsheets/en/samples/rssreader/rssreader-server.xml"
+            id="com.motwin.ide.cheatsheets.samples.server.rssreader"
+            name="Create a RSS Reader Motwin Server application">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.rssreader"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.cheatsheets.samples.server.rssreader"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Server RSS Reader"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

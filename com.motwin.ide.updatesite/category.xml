@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="com.motwin.ide.android.feature">
+      <category name="com.motwin.ide.main"/>
+   </feature>
+   <feature id="com.motwin.ide.server.feature">
+      <category name="com.motwin.ide.main"/>
+   </feature>
+   <feature id="com.motwin.ide.html5.feature">
+      <category name="com.motwin.ide.main"/>
+   </feature>
+   <feature url="features/org.springframework.ide.eclipse.feature_3.5.0.201404011509-RELEASE.jar" id="org.springframework.ide.eclipse.feature" version="3.5.0.201404011509-RELEASE">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature url="features/org.eclipse.virgo.ide.feature_1.0.1.201302270038-RELEASE.jar" id="org.eclipse.virgo.ide.feature" version="1.0.1.201302270038-RELEASE">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature id="com.android.ide.eclipse.adt">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature id="com.android.ide.eclipse.ddms">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature id="com.android.ide.eclipse.gldebugger">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature id="com.android.ide.eclipse.hierarchyviewer">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature id="com.android.ide.eclipse.traceview">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature url="features/org.eclipse.wst.jsdt.feature_1.4.1.v201208171701-7H7DFg0FC7sReqSyfqesWi.jar" id="org.eclipse.wst.jsdt.feature" version="1.4.1.v201208171701-7H7DFg0FC7sReqSyfqesWi">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <feature url="features/org.eclipse.wst.web_ui.feature_3.4.2.v201211061806-7O7MFu3EMkBK01NbrfU9ATE5cdZFz-OoeYjaI4d2.jar" id="org.eclipse.wst.web_ui.feature" version="3.4.2.v201211061806-7O7MFu3EMkBK01NbrfU9ATE5cdZFz-OoeYjaI4d2">
+      <category name="com.motwin.thirdparty"/>
+   </feature>
+   <category-def name="com.motwin.ide.main" label="Motwin IDE"/>
+   <category-def name="com.motwin.thirdparty" label="Third Party"/>
+</site>

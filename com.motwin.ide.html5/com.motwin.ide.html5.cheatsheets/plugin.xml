@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="com.motwin.ide.cheatsheets.html5.apps"
+            name="Motwin HTML5 Applications"
+            parentCategory="com.motwin.ide.cheatsheets.platform">
+      </category>
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.html5.apps"
+            composite="false"
+            contentFile="cheatsheets/en/new-html5-project.xml"
+            id="com.motwin.ide.html5.cheatsheets.newProject"
+            name="Create a new Motwin HTML5 project">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.newProject"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.html5.cheatsheets.newProject"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="New Motwin HTML5 Project"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

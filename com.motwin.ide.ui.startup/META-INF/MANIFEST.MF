@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin IDE Startup
+Bundle-SymbolicName: com.motwin.ide.ui.startup;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.internal.ui.startup.DashboardStartupPlugin
+Bundle-Vendor: Motwin
+Require-Bundle: org.eclipse.core.runtime,
+ com.motwin.ide.dashboard.ui,
+ org.eclipse.ui;bundle-version="3.8.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

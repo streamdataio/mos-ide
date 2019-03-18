@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="com.motwin.ide.server.connectors">
+	   <connectorWizard 
+	   		name="Facebook" 
+	   		version="1.0.0" 
+	   		description="Facebook4j library purpose is to easily integrate your application with the Facebook API." 
+	   		icon="icons/facebook.png"
+	   		wizardClass="com.motwin.ide.server.connectors.facebook.internal.FacebookWizard">
+	   </connectorWizard>
+   </extension>
+</plugin>

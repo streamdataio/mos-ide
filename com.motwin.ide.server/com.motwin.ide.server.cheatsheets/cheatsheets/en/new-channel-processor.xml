@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a new Motwin Channel Processor">
+   <intro>
+      <description>
+      This cheat sheet shows you how to create a simple Motwin Channel Processor.
+<br/><br/>
+Pre-requisites:
+<br/>- Have a Motwin server application project created.
+<br/>- Have a Spring beans definition file with the Motwin namespaces declared. Such a file is created when you run the New Motwin Server project wizard.  
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to check each step before going to the next one. 
+      </description>
+   </intro>
+   <item
+         title="Open the Spring Bean Definition file">
+      <description>
+         Open the Spring Bean Definition file (by default, the one generated with the New Motwin Server Project is named <b>application.xml</b>) with the Spring Config Editor (usually this is the default editor).
+         <br/>This should open an Editor with several tabs:
+         <br/>- Source
+         <br/>- Namespaces
+         <br/>- Overview
+         <br/>- beans
+         <br/>- <b>Motwin Channel</b>
+         <br/>- Motwin Messaging
+         <br/>- Motwin Requesting
+         <br/>- ...
+      </description>
+   </item>
+   <item
+         title="Select the Motwin Channel tab">
+      <description>
+      </description>
+   </item>
+   <item title="Create a New Processor">
+   	  <description>
+   	  	Click the <b>&quot;New Processor&quot;</b> button: this opens a form to create a new Channel Processor.
+   	  </description>
+   </item>
+   <item title="Create a new processor class" dialog="true">
+   	  <description>
+   	  	Click the <b>&quot;class&quot;</b> link to open a wizard for creating a new processor class.
+   	  </description>
+   	  <onCompletion>
+   	  That's it. You've created a Channel Processor! 
+   	  <br/> 
+   	  <br/>Implement the <b>processChannelEvent()</b> method to handle channel events.
+   	  <br/> 
+   	  <br/>There are 3 types of channel events : 
+   	  <br/>- StateEvent : the state of the application session changed
+   	  <br/>- ConnectionEvent : the state of the network link changed
+   	  <br/>- MessageEvent : an upstream Message from the remote device
+   	  </onCompletion>
+   	  <subitem label="Enter a package name or select an existing one.">
+   	  </subitem>
+   	  <subitem label="Enter the class name of the Channel Processor (for instance, &quot;MyChannelProcessor&quot;).">
+   	  </subitem>
+   	  <subitem label="Click &quot;Finish&quot;.">
+   	  </subitem>
+   </item>
+   
+</cheatsheet>

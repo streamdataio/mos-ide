@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.motwin.ide.android</groupId>
+    <artifactId>com.motwin.ide.android.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+
+  <artifactId>com.motwin.ide.android.docs</artifactId>
+  <packaging>eclipse-plugin</packaging>
+
+  <properties>
+    <sdk3.src.unpack.dir>${basedir}/docs/javadoc</sdk3.src.unpack.dir>
+    <javadocs.dir>${basedir}/docs/html/references/api</javadocs.dir>
+  </properties>
+
+
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${sdk3.src.unpack.dir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+            <fileset>
+              <directory>${javadocs.dir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-javadoc</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.motwin.android</groupId>
+                  <artifactId>com.motwin.android.sdk</artifactId>
+                  <version>${android.sdk3.version}</version>
+                  <classifier>javadoc</classifier>
+                  <type>jar</type>
+                  <outputDirectory>${javadocs.dir}/Android_SDK_API_Documentation</outputDirectory>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>com.motwin.android</groupId>
+                  <artifactId>com.motwin.android.notifmanager</artifactId>
+                  <version>${android.notifmanager.version}</version>
+                  <classifier>javadoc</classifier>
+                  <type>jar</type>
+                  <outputDirectory>${javadocs.dir}/NotifManager_API_Documentation</outputDirectory>
+                </artifactItem>
+                
+                <artifactItem>
+                  <groupId>com.motwin.android</groupId>
+                  <artifactId>com.motwin.android.contextaware</artifactId>
+                  <version>${android.context.awareness.version}</version>
+                  <classifier>javadoc</classifier>
+                  <type>jar</type>
+                  <outputDirectory>${javadocs.dir}/ContextAwareness_API_Documentation</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+
+              <overWriteReleases>true</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

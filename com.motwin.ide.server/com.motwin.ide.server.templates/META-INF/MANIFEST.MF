@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin IDE Server Templates
+Bundle-SymbolicName: com.motwin.ide.server.templates;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Vendor: Motwin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.motwin.ide.server.templates
+Eclipse-BundleShape: dir

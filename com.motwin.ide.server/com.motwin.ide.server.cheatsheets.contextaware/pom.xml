@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.motwin.ide.server</groupId>
+    <artifactId>com.motwin.ide.server.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <artifactId>com.motwin.ide.server.cheatsheets.contextaware</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  
+  <properties>
+    <code.dir>${basedir}/code</code.dir>
+  </properties>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${code.dir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-sample-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>  
+                  <groupId>com.motwin.applications</groupId>
+                  <artifactId>contextAware-application</artifactId>
+                  <version>${samples.contextaware.application.version}</version>
+                  <classifier>template-sample</classifier>
+                  <type>zip</type>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${code.dir}</outputDirectory>
+              <overWriteReleases>true</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+            </configuration>
+          </execution>
+          </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

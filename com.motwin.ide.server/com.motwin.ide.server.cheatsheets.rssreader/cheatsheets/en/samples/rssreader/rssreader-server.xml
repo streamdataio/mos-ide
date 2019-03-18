@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Create a RSS Reader Motwin Server application">
+	<intro>
+		<description>
+			This cheat sheet demonstrates the Motwin Streaming Data feature to connect to external data sources.
+			<br />
+			In this sample, you will create a Motwin project that gets the RSS
+			entries for some specified feeds.
+			<br />
+			<br />
+			Pre-requisites:
+			<br />
+			- know how to configure a MOS server
+			<br />
+			- know how to configure a MOS mapping rule
+			<br/><br/>
+			Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+			<br />
+			<br />
+			Don&apos;t forget to check off each step before going to the next one.
+		</description>
+	</intro>
+	<item title="Create a new Motwin server project" dialog="true">
+		<description>
+			We will start by creating a Motwin server project.
+		</description>
+		<onCompletion>
+			Congratulations! You have created a Motwin server
+			project.
+		</onCompletion>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Server Project&quot; and click &quot;Next&quot;. Or click the arrow to the right.">
+			<command required="true"
+				serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.server.ui.wizards.EmptyProjectWizard)" />
+		</subitem>
+		<subitem
+			label="Enter the project name as &quot;RssReader-Server&quot; and click &quot;Next&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the Bundle Symbolic Name as &quot;com.motwin.applications.rssReader&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the Bundle Name as &quot;rssReader&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the bundle version as &quot;@SAMPLE_VERSION@&quot;.">
+		</subitem>
+		<subitem
+			label="Select your Virgo / MOS runtime or create a new one by clicking the &quot;New&quot; button.">
+		</subitem>
+		<subitem label="Click &quot;Finish&quot;.">
+		</subitem>
+	</item>
+	<item title="Create a virtual database" dialog="true">
+		<description>
+			The virtual database is a set of schemas for tables. The
+			schemas should
+			reflect the organization of data needed by the client
+			application.
+		</description>
+		<subitem
+			label="Open the file &quot;virtualdb.xml&quot; with the Spring Config Editor (which should be the default editor). It is in the folder &quot;src/main/ressources/META-INF/spring&quot;. Select the &quot;Motwin Virtual Database&quot; tab. Or click the arrow to the right to perform the steps.">
+			<action pluginId="com.motwin.ide.server.cheatsheets.rssreader"
+				class="com.motwin.ide.server.cheatsheets.samples.rssreader.actions.OpenVirtualDbEditorAction" />
+		</subitem>
+		<subitem
+			label="Select the &quot;Virtual Database&quot; and rename the id &quot;rssReaderDatabase&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Table&quot; and name the table &quot;Feed&quot;. Keep the default value &quot;true&quot; for &quot;persistent&quot; field.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Column&quot; and enter the name as &quot;url&quot;,set the type as &quot;String&quot;, and set part-of-key as &quot;true&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Column&quot; again and enter the name as &quot;title&quot; and set the type as &quot;String&quot;.">
+		</subitem>
+		<subitem
+			label="Select &quot;&lt;New Source&gt;&quot; entry and enter its name as &quot;feedSource&quot;.">
+		</subitem>
+		<subitem
+			label="Create the second table by clicking &quot;New Table&quot;. Name the table &quot;Entry&quot;. Keep the default value &quot;true&quot; for &quot;persistent&quot; field.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Column&quot;, enter the name as &quot;uniqueIdentifier&quot;, set the type as &quot;String&quot;, and set part-of-key as &quot;true&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Column&quot;, enter the name as &quot;feedUrl&quot; and set the type as &quot;String&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Column&quot;, enter the name as &quot;title&quot;, set the type as &quot;String&quot;, and set part-of-key as &quot;true&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Column&quot;, enter the name as &quot;date&quot;, and set the type as &quot;long&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;New Column&quot;, enter the name as &quot;content&quot;, and set the type as &quot;String&quot;.">
+		</subitem>
+		<subitem
+			label="Select &quot;&lt;New Source&gt;&quot; entry and enter its name as &quot;feedEntrySource&quot;.">
+		</subitem>
+    <subitem
+      label="Save the &quot;virtualdb.xml&quot; file.">
+    </subitem>    
+	</item>
+	<item title="Create the Feed Source" dialog="true">
+		<description>
+			Let's create a Stream Data Source. This class describes the data
+			to be extracted from the external information systems, and 
+			is responsible for translating data from a 3rd
+			party data-source to a JSON node containing the list of rows, matching the table schema.
+			definition.
+		</description>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Class&quot; or click the arrow to the right to perform the steps.">
+			<command required="false"
+				serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.jdt.ui.wizards.NewClassCreationWizard)" />
+		</subitem>
+		<subitem
+			label="Enter the package as &quot;com.motwin.rssreader.connectors&quot;.">
+		</subitem>
+		<subitem label="Enter the class name as &quot;FeedSource&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the interface &quot;com.motwin.streamdata.spi.PollableSource&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;Finish&quot; to create the source.">
+		</subitem>
+		<subitem
+			label="You have created an empty source. Click the arrow to the right to see the same source with a piece code that fetches some feeds according to an incoming list of urls.">
+			<action pluginId="com.motwin.ide.server.cheatsheets.rssreader"
+				class="com.motwin.ide.server.cheatsheets.samples.rssreader.actions.CopyFeedSourceAction" />
+		</subitem>
+		<onCompletion>
+			The FeedSource is given a list of URLs in the constructor. On
+			execution, this source will retrieve all available feeds from
+			these URLs, using the ROME library.
+			The code will create a JSON array representing the list of feeds. Each feed is reprensented by a JSON object containing the URL and title, according to the schema defined for the table Feed in the virtual database.
+			<br />
+			<br />
+			The ROME library has some known issues on OSGi environment, and thus,
+			requires some Class Loader manipulation (see line 63, 67, and 95).
+			<br />
+			<br />
+			Let's now create another source that will handle the feed entries.
+		</onCompletion>
+	</item>
+	<item title="Create the Feed Entry Source" dialog="true">
+		<description>
+			Let's create a new Stream Data Source to get the
+			entries for the RSS feeds.
+		</description>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Class&quot; or click the arrow to the right to perform the steps.">
+			<command required="false"
+				serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.jdt.ui.wizards.NewClassCreationWizard)" />
+		</subitem>
+		<subitem
+			label="Enter the package as &quot;com.motwin.rssreader.connectors&quot;.">
+		</subitem>
+		<subitem label="Enter the class name as &quot;FeedEntrySource&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the interface &quot;com.motwin.streamdata.spi.PollableSource&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;Finish&quot; to create the source">
+		</subitem>
+		<subitem
+			label="You have created a new empty source. Click the arrow at right to see the same source with a piece code that fetches the entries from a feed url passed in parameter.">
+			<action pluginId="com.motwin.ide.server.cheatsheets.rssreader"
+				class="com.motwin.ide.server.cheatsheets.samples.rssreader.actions.CopyFeedEntrySourceAction" />
+		</subitem>
+		<onCompletion>
+			The FeedEntrySource requires an input parameter called &quot;feedUrl&quot;, as specified in the metadata of the source.
+			On execution, the source first checks that this parameter is provided. Then, the code will get
+			the value of the feedUrl parameter, and retrieve all entries
+			available in the corresponding feed, using the ROME library.
+			The source will build a JSON representation of the retrieved entries, according to the virtual database schema.
+			Note that the content of the feed is transformed with a regular expression to remove all HTML/XML tags.
+			<br />
+			<br />
+			As for Feed Source, we added the workaround for ROME issues on OSGi environment (line 69, 71, and 99).
+			<br />
+			<br />
+			Let's now bind those source definition to the virtual database tables.
+		</onCompletion>
+	</item>
+	<item title="Update the Spring Bean Definition">
+		<description>
+			After you've created your Source classes, you need
+			to declare them
+			in the Spring Bean Definition file
+			&quot;application.xml&quot; of
+			the folder
+			&quot;src/main/resources/META-INF/spring&quot;. Click
+			the arrow to the right to generate the declaration of
+			the bean.
+		</description>
+
+		<action pluginId="com.motwin.ide.server.cheatsheets.rssreader"
+			class="com.motwin.ide.server.cheatsheets.samples.rssreader.actions.CopyApplicationXmlAction" />
+		<onCompletion>
+			Note that the file defines 2 source pollers: &quot;feedSource&quot; and &quot;feedEntrySource&quot;, which are the
+			names we have
+			defined for the source of the tables &quot;Feed&quot; and &quot;Entry&quot; of
+			the
+			virtualdatabase.
+			<br/>In this case, as the ROME library does not have Push capabilities, we create Pollable Source beans, that will be polled every 2 seconds, in order to provide the client with up-to-date data as quickly as possible.			
+		</onCompletion>
+	</item>
+	<item title="Update the MANIFEST.MF">
+		<description>
+			To make the application work, you need to declare the
+			packages of the
+			external bundles used in your application. To do so, open the MANIFEST.MF under src/main/resource/META-INF and select the &quot;Dependencies&quot; tabulation. In the &quot;Import Package&quot; section, click &quot;Add&quot; and add the packages which have an Eclipse red marker in the source files.
+            Or click the arrow to the right to perform this step.
+		</description>
+		<action pluginId="com.motwin.ide.server.cheatsheets.rssreader"
+			class="com.motwin.ide.server.cheatsheets.samples.rssreader.actions.CopyManifestAction" />
+		<onCompletion>
+			That's it!
+			<br />
+			Congratulations! You have developed an rssReader-application.
+		</onCompletion>
+	</item>
+	<item title="Deploy and run">
+		<description>
+			<b>Let&apos;s now deploy our application on the MOS server.</b>
+		</description>
+		<onCompletion>
+			Congratulations! You have deployed the
+			rssReader-application server demo. If you
+			wish, you can continue
+			with the Android tutorial.
+		</onCompletion>
+		<subitem label="Open the server view.">
+			<command
+				serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.wst.server.ui.ServersView)" />
+		</subitem>
+		<subitem
+			label="Right click on your MOS server, select &quot;Add and Remove...&quot; and add &quot;rssReader-application&quot;. Or drag-and-drop the project on the MOS server.">
+		</subitem>
+		<subitem label="Launch the MOS server.">
+		</subitem>
+		<subitem
+			label="Open the MOS web console in a browser. (The default URL is &quot;http://localhost:8080/mos&quot;.)">
+			<action pluginId="com.motwin.ide.server.cheatsheets"
+				class="com.motwin.ide.server.cheatsheets.actions.OpenMOSConsoleAction" />
+		</subitem>
+		<subitem
+			label="Select &quot;Mapping Rules&quot; to a Mapping Rule if needed.">
+		</subitem>
+	</item>
+</cheatsheet>

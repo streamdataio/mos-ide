@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.samples"
+            composite="false"
+            contentFile="cheatsheets/en/samples/helloworld/helloword-server.xml"
+            id="com.motwin.ide.cheatsheets.samples.server.helloworld"
+            name="Create a Hello World Motwin Server application">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.helloworld"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.cheatsheets.samples.server.helloworld"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Server HelloWorld"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

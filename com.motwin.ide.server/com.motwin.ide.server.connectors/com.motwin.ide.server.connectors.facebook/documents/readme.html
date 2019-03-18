@@ -1,0 +1,23 @@
+<p>Facebook4J is an open-sourced Java library.
+With Facebook4J, you can easily integrate your application with the Facebook API.
+Facebook4J is an unofficial library.</p>
+
+<p>Getting Facebook Instance
+At first it is necessary to acquire Facebook instance to use Facebook4J.
+You can get Facebook instance in FacebookFactory.getInstance().</p>
+
+<pre>
+Facebook facebook = new FacebookFactory().getInstance();
+</pre>
+
+<p>If App ID / App Secret / access token / access permission are listed in facebook4j.properties then, they are set in Facebook instance given back.
+See Configuration | Facebook4J - A Java library for the Facebook Graph API for the detail.
+When they are not listed, it is setable later as follows:</p>
+
+<pre>
+facebook.setOAuthAppId(appId, appSecret);
+facebook.setOAuthPermissions(commaSeparetedPermissions);
+facebook.setOAuthAccessToken(new AccessToken(accessToken, null));
+</pre>
+
+<p>More information and documentation at <a href="http://facebook4j.org/en/">http://facebook4j.org/en/</a>.</p>

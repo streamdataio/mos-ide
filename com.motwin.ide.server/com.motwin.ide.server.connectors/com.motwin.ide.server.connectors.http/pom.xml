@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.motwin.ide.server.connectors</groupId>
+    <artifactId>com.motwin.ide.server.connectors.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <artifactId>com.motwin.ide.server.connectors.http</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  
+  <build>
+    <plugins>
+     <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>libraries</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+            <fileset>
+              <directory>target</directory>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>    
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-ning-libraries</id>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.ning</groupId>
+                  <artifactId>async-http-client</artifactId>
+                  <version>1.7.20</version>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.netty</groupId>
+                  <artifactId>netty</artifactId>
+                  <version>3.6.6.Final</version>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>libraries</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>

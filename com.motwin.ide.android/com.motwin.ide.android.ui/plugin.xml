@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      		
+      <category
+            id="com.motwin.ide.android.ui.samples"
+            name="Motwin Android Samples"/>
+      
+      <!-- NEW ANDROID PROJECT -->
+      <wizard
+            category="com.motwin.ide.ui"
+            class="com.motwin.ide.android.ui.wizards.EmptyProjectWizard"
+            icon="icons/motwin_newandroidprj_wiz.gif"
+            id="com.motwin.ide.android.ui.wizards.EmptyProjectWizard"
+            name="Android Project"
+            project="true">
+      </wizard>
+      
+      <!-- HELLOWORLD SAMPLE -->
+      <wizard
+            category="com.motwin.ide.android.ui.samples"
+            class="com.motwin.ide.android.ui.wizards.Hello1SampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.android.ui.wizards.Hello1SampleWizard"
+            name="Helloworld 1 Sample"
+            project="true">
+      </wizard>
+      
+      <!-- HELLOWORLD SAMPLE -->
+      <wizard
+            category="com.motwin.ide.android.ui.samples"
+            class="com.motwin.ide.android.ui.wizards.Hello2SampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.android.ui.wizards.Hello2SampleWizard"
+            name="Helloworld 2 Sample"
+            project="true">
+      </wizard>
+      
+      <!-- RSS READER SAMPLE -->
+      <wizard
+            category="com.motwin.ide.android.ui.samples"
+            class="com.motwin.ide.android.ui.wizards.RssReaderSampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.android.ui.wizards.RssReaderSampleWizard"
+            name="RSS Reader Sample"
+            project="true">
+      </wizard>
+      
+      <!-- REAL TIME PUSH SAMPLE -->
+      <wizard
+            category="com.motwin.ide.android.ui.samples"
+            class="com.motwin.ide.android.ui.wizards.RealTimePushSampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.android.ui.wizards.RealTimePushSampleWizard"
+            name="Real-Time Push Sample"
+            project="true">
+      </wizard>
+      
+      <!-- NOTIF MANAGER DEMO -->
+      <wizard
+            category="com.motwin.ide.android.ui.samples"
+            class="com.motwin.ide.android.ui.wizards.NotifManagerDemoWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.android.ui.wizards.NotifManagerDemoWizard"
+            name="Motwin Notification Manager Demo"
+            project="true">
+      </wizard>
+      
+      <!-- CONTEXT AWARE SAMPLE -->
+      <wizard
+            category="com.motwin.ide.android.ui.samples"
+            class="com.motwin.ide.android.ui.wizards.ContextAwareSampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.android.ui.wizards.ContextAwareSampleWizard"
+            name="Context Aware Sample"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <part
+            class="com.motwin.ide.android.ui.internal.editors.AndroidDashboardPart"
+            id="com.motwin.ide.android.ui.dashboard.part.ua"
+            location="com.motwin.ide.dashboard.ui.page.overview.left"
+            page="com.motwin.ide.dashboard.ui.page.overview"
+            position="1">
+      </part>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.newProject"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Android Project"
+            type="project"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.android.ui.wizards.EmptyProjectWizard">
+            <image
+                  pluginID="com.motwin.ide.android.ui" path="/icons/motwin_newandroidprj_wiz.gif">
+            </image>
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.samples.helloWorld1"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Android HelloWorld 1"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.android.ui.wizards.Hello1SampleWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.helloWorld2"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Android HelloWorld 2"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.android.ui.wizards.Hello2SampleWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.rssReader"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Android RSS Reader"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.android.ui.wizards.RssReaderSampleWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.realTimePush"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Android Real-Time Push"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.android.ui.wizards.RealTimePushSampleWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.notifmanagerdemo"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Notif Manager Demo"
+            type="sample" 
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.android.ui.wizards.NotifManagerDemoWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.contextAware"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Motwin Android Context Aware"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.android.ui.wizards.ContextAwareSampleWizard">
+      </uaLink>
+   </extension>
+</plugin>

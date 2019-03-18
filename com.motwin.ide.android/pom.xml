@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.motwin.ide</groupId>
+    <artifactId>com.motwin.ide.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <groupId>com.motwin.ide.android</groupId>
+  <artifactId>com.motwin.ide.android.parent</artifactId>
+  <packaging>pom</packaging>
+  
+  <modules>
+    <module>com.motwin.ide.android.templates</module>
+    <module>com.motwin.ide.android.ui</module>
+    <module>com.motwin.ide.android.docs</module>
+    <module>com.motwin.ide.android.cheatsheets</module>
+    <module>com.motwin.ide.android.cheatsheets.helloworld</module>
+    <module>com.motwin.ide.android.cheatsheets.rssreader</module>
+    <module>com.motwin.ide.android.cheatsheets.realtimepush</module>
+    <module>com.motwin.ide.android.cheatsheets.notifmanagerdemo</module>
+    <module>com.motwin.ide.android.cheatsheets.contextaware</module>
+    <module>com.motwin.ide.android.feature</module>
+  </modules>
+  
+</project>

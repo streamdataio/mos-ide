@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-Version: __BUNDLE_VERSION__
+Bundle-Name: __BUNDLE_NAME__
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: __BUNDLE_SYMBOLIC_NAME__
+Import-Bundle: com.motwin.org.apache.cxf.bundle-minimal;version="[2.7.0,2.8.0)"
+

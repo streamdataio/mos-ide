@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <cheatsheet
+            category="com.motwin.ide.cheatsheets.platform.samples"
+            composite="false"
+            contentFile="cheatsheets/en/samples/realtimepush/realtimepush-server.xml"
+            id="com.motwin.ide.cheatsheets.samples.server.realtimepush"
+            name="Create a Real-Time Push Motwin Server application">
+      </cheatsheet>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.server.ui.dashboard.ualink.cheatsheets.realtimePush"
+            listener="com.motwin.ide.dashboard.ui.links.CheatSheetHyperlinkListener:com.motwin.ide.cheatsheets.samples.server.realtimepush"
+            part="com.motwin.ide.server.ui.dashboard.part.ua"
+            text="Motwin Server Real-Time Push"
+            type="cheatsheet">
+      </uaLink>
+   </extension>
+
+</plugin>

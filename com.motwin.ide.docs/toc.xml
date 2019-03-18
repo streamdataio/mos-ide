@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Motwin Developer Guide">
+   <topic label="Overview"  href="docs/html/topics/maintopic.html">
+   </topic>
+   <topic href="docs/html/topics/devguide.html" label="Developer Guide">
+   </topic>    
+   <anchor id="guidesections"/>
+</toc>

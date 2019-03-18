@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SQL Connector
+Bundle-SymbolicName: com.motwin.ide.server.connectors.sql;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.server.connectors.sql.SqlConnectorPlugin
+Bundle-Vendor: Motwin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.motwin.ide.server.connectors.core,
+ com.motwin.ide.server.connectors.ui,
+ com.google.guava
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

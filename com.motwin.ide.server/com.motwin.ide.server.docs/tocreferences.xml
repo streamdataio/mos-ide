@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toc label="Server APIs" link_to="toc.xml#references">
+   <topic href="docs/html/references/api/SDK_API_Documentation/apidocs/index.html" label="SDK API">
+   </topic>
+   <topic href="docs/html/references/api/UIS_API_Documentation/apidocs/index.html" label="UIS API">
+   </topic>
+   <topic href="docs/html/references/api/NotifManager_API_Documentation/apidocs/index.html" label="NotifManager API">
+   </topic>
+   <topic href="docs/html/references/api/Context_aware_API_Documentation/apidocs/index.html" label="Context Awareness API">
+   </topic>
+   <topic href="docs/html/references/api/SDK_Test_CLient_API_Documentation/apidocs/index.html" label="SDK Test Client API">
+   </topic>
+   
+</toc>

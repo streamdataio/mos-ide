@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.motwin.ide</groupId>
+    <artifactId>com.motwin.ide.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <groupId>com.motwin.ide.server</groupId>
+  <artifactId>com.motwin.ide.server.parent</artifactId>
+  <packaging>pom</packaging>
+  
+  <modules>
+    <module>com.motwin.ide.server.core</module>
+    <module>com.motwin.ide.server.templates</module>
+    <module>com.motwin.ide.server.ui</module>
+    <module>com.motwin.ide.server.connectors</module>
+    <module>com.motwin.ide.server.cheatsheets</module>
+    <module>com.motwin.ide.server.cheatsheets.helloworld</module>
+    <module>com.motwin.ide.server.cheatsheets.realtimepush</module>
+    <module>com.motwin.ide.server.cheatsheets.rssreader</module>
+    <module>com.motwin.ide.server.cheatsheets.notifmanagerdemo</module>
+    <module>com.motwin.ide.server.cheatsheets.contextaware</module>
+    <module>com.motwin.ide.server.docs</module>
+    <module>com.motwin.ide.server.feature</module>
+  </modules>
+
+</project>

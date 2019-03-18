@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Real-Time Push Motwin Android application">
+      <intro>
+      	<description> 
+		This cheat sheet demonstrates the real-time push capability provided by the Motwin technology for an Android application. 
+		<br/>The Motwin Android application displays a list of items that is updated by the server in real-time. The server creates
+		a list of items with fixed names and changing prices. Each second, a random number of items
+		change price, with random variation. The data are not persistent. The Android application allows the
+		user to drill down from the list of items; when the user selects an item, application shows the
+		details of the item. 
+<br/><br/>
+Pre-requisites: 
+<br/>- having the Motwin Server realTimePush-application running (you can refer to the cheatsheet &apos;Create a realTimePush Motwin Server application&apos; for any help)
+<br/><br/>- having the Google Android (ADT) Eclipse plugin installed (http://developer.android.com/tools/sdk/eclipse-adt.html)
+<br/><br/>- having an Android SDK <b>API Level 4 or higher</b> installed and operational (http://developer.android.com/sdk/index.html)
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to <b>check each step</b> before going to the next one.
+      </description>
+   </intro>
+   <item
+         title="Create a new Motwin Android project" dialog="true">
+      <description>
+         We will start by creating a Motwin Android project.
+      </description>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Android Project&quot; and click on the &quot;Next&quot; button. Or click on the arrow on the right.">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.android.ui.wizards.EmptyProjectWizard)"/>
+      </subitem>
+      <subitem
+            label="Input &quot;RealTimePush-Android&quot; as &quot;Project name&quot;.">
+      </subitem>
+      <subitem
+            label="Select an Android SDK API Level 8 or higher and click &quot;Next&quot; button.">
+      </subitem>
+      <subitem
+            label="Input &quot;com.motwin.sample.realTimePush&quot; as &quot;Project Package&quot;">
+      </subitem>
+      <subitem
+            label="Input the URL of your Motwin server as &quot;Server URL&quot; or leave the default one if you can access the Motwin test server. Ditto for the &quot;Server Port&quot;."
+            skip="true">
+      </subitem>
+      <subitem
+            label="Input &quot;realTimePush&quot; as &quot;appName&quot;.">
+      </subitem>
+      <subitem
+            label="Input &quot;3.2&quot; as &quot;appVersion&quot;.">
+      </subitem>
+      <subitem
+            label="Click on the &quot;Finish&quot; button.">
+      </subitem>
+   </item>
+   <item
+         title="Update the default classes">
+      <description>
+         By default, the wizard creates default classes (Activity, etc.).
+      </description>
+      <subitem
+            label="Rename the class &quot;DefaultActivity&quot; into &quot;RealTimePushActivity&quot;: right click on &quot;DefaultActivity&quot; then select &quot;Refactor &gt; Rename...&quot; and input &quot;RealTimePushActivity&quot;. RealTimePushActivity will be our starting point class.">
+      </subitem>
+      <subitem
+            label="Open the class &quot;RealTimePushActivity&quot;. You will see that the skeleton code that manages the ClientChannel connection / deconnection during the lifecycle of the activity.">
+      </subitem>
+   </item>
+   <item
+         title="Create the data model class">
+      <description>
+        This operation will be done for you by clicking on the link &quot;Perform&quot; below. <br/>This will create a simple POJO which represents an item with a title, 8 parameters of the item and a price.
+      </description>
+      <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.DataModelCopyAction" />   
+   </item>
+   <item
+         title="Create the code to display the list of items with their price"
+         dialog="true">
+      <description>Let&apos;s create the code that will display the items list with their price. To do so, we will use the &quot;Main&quot; activity and then generate the appropriate code.
+      </description>
+     <subitem
+            label="Rename the class &quot;Main&quot; into &quot;RealTimePushList&quot;: right click on &quot;Main&quot; then select &quot;Refactor &gt; Rename...&quot; and input &quot;RealTimePushList&quot;. RealTimePushList will be the activity that displays the list of items (title and price). The price of the items being changed by the server in real-time.">
+      </subitem>
+      <subitem
+            label="If you go around line 19 of the &quot;RealTimePushList&quot; class, you will see we have declared a field &quot;continuousQueryController&quot; that will enable us to manage the  &quot;ContinuousQuery&quot;."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.ShowQueryControllerAction" /> 
+      </subitem>
+      <subitem
+            label="Notice also at around line 17, the constant &quot;QUERY_STRING&quot; that declares a default MQL statement which will be sent to the server."
+            skip="false">
+            <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.ShowMQLQueryAction" />
+      </subitem>
+      <subitem
+            label="In this sample, our table is named &quot;RealTimePush&quot; (see the Motwin Real-Time Push server sample). We also wish to get all items with a price greater than a given value and ordered by price. So, change the query into &quot;SELECT * FROM RealTimePush WHERE price > ? order by price&quot;. Rename also the query &quot;QUERY_STRING&quot; into a more meaningful name &quot;LIST_FEED_QUERY&quot;."
+            skip="false">
+      </subitem>
+       <subitem
+            label="If you go around line 30, you will see how the ContinuousQueryController is instanciated with the MQL query and how you can declare a Callback to handle the ContinuousQuery changes."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.ShowQueryControllerInitAction" />
+      </subitem>
+      <subitem
+            label="If you go around line 63, you will see how the lifecycle of the ContinuousQueryController is linked with the lifecycle of the Activity."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.ShowQueryControllerStartAction" />
+      </subitem>
+      <subitem
+            label="Let&apos;s complete the code now. Click on the arrow on the right to see how to get the data from the server."
+            skip="false">
+            <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.RemainingCodeCopyAction" />
+      </subitem>
+      <onCompletion>We have updated the &quot;RealTimePushList&quot; class and also added the code to display the details of a given item. The &quot;AndroidManisfest.xml&quot; has been also updated with the declaration of the different activities
+      </onCompletion>
+   </item>
+   <item
+         title="Read the final code">
+      <description>Let&apos;s have a look at the main code parts.
+      </description>
+      <subitem
+            label="If you go around line 115, you will see that a &quot;ContinuousQueryController.Callback&quot; has been defined in replacement of the inline Callback declared previously. This is a matter to make the code more readable (depending on personal preferences). What is important is around line 118, where you can see how the Callback is used to handle UI changes when the application received data changes from the server."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.ShowQueryDataChangedAction" />
+      </subitem>
+      <subitem
+            label="That's almost it! The rest of the code is UI code to display the list of items... You can also have a look at the activity &quot;RealTimePushDetails&quot; which displays the detail of an item. The code is pretty much the same as the one of the &quot;RealTimePushList&quot; activity: a ContinuousQueryController is instanciated to create a ContinuousQuery in MQL language. A callback is responsible to handle the data changes received from the server and to update the UI in consequence."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.realtimepush"
+			   class="com.motwin.ide.android.cheatsheets.realtimepush.actions.ShowRealTimePushDetailsAction" />
+      </subitem>
+   </item>
+   <item
+         title="Let&apos;s test it!">
+      <description>
+          First, ensures you have a &quot;RealTimePush&quot; server application running with the right server url and port you have defined at the project creation. You can update this configuration by editing the file &quot;confServer.properties&quot; in the &quot;asserts&quot; folder. Ensures also that a mapping rule is correctly defined for your application (see the Motwin Real-Time Push Server cheatsheet).
+<br/><br/>Right click on the &quot;RealTimePush&quot; project and select &quot;Run as... &gt; Android Application&quot;. This should open the Android Emulator and run our Android Application.
+<br/><br/>The application displays a list of items with prices. The prices changes in real-time according to the values sent by the server. <br/>Selecting one of the items, displays the displays its detail (title, the 8 params and the price).
+      </description>
+      <onCompletion>Congratulations! You have run a Motwin Android Real-Time Push application! If you wish, you can continue with the other tutorials...</onCompletion>
+   </item>
+</cheatsheet>

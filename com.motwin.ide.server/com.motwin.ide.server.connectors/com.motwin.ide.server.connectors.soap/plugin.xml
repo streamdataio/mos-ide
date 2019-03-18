@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="com.motwin.ide.server.connectors">
+	   <connectorWizard 
+	   		name="SOAP" 
+	   		version="1.0.0" 
+	   		description="This connector is based on the Apache CXF services framework. It takes a WSDL document and generates fully annotated Java code from which to implement a service." 
+	   		icon="icons/xml.png"
+	   		wizardClass="com.motwin.ide.server.connectors.soap.SoapConnectorWizard">
+	   </connectorWizard>
+   </extension>
+</plugin>

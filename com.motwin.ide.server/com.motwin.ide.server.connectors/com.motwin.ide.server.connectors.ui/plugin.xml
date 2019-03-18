@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+	<extension point="org.eclipse.ui.importWizards" >
+	
+		<category id="com.motwin.ide.server" name="Motwin Server"/>
+	
+		<wizard id="com.motwin.ide.server.connectors.ui.wizard.ConnectorImportWizard" 
+				name="Import Streamdata Connector" 
+				class="com.motwin.ide.server.connectors.ui.internal.wizard.ConnectorImportWizard"
+				category="com.motwin.ide.server"
+				icon="icons/motwin_importconnector_wiz.gif"> 
+			<description> 
+			    Import Streamdata Connectors into your project.
+			</description> 
+		</wizard> 
+	</extension>
+
+</plugin>

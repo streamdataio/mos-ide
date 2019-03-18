@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Motwin Android RSSReader application">
+      <intro>
+      	<description> 
+This cheat sheet shows you how to create a simple Motwin Android application that displays some RSS Feeds, and try it out. You will create an Android Motwin project and see how to send and receive a message from the mobile application. 
+<br/><br/>
+Pre-requisites: 
+<br/>- having the Motwin Server rssReader-application running (you can refer to the cheatsheet &apos;Create a RssReader Motwin Server application&apos; for any help)
+<br/><br/>- having the Google Android (ADT) Eclipse plugin installed (http://developer.android.com/tools/sdk/eclipse-adt.html)
+<br/><br/>- having an Android SDK <b>API Level 4 or higher</b> installed and operational(http://developer.android.com/sdk/index.html)
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to <b>check each step</b> before going to the next one.
+      </description>
+   </intro>
+   <item
+         title="Create a new Motwin Android project" dialog="true">
+      <description>
+         We will start by creating a Motwin Android project.
+      </description>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Android Project&quot; and click on the &quot;Next&quot; button. Or click on the arrow on the right.">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.android.ui.wizards.EmptyProjectWizard)"/>
+      </subitem>
+      <subitem
+            label="Input &quot;RssReader-Android&quot; as &quot;Project name&quot;.">
+      </subitem>
+      <subitem
+            label="Select an Android SDK API Level 4 or higher and click &quot;Next&quot;.">
+      </subitem>
+      <subitem
+            label="Input &quot;com.motwin.sample.rssreader&quot; as &quot;Project Package&quot;">
+      </subitem>
+      <subitem
+            label="Input the URL of your Motwin server as &quot;Server URL&quot; or leave the default one if you can access the Motwin test server. Ditto for the &quot;Server Port&quot;."
+            skip="true">
+      </subitem>
+      <subitem
+            label="Input &quot;rssReader&quot; as &quot;appName&quot;.">
+      </subitem>
+      <subitem
+            label="Input &quot;3.2&quot; as &quot;appVersion&quot;.">
+      </subitem>
+      <subitem
+            label="Click on the &quot;Finish&quot; button.">
+      </subitem>
+   </item>
+   <item
+         title="Update / remove the default classes">
+      <description>
+         By default, the wizard creates default classes (Activity, etc.). We won&apos;t use some of them and slightly modify others.
+      </description>
+      <subitem
+            label="Delete the class &quot;Main&quot;: this class declares a default Activity and provides a skeleton code to use a ContinuousQueryController.">
+      </subitem>
+      <subitem
+            label="Rename the class &quot;DefaultActivity&quot; into &quot;RssReaderActivity&quot;: right click on &quot;DefaultActivity&quot; then select &quot;Refactor &gt; Rename...&quot; and input &quot;RssReaderActivity&quot;. RssReaderActivity will be our starting point class.">
+      </subitem>
+      <subitem
+            label="Open the class &quot;RssReaderActivity&quot;. You will see that the skeleton code that manages the ClientChannel connection / deconnection during the lifecycle of the activity.">
+      </subitem>
+      <subitem 
+      		label="Instead of extending from &quot;android.app.Activity&quot;, modify the class &quot;RssReaderActivity&quot; so that it extends from &quot;android.support.v4.app.FragmentActivity&quot;: our application will be now portable on Android tablets.">
+      </subitem>
+   </item>
+   <item
+         title="Create the data model class">
+      <description>
+        This operation will be done for you by clicking on the link &quot;Perform&quot; below. <br/>This will create a simple POJO &quot;Feed&quot; and &quot;Entry&quot; that represents respectively a RSS Feed and a RSS Entry...
+      </description>
+      <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.DataModelCopyAction" />   
+   </item>
+   <item
+         title="Create code to display a RSS Entry"
+         dialog="true">
+      <description>Let&apos;s create the code that will display the RSS Entries. First, we will focus on the &quot;EntryFragment&quot; to see what a skeleton code looks like. We will then generate the appropriate code.
+      </description>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Class&quot; or click on the arrow on the right.">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.jdt.ui.wizards.NewClassCreationWizard)"/>
+      </subitem>
+      <subitem
+            label="Input &quot;com.motwin.sample.rssreader&quot; as &quot;Package&quot;.">
+      </subitem>
+      <subitem
+            label="Input &quot;EntryFragment&quot; as &quot;Name&quot;.">
+      </subitem>
+      <subitem
+            label="Input &quot;android.support.v4.app.ListFragment&quot; as &quot;Superclass&quot;.">
+      </subitem>
+      <subitem
+            label="Input &quot;com.motwin.android.streamdata.ContinuousQueryController.Callback&quot; as &quot;Interfaces&quot;.">
+      </subitem>
+      <subitem
+            label="Click on the &quot;Finish&quot; button.  Et voilà! You&apos;ve got a fragment with the skeleton code for handling a continuous query.">
+	  </subitem>            
+      <subitem
+            label="Let&apos;s complete the code now. click on the arrow on the right to see how to get the data from the server.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.EntryFragmentCopyAction" />
+      </subitem>
+      <onCompletion>We have generated the activities and fragments that will be used to display the RSS entries list and the RSS entry details as well. The &quot;EntryFragment&quot; has been updated in consequence. The &quot;AndroidManisfest.xml&quot; has been also updated with the declaration of the different activities.
+      </onCompletion>
+   </item>
+   <item
+         title="Read the code">
+      <description>Let&apos;s have a look at the main code parts.
+      </description>
+      <subitem
+            label="If you go around line 35 of the &quot;EntityFragment&quot; class, you will see we have declared a field &quot;continuousQueryController&quot; that will enable us to manage the  &quot;ContinuousQuery&quot;."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.ShowQueryControllerAction" /> 
+      </subitem>
+      <subitem
+            label="Notice also at around line 31, the constant &quot;ENTRY_QUERY&quot; that declares the MQL statement which will be sent to the server."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.ShowMQLQueryAction" />
+      </subitem>
+      <subitem
+            label="If you go around line 81, you will see how the ContinuousQueryController is instanciated with the MQL query and how the fragment is registered as a listener of the ContinuousQueryController."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.ShowQueryControllerInitAction" />
+     </subitem>
+      <subitem
+            label="If you go around line 91, you will see where the ContinuousQueryController is started / stopped within the &quot;EntryFragment&quot;."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.ShowQueryControllerStartAction" />
+      </subitem>
+      <subitem
+            label="At last, around line 148, the method &quot;continuousQueryDataChanged(.)&quot; shows how the &quot;EntryFragment&quot; handles the result of the ContinuousQuery it listening to, in order to update its UI."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.ShowQueryDataChangedAction" />
+      </subitem>
+      <subitem
+            label="You can open the class &quot;ListEntryFragment&quot; and see for yourself the code follow the same structure."
+            skip="true">
+            <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.ShowListEntryFragmentAction" />
+      </subitem> 
+   </item>
+   <item
+         title="Generate the rest of the code">
+      <description>
+         The rest of the code essentially deals with how to get and display the RSS Feeds and is pretty similar with the previous code we&apos;ve studied before. So, let&apos;s generate the rest of the code before running the application: click on the arrow on the right!
+      </description>
+      <action pluginId="com.motwin.ide.android.cheatsheets.rssreader"
+			   class="com.motwin.ide.android.cheatsheets.rssreader.actions.RemainingCodeCopyAction" />
+   </item>
+   <item
+         title="Let&apos;s test it!">
+      <description>
+         Right click on the &quot;RssReader&quot; project and select &quot;Run as... &gt; Android Application&quot;. This should open the Android Emulator and run our Android Application.
+<br/><br/>The application displays a list of RSS Feeds. Selecting one of them, displays the list of RSS Entries of the feed. At last, selecting one of the Feed Entry, displays its detail.
+      </description>
+      <onCompletion>Congratulations! You have run a Motwin Android RSS Reader! If you wish, you can continue with the other tutorials...</onCompletion>
+   </item>
+</cheatsheet>

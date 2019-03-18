@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="New Motwin HTML5 project">
+   <intro>
+      <description>
+         This cheat sheet shows you how to create a simple Motwin HTML5 application.
+<br/><br/>
+Don&apos;t forget to check each step before going to the next one. 
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+      </description>
+   </intro>
+   <item dialog="true"
+         title="Create a new Motwin HTML5 project">
+      <description>Let&apos;s use the wizard &quot;New Motwin HTML5 project&quot;</description>
+      <subitem label="Select &quot;File &gt; New &gt; Project&quot;, choose &quot;Motwin &gt; HTML5 Project with JQuery Mobile&quot; and click &quot;Next&quot;. Or click the arrow on the right.">
+      	<command
+	           required="false"
+    	       serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.html5.ui.wizards.EmptyProjectWizard)"/>
+      </subitem>
+      <subitem label="Enter the project name as &quot;HelloWorld&quot; and click &quot;Next&quot;."></subitem>
+      <subitem label="Accept the default preloaded values of &quot;Server Properties&quot;. These properties define the location of the server that the application will contact."></subitem>
+      <subitem label="Accept the default preloaded values of &quot;Server Mapping Rules&quot;. These properties define the link between the Motwin Android application and the Motwin Server application."></subitem>
+      <subitem skip="true"
+            label="Click &quot;Finish&quot;.">
+      </subitem>
+      <onCompletion>Et voilà! You have a ready-to-start Motwin HTML5 project!</onCompletion>
+   </item>
+   <item title="Brief code overview">
+      <description>The wizard generates automatically a HTML5 <b>index.html</b> file, an <b>application.js</b> Javascript file and a <b>libs</b> folder containing the Motwin SDK Javascript and CSS resources.</description>
+      <subitem skip="true"
+            label="&quot;index.html&quot; is a simple HTML5 page which can be the starting point of your application.">
+          <action pluginId="com.motwin.ide.html5.cheatsheets"
+         class="com.motwin.ide.html5.cheatsheets.actions.newproject.OpenIndexHTMLAction" />      
+      </subitem>
+      <subitem skip="true"
+               label="If you look near line 7, you will see the Javascript compatibility libraries imports. These libraries are useful for the oldest web browsers that are not compliante with Ecma5 or JSON.">
+               <action pluginId="com.motwin.ide.html5.cheatsheets"
+                       class="com.motwin.ide.html5.cheatsheets.actions.newproject.ShowCompatibilityJSImportsAction" />
+      </subitem>
+      <subitem skip="true"
+               label="If you look near line 11, you will see the Sock JS libraries import. This import is required when the HTTP Connector is used.">
+               <action pluginId="com.motwin.ide.html5.cheatsheets"
+                       class="com.motwin.ide.html5.cheatsheets.actions.newproject.ShowSockJSImportsAction" />
+      </subitem>
+      <subitem skip="true"
+               label="If you look near line 17, you will see the Javascript libraries imports, especially the Motwin ones.">
+               <action pluginId="com.motwin.ide.html5.cheatsheets"
+                       class="com.motwin.ide.html5.cheatsheets.actions.newproject.ShowJSImportsAction" />
+      </subitem>
+      <subitem skip="true"
+               label="If you look near line 25, you will see the import of &quot;application.js&quot; which is the bootstrap to the Motwin SDK.">
+               <action pluginId="com.motwin.ide.html5.cheatsheets"
+                       class="com.motwin.ide.html5.cheatsheets.actions.newproject.ShowApplicationJSImportAction" />
+      </subitem>
+      <subitem skip="true"
+               label="The &quot;Server Properties&quot; (Motwin Server URL and port) and the Server &quot;Mapping Rules&quot; are defined in the &quot;application.js&quot;.">
+               <action pluginId="com.motwin.ide.html5.cheatsheets"
+                       class="com.motwin.ide.html5.cheatsheets.actions.newproject.ShowApplicationJSAction" />
+      </subitem>
+      <subitem skip="true"
+               label="If you look near line 6, you will see how the ClientChannel is created.">
+               <action pluginId="com.motwin.ide.html5.cheatsheets"
+                       class="com.motwin.ide.html5.cheatsheets.actions.newproject.ShowClientChannelAction" />
+      </subitem>
+      <subitem skip="true"
+               label="If you look near line 12, you will see how the connection of the ClientChannel is declared depending the use or not of the Javascript library Cordova">
+               <action pluginId="com.motwin.ide.html5.cheatsheets"
+                       class="com.motwin.ide.html5.cheatsheets.actions.newproject.ShowClientChannelConnectAction" />
+      </subitem>
+      <onCompletion>That's all for the code overview. If you wish to get more knownledge on the Motwin HTML5 SDK, you can have a look at the Motwin Developer Guide and the Javascript API.</onCompletion>
+   </item>
+   <item title="Exporting the HTML5 project to a Native Project">
+      <description>Full HTML5/CSS3/JavaScript projects developed with Motwin HTML5 SDK can be exported to native
+      projects using Cordova/PhoneGap connector to connect to the server using standard sockets rather than WebSockets.
+      <br/>
+      The bridges to the native platform are Apache Cordova plugins used to access the native network stack
+      of the device. These plugins are platform dependent. The Motwin HTML5 SDK is shipped with Android
+      and iOS versions.
+      <br/>
+      </description>
+      <subitem label="In the Project Explorer, right-click the project and select &quot;Export&quot; and then &quot;Motwin HTML5 &gt; Export Web Content as Android Project&quot; or &quot;Motwin HTML5 &gt; Export Web Content as iOS Project&quot; depending your target mobile OS. And click on &quot;Next&quot;.">
+      </subitem>
+      <subitem label="Navigate to the &quot;www&quot; folder in the HTML5 project and click &quot;Next&quot;."></subitem>
+      <subitem label="Choose the location you want to create the Android or iOS project and click &quot;Next&quot;."></subitem>
+      <subitem skip="true" label="Set the Android / iOS application properties and click &quot;Finish&quot;. Then, follow the instructions of the popup window  &quot;Project Exported&quot;."></subitem>
+      <onCompletion>Congratulations! You have created a Motwin HTML5 Project and exported it into a native project! If you wish, you can continue with the other HTML5 tutorials to dive into the Motwin HTML5 SDK concepts...</onCompletion>
+   </item>
+</cheatsheet>

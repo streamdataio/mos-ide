@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.docs.devGuide"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Developer Guide"
+            type="doc"
+            listener="com.motwin.ide.dashboard.ui.links.HelpHyperlinkListener:/com.motwin.ide.docs/docs/html/topics/maintopic.html">
+      </uaLink>          
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.docs.sdkAPI"
+            listener="com.motwin.ide.dashboard.ui.links.HelpHyperlinkListener:/com.motwin.ide.android.docs/docs/html/references/api/Android_SDK_API_Documentation/index.html"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="SDK API"
+            type="doc">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.docs.notifManagerAPI"
+            listener="com.motwin.ide.dashboard.ui.links.HelpHyperlinkListener:/com.motwin.ide.android.docs/docs/html/references/api/NotifManager_API_Documentation/index.html"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Notif Manager API"
+            type="doc">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.android.ui.dashboard.ualink.docs.contextAwarenessAPI"
+            listener="com.motwin.ide.dashboard.ui.links.HelpHyperlinkListener:/com.motwin.ide.android.docs/docs/html/references/api/ContextAwareness_API_Documentation/index.html"
+            part="com.motwin.ide.android.ui.dashboard.part.ua"
+            text="Context Awareness API"
+            type="doc">
+      </uaLink>                  
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml">
+      </toc>
+      <toc
+            file="tocreferences.xml">
+      </toc>
+   </extension>
+
+</plugin>

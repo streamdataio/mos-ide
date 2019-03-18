@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Connector Core
+Bundle-SymbolicName: com.motwin.ide.server.connectors.core;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.server.connectors.core.ConnectorPlugin
+Bundle-Vendor: Motwin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.google.guava;bundle-version="11.0.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.motwin.ide.server.connectors.core,
+ com.motwin.ide.server.connectors.core.wizard

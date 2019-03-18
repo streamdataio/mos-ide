@@ -1,0 +1,184 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.motwin.ide.server</groupId>
+    <artifactId>com.motwin.ide.server.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+
+  <artifactId>com.motwin.ide.server.docs</artifactId>
+  <packaging>eclipse-plugin</packaging>
+  
+  <properties>
+    <sdk3.src.unpack.dir>${basedir}/docs/javadoc</sdk3.src.unpack.dir>
+    <javadocs.dir>${basedir}/docs/html/references/api</javadocs.dir>
+  </properties>
+  
+  <build>
+ 
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${javadocs.dir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>          
+            <fileset>
+              <directory>${sdk3.src.unpack.dir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+            <fileset>
+              <directory>target</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>            
+          </filesets>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>com.motwin.utils.maven</groupId>
+        <artifactId>sources-striper-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>strip-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>strip-source</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>mos-codec-spi</artifactId>
+                  <version>${codec.spi.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>mos-core-spi</artifactId>
+                  <version>${core.spi.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>mos-server-spi</artifactId>
+                  <version>${server.spi.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>mos-transport-spi</artifactId>
+                  <version>${transport.spi.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>     
+    
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>motwin-server-sdk-application</artifactId>
+                  <version>${sdk3.application.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>motwin-server-sdk-request</artifactId>
+                  <version>${sdk3.request.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>motwin-server-sdk-streamdata</artifactId>
+                  <version>${sdk3.streamdata.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+
+               <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>motwin-server-test</artifactId>
+                  <version>${sdk3.test.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+
+                <artifactItem>
+                  <groupId>com.motwin.platform</groupId>
+                  <artifactId>mos-test-tool</artifactId>
+                  <version>${sdk3.test.tool.version}</version>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${sdk3.src.unpack.dir}</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+              
+              <overWriteReleases>true</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.motwin.utils.maven</groupId>
+                    <artifactId>sources-striper-plugin</artifactId>
+                    <versionRange>[0.0.1,)</versionRange>
+                    <goals>
+                      <goal>strip-source</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+<dependencies>
+		<dependency>
+			<groupId>org.eclipse.jdt</groupId>
+			<artifactId>org.eclipse.jdt.core</artifactId>
+			<version>3.8.2-v20120814-155456</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.text</groupId>
+			<artifactId>org.eclipse.text</artifactId>
+			<version>3.5.101</version>
+		</dependency>
+				<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>3.6.0.v20100505</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.core</groupId>
+			<artifactId>org.eclipse.core.resources</artifactId>
+			<version>3.6.0.v20100526-0737</version>
+		</dependency>
+</dependencies>
+</project>

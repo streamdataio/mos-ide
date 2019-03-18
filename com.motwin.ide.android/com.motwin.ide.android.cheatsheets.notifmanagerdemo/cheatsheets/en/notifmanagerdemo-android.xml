@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Create a Motwin Notification Manager Demo application">
+	<intro>
+		<description>
+			This cheat sheet shows you how to create a simple Motwin Android
+			application that enables receiving push notifications from the server application.
+			You will create an Android Motwin project and see how send a push token
+			to server with a connector, and how to handle incoming Push
+			notifications.
+			<br/>
+			<br/>
+			Pre-requisites:
+			<br/>-
+			Have the Motwin Server NotificationManagerDemo-Server running. You
+			can refer to the cheat sheet &apos;Create a Notification Manager Demo
+			Server application&apos; for help.
+			<br/>
+			<br/>
+			- Have the Google Android (ADT) Eclipse plugin installed.
+			(http://developer.android.com/tools/sdk/eclipse-adt.html)
+			<br/>
+			<br/>
+			- Have the Android SDK with <b>Google APIs 8</b> installed and operational.
+			(http://developer.android.com/sdk/index.html)
+			<br/>
+			<br/>
+			- Have the GCM service enabled for your project. For more information,
+			read the Notification Manager chapter in Motwin&apos;s Developer Guide, or
+			read the Google documentation.
+			(http://developer.android.com/guide/google/gcm/gs.html)
+			<br/><br/>
+			Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+			<br/>
+			<br/>
+			Don&apos;t forget to
+			<b>check each step</b>
+			before going to the next one.
+		</description>
+	</intro>
+	<item title="Create a new Motwin Android Project" dialog="true">
+		<description>
+			We will start by creating a Motwin Android project.
+		</description>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Android Project&quot; and click &quot;Next&quot;. Or click the arrow on the right.">
+			<command required="false"
+				serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.android.ui.wizards.EmptyProjectWizard)" />
+		</subitem>
+		<subitem
+			label="Enter the project name as &quot;NotificationManagerDemo-Android&quot;.">
+		</subitem>
+        <subitem
+            label="Select an Android SDK Google APIs Level 8 or higher (for the GCM features) and click &quot;Next&quot;.">
+        </subitem>
+		<subitem
+			label="Enter the project package as &quot;com.motwin.demo.notifmanager&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the URL of your Motwin server as &quot;Server URL&quot;, or leave the default if you can access the Motwin test server. Do the same for the &quot;Server Port&quot;."
+			skip="true">
+		</subitem>
+		<subitem label="Enter the appName as &quot;notifManagerDemo&quot;.">
+		</subitem>
+		<subitem label="Enter the appVersion as &quot;3.2&quot;.">
+		</subitem>
+		<subitem label="Click &quot;Finish&quot;.">
+		</subitem>
+	</item>
+	<item title="Remove the default classes">
+		<description>
+			The wizard creates a default Main Activity class that we
+			won&apos;t use here. You need to delete it before going on.
+			Click the arrow on the right to do so.
+		</description>
+		<action pluginId="com.motwin.ide.android.cheatsheets.notifmanagerdemo"
+			class="com.motwin.ide.android.cheatsheets.notifmanagerdemo.actions.RemoveDefaultAction" />
+	</item>
+	<item title="Update the Facade">
+		<description>
+			The wizard creates a default MotwinFacade class that doesn&apos;t
+			declare the PushRegistrationManager. We need to add this capability
+			to the facade.
+		</description>
+		<subitem
+			label="Open the MotwinFacade, and add a new method called getPushRegistrationManager that instanciates a Singleton instance if one does not already exist. To build a PushRegistrationManager instance, use the PushRegistrationManagerFactory.build() method. You need to pass the application context, the ClientChannel instance, and the name of the asset file containing GCM properties as arguments. Don&apos;t forget to destroy the singleton instance in the destroy() method.">
+		</subitem>
+		<subitem
+			label="To generate the code for this MotwinFacade class, click the arrow on the right.">
+			<action pluginId="com.motwin.ide.android.cheatsheets.notifmanagerdemo"
+				class="com.motwin.ide.android.cheatsheets.notifmanagerdemo.actions.CopyMotwinFacadeAction" />
+		</subitem>
+		<subitem
+			label="Rename the class &quot;DefaultActivity&quot; to &quot;NotifManagerDemoActivity&quot;; right click on &quot;DefaultActivity&quot; then select &quot;Refactor &gt; Rename...&quot; and enter &quot;NotifManagerDemoActivity&quot;. NotifManagerDemoActivity will be our starting point class.">
+		</subitem>
+		<subitem
+			label="Open the class &quot;NotifManagerDemoActivity&quot;. You will see the skeleton code that manages the ClientChannel connection / disconnect during the lifecycle of the activity.">
+		</subitem>
+	</item>
+	<item title="Add Code to Forward Push Token to the Server" dialog="true">
+		<description>We will modify the &quot;NotifManagerDemoActivity&quot;
+			to make it the main activity of the application.
+		</description>
+		<subitem
+			label="This class is generated by the wizard as base class for all activities in the application, and therefore is made abstract. Start by removing the abstract modifier on the class declaration.">
+		</subitem>
+		<subitem
+			label="As this class is not abstract anymore, you should declare a layout in the onCreate() method. Add setContentView(R.layout.main) after initialization of the MotwinFacade.">
+		</subitem>
+		<subitem
+			label="The main objective of this class is to initialize the Push Registration process, to send the push token that identifies the device to the server. The server will then be able to send push notifications to the device, using Google Cloud Messaging. To set this up, open the instance of PushRegistrationManager using the Facade and call the startPushRegistrationProcess() method.">
+		</subitem>
+		<subitem
+			label="Optionally, you can add a BroadcastReceiver, registered with LocalBroadcastManager, to get PushRegistrationIntent.ACTION_PUSH_REGISTRATION and PushRegistrationIntent.ACTION_PUSH_UNREGISTRATION broadcasts. These notifications give you information about the registration process.">
+		</subitem>
+		<subitem
+			label="To generate the code for this &quot;NotifManagerDemoActivity&quot;, click the arrow on the right.">
+			<action pluginId="com.motwin.ide.android.cheatsheets.notifmanagerdemo"
+				class="com.motwin.ide.android.cheatsheets.notifmanagerdemo.actions.CopyNotifManagerDemoActivityAction" />
+		</subitem>
+		<onCompletion>Your application is now ready to send a push token to the
+			server. The next step will show you how to prepare to handle push
+			notifications sent by the server.
+		</onCompletion>
+	</item>
+	<item title="Add Code to Handle Incoming Push Notifications from the Server"
+		dialog="true">
+		<description>We will create a new class from handling incoming push
+			notifications.
+		</description>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Class&quot; or click the arrow on the right.">
+			<command required="false"
+				serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.jdt.ui.wizards.NewClassCreationWizard)" />
+		</subitem>
+		<subitem
+			label="Enter the package as &quot;com.motwin.demo.notifmanager&quot;.">
+		</subitem>
+		<subitem label="Enter the name as &quot;PushReceiverDemo&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the Superclass as &quot;com.motwin.android.notifmanager.registration.BasePushReceiver&quot;.">
+		</subitem>
+		<subitem label="Click &quot;Finish&quot;.">
+		</subitem>
+		<subitem
+			label="This class has 2 methods that need to be overridden: the method onMessage() defines how to handle an incoming push notification. The message is available in the extra of the Intent. The method retrieveSenderId() has to return the GCM sender ID. This ID is available via the PushRegistrationManager.getSenderId() method. Note that the Push Receiver can be activated when application is closed, which means that MotwinFacade may not be initialized.">
+		</subitem>
+		<subitem
+			label="To generate the code for the &quot;PushReceiverDemo&quot;, click the arrow on the right.">
+			<action pluginId="com.motwin.ide.android.cheatsheets.notifmanagerdemo"
+				class="com.motwin.ide.android.cheatsheets.notifmanagerdemo.actions.CopyPushReceiverDemoAction" />
+		</subitem>
+		<onCompletion>You have defined how to handle incoming push
+			notifications. All that remains is to update
+			&quot;AndroidManifest.xml&quot; to define the required permissions
+			for GCM.
+		</onCompletion>
+	</item>
+	<item title="Update the Manifest">
+		<description>
+			To enable GCM in an application, the manifest has to define some
+			specific permissions. 
+		</description>
+		<subitem label="Click the arrow on the right to generate the Manifest.">
+			<action pluginId="com.motwin.ide.android.cheatsheets.notifmanagerdemo"
+				class="com.motwin.ide.android.cheatsheets.notifmanagerdemo.actions.CopyManifestAction" />
+		</subitem>
+		<subitem
+			label="Open &quot;AndroidManifest.xml&quot; file, and have a look lines 6 and 7: we define a permission with package name &quot;com.motwin.demo.notifmanager.permission&quot;, with name &quot;C2D_MESSAGE&quot;."
+			skip="true">
+		</subitem>
+		<subitem
+			label="Starting at line 10, you see all the other permissions required for GCM."
+			skip="true">
+		</subitem>
+		<subitem
+			label="At line 24, the &quot;PushReceiverDemo&quot; service is declared. The Notification Manager Library will automatically start this service when receiving a GCM Intent."
+			skip="true">
+		</subitem>
+		<subitem
+			label="At line 32, we define the &quot;GCMBroadcastReceiver&quot;. This is the BroadcastReceiver that will handle GCM Intents, and forward messages to the Push Receiver defined above. Note that the BroadcastReceiver declared to handle push notifications must be of class com.motwin.android.notifmanager.gcm.internal.GCMBroadcastReceiver and not the default class defined in GCM documentation com.google.android.c2dm.GCMBroadcastReceiver." skip="true">
+		</subitem>
+	</item>
+    <item title="Declare your GCM project ID">
+      <description>
+        To enable GCM in an application, you need to register your GCM project ID: open the file &quot;assets/gcm.properties&quot; and edit the value of the property &quot;gcm.senderId=&quot; with your GCM project ID.
+        For more information, read the Notification Manager chapter in Motwin's Developer Guide, or read the Google documentation (http://developer.android.com/guide/google/gcm/gs.html).  
+      </description>
+    </item>
+	<item title="Let&apos;s test it!">
+		<description>
+			Right click on the &quot;NotificationManagerDemo&quot; project and select &quot;Run
+			as... &gt; Android Application&quot;. This should open the Android
+			Emulator and run our Android application.
+			<br />
+			<br />
+			You should see a toast on startup, with the message &quot;The Push registration Process has succeeded. You can receive the push message&quot;.
+			<br/>
+			The application is now ready to receive push notifications.
+            <br/>
+            <br/>Note: don't forget to declare a Google account on your device (usually in &quot;Settings > Account &amp; sync settings&quot;) otherwise you won't be connected to the GCM service!
+		</description>
+		<onCompletion>Congratulations! You have run a Motwin Notification Manager Demo! If you wish, you can continue with the other cheat sheets.
+		</onCompletion>
+	</item>
+</cheatsheet>

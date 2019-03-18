@@ -1,0 +1,590 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.motwin.commons</groupId>
+    <artifactId>motwin-platform-versions</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+    
+  <groupId>com.motwin.ide</groupId>
+  <artifactId>com.motwin.ide.parent</artifactId>
+  <version>3.3.1.RELEASE</version>
+  <packaging>pom</packaging>
+  
+  <modules> 
+    <module>com.motwin.ide.thirdparties</module>
+    <module>com.motwin.ide.core</module>
+    <module>com.motwin.ide.ui</module>
+    <module>com.motwin.ide.ui.startup</module>
+    <module>com.motwin.ide.cheatsheets</module>
+    <module>com.motwin.ide.dashboard.ui</module>
+    <module>com.motwin.ide.docs</module>
+    <module>com.motwin.ide.server</module>
+    <module>com.motwin.ide.android</module>
+    <module>com.motwin.ide.html5</module>
+    <module>com.motwin.ide.intro</module>
+    <module>com.motwin.ide.product</module>
+    <module>com.motwin.ide.feature</module>
+    <module>com.motwin.ide.updatesite</module>
+  </modules>
+  
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>  
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <p2.qualifier>SNAPSHOT</p2.qualifier>
+  
+    <skip-source-check>true</skip-source-check>
+    <skip-sign>true</skip-sign>
+    <skip-promote>true</skip-promote>
+  
+    <pack200>"${java.home}/bin"</pack200>
+    <test.osvmargs></test.osvmargs>
+  
+    <tycho-version>0.18.1</tycho-version>
+    <tycho-extras-version>${tycho-version}</tycho-extras-version>
+    
+    <skip-source-check>true</skip-source-check>
+  
+    <compileSources>1.6</compileSources>
+    
+    <android.p2.repository>${project.build.directory}</android.p2.repository>
+
+    <!-- Android -->
+    <adt.version>22.6.3.v201404151837-1123206</adt.version>
+    
+    <!-- Docs -->
+    <com.motwin.ide.docsUrl>http://central.motwin.net/devGuides</com.motwin.ide.docsUrl>
+    <com.motwin.ide.docsVersion>3.3.0</com.motwin.ide.docsVersion>
+    <com.motwin.ide.docs.devGuideName>MotwinDeveloperGuide.pdf</com.motwin.ide.docs.devGuideName>
+    
+    <!-- IDE Update Site -->
+    <com.motwin.ide.updateSite>http://downloads.motwin.com/ide/update</com.motwin.ide.updateSite>
+    <com.motwin.ide.updateSiteVersion>3.3</com.motwin.ide.updateSiteVersion>
+    
+  </properties>
+  
+  <scm>
+    <connection>scm:svn:https://svn.mootwin.net/product/IDE/com.motwin.ide.parent/trunk</connection>
+    <developerConnection>scm:svn:https://svn.mootwin.net/product/IDE/com.motwin.ide.parent/trunk</developerConnection>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>motwin-releases</id>
+      <name>motwin Releases</name>
+      <url>https://repository.mootwin.net/content/repositories/mootwin-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>motwin-snapshots</id>
+      <name>motwin Snapshots</name>
+      <url>https://repository.mootwin.net/content/repositories/mootwin-snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+  <repositories>
+    <!-- Virgo IDE -->
+    <repository>
+      <id>virgo</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/virgo/release/IDE/1.0.1.RELEASE</url>
+    </repository>
+    <repository>
+      <id>virgo-ide</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/virgo/updatesite/3.6.2.RELEASE</url>
+    </repository>
+  
+    <!-- STS -->
+    <repository>
+      <id>sts</id>
+      <layout>p2</layout>
+      <url>http://download.springsource.com/release/TOOLS/update/3.5.0.RELEASE/e3.8/</url>
+    </repository>
+  
+    <!-- Android -->
+    <repository>
+      <id>android-mirror</id>
+      <layout>p2</layout>
+      <url>http://new-central.mootwin.net/google-adt-plugin/updatesite/${adt.version}</url>
+    </repository>
+  
+    <!-- Guava -->
+    <repository>
+      <id>guava</id>
+      <layout>p2</layout>
+      <url>http://guava-osgi.googlecode.com/svn/trunk/repository/</url>
+    </repository>
+  
+    <!-- Eclipse -->
+    <repository>
+      <id>eclipse</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/eclipse/updates/3.8</url>
+    </repository>
+    <repository>
+      <id>eclipse-full</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/juno</url>
+    </repository>
+    <repository>
+      <id>eclipse-orbit</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/tools/orbit/downloads/drops/S20130724151342/repository/</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>tycho-snapshots</id>
+      <url>https://oss.sonatype.org/content/groups/staging</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+  
+  <build>
+    <resources>
+       <resource>
+         <directory>src/main/resources</directory>
+         <filtering>true</filtering>
+      </resource>
+    </resources>
+  
+    <plugins>
+    
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <filters>
+             <filter>
+                <type>eclipse-plugin</type>
+                <id>org.eclipse.platform</id>
+                <restrictTo>
+                   <versionRange>[3.8,3.9)</versionRange>
+                </restrictTo>
+             </filter>
+             <filter>
+                <type>eclipse-plugin</type>
+                <id>org.eclipse.rcp</id>
+                <restrictTo>
+                   <versionRange>[3.8,3.9)</versionRange>
+                </restrictTo>
+             </filter>
+          </filters>
+          <environments>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+          </environments>
+        </configuration>
+      </plugin>
+    
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.motwin.utils.maven</groupId>
+          <artifactId>sources-striper-plugin</artifactId>
+          <version>0.0.3</version>
+        </plugin>  
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.5.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.gmaven</groupId>
+          <artifactId>gmaven-plugin</artifactId>
+          <version>1.4</version>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-packaging-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <configuration>
+            <format>yyyyMMdd-HHmm</format>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-surefire-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <configuration>
+            <useUIHarness>true</useUIHarness>
+            <includes>
+              <include>**/*Test.java</include>
+            </includes>
+            <argLine>${tycho.test.jvmArgs}</argLine>
+            <forkedProcessTimeoutInSeconds>7200</forkedProcessTimeoutInSeconds>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-p2-plugin</artifactId>
+          <version>${tycho-version}</version>
+        </plugin>
+        
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-compiler-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <configuration> 
+            <source>${compileSources}</source> 
+            <target>${compileSources}</target> 
+          </configuration> 
+      </plugin>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <versionRange>[2.5.1,)</versionRange>
+                    <goals>
+                      <goal>copy</goal>
+                      <goal>unpack-dependencies</goal>
+                      <goal>unpack</goal>
+                      <goal>copy-dependencies</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-packaging-plugin</artifactId>
+                    <versionRange>[0.16.0,)</versionRange>
+                    <goals>
+                      <goal>build-qualifier-aggregator</goal>
+                      <goal>validate-version</goal>
+                      <goal>build-qualifier</goal>
+                      <goal>validate-id</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-compiler-plugin</artifactId>
+                    <versionRange>[0.16.0,)</versionRange>
+                    <goals>
+                      <goal>compile</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <versionRange>[2.4.1,)</versionRange>
+                    <goals>
+                      <goal>clean</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <versionRange>[1.4,)</versionRange>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-scm-plugin</artifactId>
+          <version>1.8</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+
+    <profile>
+      <id>eclipse-sign</id>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>m2e-cbi</id>
+          <url>http://download.eclipse.org/technology/m2e/maven/</url>
+        </pluginRepository>
+      </pluginRepositories>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
+            <configuration>
+              <includePackedArtifacts>true</includePackedArtifacts>
+            </configuration>
+          </plugin>
+
+          <plugin>
+            <groupId>org.eclipse.tycho.extras</groupId>
+            <artifactId>tycho-pack200a-plugin</artifactId>
+            <version>${tycho-extras-version}</version>
+            <executions>
+              <execution>
+                <id>pack200-normalize</id>
+                <goals>
+                  <goal>normalize</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.eclipse.cbi.maven.plugins</groupId>
+            <artifactId>eclipse-jarsigner-plugin</artifactId>
+            <version>1.0.0</version>
+            <executions>
+              <execution>
+                <id>sign</id>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.eclipse.tycho.extras</groupId>
+            <artifactId>tycho-pack200b-plugin</artifactId>
+            <version>${tycho-extras-version}</version>
+            <executions>
+              <execution>
+                <id>pack200-pack</id>
+                <goals>
+                  <goal>pack</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-p2-plugin</artifactId>
+            <version>${tycho-version}</version>
+            <executions>
+              <execution>
+                <id>p2-metadata</id>
+                <goals>
+                  <goal>p2-metadata</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <defaultP2Metadata>false</defaultP2Metadata>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- 
+      workaround for https://issues.sonatype.org/browse/TYCHO-562
+      tycho-source-plugin chokes on bundles without source folders, so we disable it with marker file 
+    -->
+    <profile>
+      <id>source-bundle</id>
+      <activation>
+        <file>
+          <missing>no-source-bundle.txt</missing>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-source-plugin</artifactId>
+            <version>${tycho-version}</version>
+            <executions>
+              <execution>
+                <id>plugin-source</id>
+                <goals>
+                  <goal>plugin-source</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>selfhosted-workspace</id>
+      <!--
+      This profile is a convenience meant to help setting up m2e development workspace.
+      On command line, embedded maven runtime must be built separately, before m2e-core sources tree. 
+      -->
+      <activation>
+        <property>
+          <name>m2e.version</name>
+        </property>
+      </activation>
+      <modules>
+        <module>m2e-maven-runtime</module>
+      </modules>
+    </profile>
+    
+    <profile>
+      <id>upgrade-versions</id>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>versions-maven-plugin</artifactId>
+              <version>2.1</version>
+              <configuration>
+                <includesList>com.motwin.*:*:jar</includesList>
+              </configuration>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+    
+    <profile>
+      <id>cheatsheets-versions-substitution</id>
+      <activation>
+       <file>
+        <exists>cheatsheets</exists>
+       </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>prepare-package</id>
+                <phase>prepare-package</phase>
+                <configuration>
+                  <target>
+                    <replace dir="cheatsheets">
+                      <include name="**/*.xml"/>
+                      <replacefilter token="@SAMPLE_VERSION@"
+                        value="${sample.version}" />
+                      <replacefilter token="@SAMPLE_MAPPING_RULE_VERSION@"
+                        value="${sample.mapping.rule.version}" />
+                    </replace>
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>package</id>
+                <phase>package</phase>
+                <configuration>
+                  <target>
+                    <replace dir="cheatsheets">
+                      <include name="**/*.xml"/>
+                      <replacefilter
+                        token="${sample.version}"
+                        value="@SAMPLE_VERSION@" />
+                      <replacefilter token="@SAMPLE_MAPPING_RULE_VERSION@"
+                        value="${sample.mapping.rule.version}" />  
+                    </replace>
+                  </target>
+                </configuration>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+  
+</project>

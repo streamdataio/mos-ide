@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Create a Notification Manager Demo Server application">
+	<intro>
+		<description>
+			This cheat sheet demonstrates how to enable Push Notifications features 
+			in your application, using the Motwin technology.
+			<br />
+			In this sample, you will create a very simple Motwin project that enables sending Push notifications to devices.
+			<br />
+			<br />
+			Pre-requisites:
+			<br />
+			- Know how to configure a MOS server.
+			<br />
+			- Activate Motwin Platform Services. The notification service relies on the User Information Service (UIS), which needs to be configured and activated on the MOS server.
+			<br />
+			- Know how to configure a MOS mapping rule.
+			<br/><br/>
+			Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+			<br />
+			<br />
+			Don&apos;t forget to check each step before going to the next one.
+		</description>
+	</intro>
+	<item title="Create a new Motwin server project" dialog="true">
+		<description>
+			We will start by creating a Motwin server project.
+		</description>
+		<onCompletion>
+			Congratulations! You have created a Motwin server
+			project.
+		</onCompletion>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Server Project&quot; and click &quot;Next&quot;. Or click the arrow to the right.">
+			<command required="true"
+				serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.server.ui.wizards.EmptyProjectWizard)" />
+		</subitem>
+		<subitem
+			label="Enter the project name as &quot;NotificationManagerDemo-Server&quot; and click &quot;Next&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the Bundle Symbolic Name as &quot;com.motwin.applications.notifManagerDemo&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the Bundle Name as &quot;notifManagerDemo&quot;.">
+		</subitem>
+		<subitem
+			label="Enter the bundle version as &quot;@SAMPLE_VERSION@&quot;.">
+		</subitem>
+		<subitem
+			label="Select your Virgo / MOS runtime, or create a new one by clicking &quot;New&quot;.">
+		</subitem>
+		<subitem label="Click &quot;Finish&quot;.">
+		</subitem>
+	</item>
+	<item title="Update the Spring Bean Definition">
+		<description>
+			Once you've created your project, you need
+			to declare the required imports to enable Push Notification features.
+			Those imports must be declared in the Spring Bean Definition file
+			&quot;application.xml&quot; in
+			the folder
+			&quot;src/main/resources/META-INF/spring&quot;. Click the link 
+			&quot;Click to perform&quot; to generate and view the import declarations.
+		</description>
+
+		<action pluginId="com.motwin.ide.server.cheatsheets.notifmanagerdemo"
+			class="com.motwin.ide.server.cheatsheets.samples.notifmanagerdemo.actions.CopyApplicationXmlAction" />
+		<onCompletion>
+		The first line imports the required properties for NotifManger configuration. The persistent-id
+		tag must correspond to the name of the file containing the settings, and can be modified. The ID
+		&quot;notifProperties&quot; must be kept as it is because it is the identifier used in the Spring context.
+		<br/>
+		The last two lines are used to import Spring configurations for the installation-id-injector and
+		Notification Manager implementation. The installation-id-injector is the resource for a UIS
+		interceptor that registers any installed applications in the database; when imported, it creates an
+		installationIdInjector object.
+		<br/>
+		The UIS interceptor installationIdInjector is required for NotifManager.
+		The NotifManager library declares a message processor that handles startup messages sent by client
+		applications. This message processor registers the push token associated with the device within the
+		UIS database. The UIS then creates and registers the Push Notification Sender for Apple’s APN or
+		Google’s GCM.
+		A push token is a unique identifier of the device that enables the Push Notification System to
+		uniquely identify the device to which notifications will be sent.
+		</onCompletion>
+	</item>
+	<item title="Update the MANIFEST.MF">
+		<description>
+			To make the application work, you need to declare the
+			packages of the
+			external bundles used in your application. Click 
+			the link
+			&quot;Click to perform&quot; to do so.
+		</description>
+		<action pluginId="com.motwin.ide.server.cheatsheets.notifmanagerdemo"
+			class="com.motwin.ide.server.cheatsheets.samples.notifmanagerdemo.actions.CopyManifestAndPropertiesAction" />
+		<onCompletion>
+			That's it!
+			<br />
+			Congratulations! You have developped a Notification Manager Demo Server application.
+		</onCompletion>
+	</item>
+	<item title="Deploy and run">
+		<description>
+			<b>Let&apos;s now deploy our application on the MOS server.</b>
+		</description>
+		<onCompletion>
+			Congratulations! You have deployed the
+			Notification Manager Demo Server. If you
+			wish, you can continue
+			with the Android tutorial...
+		</onCompletion>
+		<subitem label="Open the server view.">
+			<command
+				serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.wst.server.ui.ServersView)" />
+		</subitem>
+		<subitem label="Deploy properties files. Properties files cannot be deployed via Virgo IDE. You need to go to your server installation path, and copy/paste com.motwin.sample.demo.notifmanager.properties file to pickup directory. A template for this properties file is available in the src/test/resources folder. You should edit the properties to declare your APN certificate and your GCM Authentication Key. For more information, read the NotifManager Configuration chapter in Motwin Developer Guide.">
+		</subitem>		
+		<subitem label="Launch the MOS server.">
+		</subitem>
+		<subitem
+			label="Once properties files are deployed on the server, you can install the application. Right click on your MOS server, select  &quot;Add and Remove...&quot; and add &quot;NotificationManagerDemo-Server&quot;... Or drag-and-drop the project on the MOS server (if you've deployed your project and then started the MOS server, in the server view, right click on your bundle project name and select &quot;Redeploy&quot;).">
+		</subitem>
+		<subitem
+			label="Open the MOS web console in a browser. The default URL is &quot;http://localhost:8080/mos&quot;.">
+			<action pluginId="com.motwin.ide.server.cheatsheets"
+				class="com.motwin.ide.server.cheatsheets.actions.OpenMOSConsoleAction" />
+		</subitem>
+		<subitem
+			label="If needed, select &quot;Mapping Rules&quot; and create a Mapping Rule.">
+		</subitem>
+	</item>
+</cheatsheet>

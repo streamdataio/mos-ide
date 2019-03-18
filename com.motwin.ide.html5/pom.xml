@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.motwin.ide</groupId>
+    <artifactId>com.motwin.ide.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <groupId>com.motwin.ide.html5</groupId>
+  <artifactId>com.motwin.ide.html5.parent</artifactId>
+  <packaging>pom</packaging>
+  
+  <modules>
+    <module>com.motwin.ide.html5.templates</module>
+    <module>com.motwin.ide.html5.api</module>
+    <module>com.motwin.ide.html5.ui</module>
+    <module>com.motwin.ide.html5.cheatsheets</module>
+    <module>com.motwin.ide.html5.cheatsheets.helloworld</module>
+    <module>com.motwin.ide.html5.cheatsheets.rssreader</module>
+    <module>com.motwin.ide.html5.cheatsheets.realtimepush</module>
+    <module>com.motwin.ide.html5.docs</module>
+    <module>com.motwin.ide.html5.feature</module>
+  </modules>
+  
+</project>

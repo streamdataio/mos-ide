@@ -1,0 +1,46 @@
+<p>The easiest way to add a Web Services client to a Spring context is to use the &lt;jaxws:client&gt; element. 
+Here's a simple example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans 
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://cxf.apache.org/jaxws 
+          http://cxf.apache.org/schemas/jaxws.xsd"&gt;
+ 
+    &lt;jaxws:client id="helloClient"
+                  serviceClass="my.generated.package.to.HelloWorld"
+                  address="http://localhost:9002/HelloWorld" /&gt;
+                  
+    &lt;bean id="helloSource" class="my.package.to.HelloWorldSource"&gt;
+        &lt;constructor-arg ref="helloClient"/&gt;
+    &lt;/bean&gt;
+                  
+&lt;/beans&gt;
+</pre>
+
+<p>Then, you can use it injecting the generated client to your Streamdata sources:</p>
+
+<pre>
+package my.package.to;
+
+import my.generated.package.to.HelloWorld;
+
+public class HelloWorldSource extends PollSource {
+
+    private final HelloWorld client;
+
+    public HelloWorldSource(HelloWorld client) {
+        this.client = client;
+    }
+    
+    ...
+
+}
+</pre>
+
+<p>Documentation at <a href="http://cxf.apache.org/docs/jax-ws-configuration.html">http://cxf.apache.org/docs/jax-ws-configuration.html</a>.</p>

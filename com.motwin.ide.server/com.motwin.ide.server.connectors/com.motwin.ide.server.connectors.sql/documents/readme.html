@@ -1,0 +1,44 @@
+<p>BoneCP is a fast, free, open-source, Java database connection pool (JDBC Pool) library. 
+If you are familiar with C3P0 and DBCP then you already know what this means. 
+For the rest, this is a library that will manage a database connection for you to get faster database access in your application.</p>
+
+<p>Follow this Spring configuration recipe for integrating BoneCP into your application. 
+This is an example of how to fetch a JDBC connection directly for use via Spring (i.e. dealing with the datasource yourself).</p>
+
+<p>Configure the JDBC pool adding the following sample to your Spring Framework configuration file (default is application.xml):</p>
+
+<pre>
+&lt;bean id=&quot;mainDataSource&quot; class=&quot;com.jolbox.bonecp.BoneCPDataSource&quot; destroy-method=&quot;close&quot;&gt;
+   &lt;property name=&quot;driverClass&quot; value=&quot;%DRIVER_CLASS_DEFAULT%&quot; /&gt;
+   &lt;property name=&quot;jdbcUrl&quot; value=&quot;%DRIVER_URL_DEFAULT%&quot; /&gt;
+   &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+   &lt;property name=&quot;password&quot; value=&quot;abcdefgh&quot;/&gt;
+   &lt;property name=&quot;idleConnectionTestPeriod&quot; value=&quot;60&quot;/&gt;
+   &lt;property name=&quot;idleMaxAge&quot; value=&quot;240&quot;/&gt;
+   &lt;property name=&quot;maxConnectionsPerPartition&quot; value=&quot;30&quot;/&gt;
+   &lt;property name=&quot;minConnectionsPerPartition&quot; value=&quot;10&quot;/&gt;
+   &lt;property name=&quot;partitionCount&quot; value=&quot;3&quot;/&gt;
+   &lt;property name=&quot;acquireIncrement&quot; value=&quot;5&quot;/&gt;
+   &lt;property name=&quot;statementsCacheSize&quot; value=&quot;100&quot;/&gt;
+   &lt;property name=&quot;releaseHelperThreads&quot; value=&quot;3&quot;/&gt;
+&lt;/bean&gt;
+</pre>
+
+<p>Make sure you define the class below:</p>
+ 
+<pre>
+@Component
+public class Foo {
+ 
+  @Autowired
+  DataSource ds;
+ 
+  public void testBoneCP() throws SQLException {
+    Connection connection = ds.getConnection();
+    System.out.println(connection); // do something with the connection here..
+  }
+ 
+}
+</pre>
+
+<p>More information and documentation at <a href="http://jolbox.com/">http://jolbox.com/</a>.</p>

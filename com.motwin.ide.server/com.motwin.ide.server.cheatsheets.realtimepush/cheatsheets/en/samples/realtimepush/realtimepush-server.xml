@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Real-Time Push Motwin Server application">
+   <intro>
+      <description>
+      This cheat sheet demonstrates the real-time push capability provided by the Motwin technology and how to use the Streaming Data feature. 
+<br/>In this sample, you will create a Motwin project that serves a list of elements with fixed names and changing prices.
+      At periodic time, a random number of elements change price, with random variation. The data is not persistent.
+<br/><br/>
+Pre-requisites:
+<br/>- know how to configure a MOS server
+<br/>- know how to configure a MOS mapping rule
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to check each step before going to the next one. 
+      </description>
+   </intro>
+   <item
+         title="Create a new Motwin server project" dialog="true">
+      <description>
+		We will start by creating a Motwin server project.
+      </description>
+      <onCompletion>
+        Congratulations! You have created a Motwin server project.
+      </onCompletion>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Server Project&quot; and click the &quot;Next&quot; button. Or click the arrow to the right to perform the step.">
+         <command
+              required="true"
+              serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.server.ui.wizards.EmptyProjectWizard)"/>
+      </subitem>
+      <subitem
+            label="Enter &quot;RealTimePush-Server&quot; as &quot;Project name&quot; and click on the &quot;Next&quot; button.">
+      </subitem>
+      <subitem
+              label="Enter &quot;com.motwin.applications.realTimePush&quot; for the &quot;Bundle Symbolic Name&quot;.">
+      </subitem>
+      <subitem
+              label="Enter &quot;realTimePush&quot; for the &quot;Bundle Name&quot;.">
+      </subitem>
+      <subitem
+            label="Enter &quot;@SAMPLE_VERSION@&quot; for the bundle version.">
+      </subitem>
+      <subitem
+             label="Select your Virgo / MOS runtime or create a new one by clicking the &quot;New&quot; button.">
+      </subitem>
+      <subitem
+             label="Click &quot;Finish&quot;.">
+      </subitem>
+   </item>
+   <item
+         title="Create a virtual database" dialog="true">
+         <description>
+   			The virtual database is a set of schemas for tables. The schemas should reflect the organization of data needed by the client application.
+         </description>
+      <subitem
+             label="Open the file &quot;virtualdb.xml&quot; with the Spring Config Editor (which should be the default editor). The file is in the folder &quot;src/main/ressources/META-INF/spring&quot;. Select the tab &quot;Motwin Virtual Database&quot; or click the arrow at right to perform the steps.">
+        <action
+          pluginId="com.motwin.ide.server.cheatsheets.realtimepush"
+          class="com.motwin.ide.server.cheatsheets.samples.realtimepush.actions.OpenVirtualDbEditorAction" />       
+      </subitem>
+      <subitem label="Select the &quot;Virtual Database&quot; and rename the id &quot;realTimePushVirtualDb&quot;.">
+      </subitem>
+      <subitem label="Click the &quot;New Table&quot; button and name the table &quot;RealTimePush&quot;. Select &quot;false&quot; for &quot;persistent&quot; field.">
+      </subitem>
+      <subitem label="Click the &quot;New Column&quot; button and name the column &quot;title&quot;,select &quot;String&quot; as &quot;type&quot; and select &quot;true&quot; for &quot;part-of-key&quot;.">
+      </subitem>
+      <subitem label="Click the &quot;New Column&quot; button and name the column &quot;param1&quot; and select &quot;String&quot; as &quot;type&quot;.">
+	  </subitem>
+      <subitem label="Repeat the above step for &quot;param2, param3, param4, param5, param6, param7 and param8&quot;.">
+      </subitem>
+      <subitem label="At last, create a column &quot;price&quot; whose type is &quot;long&quot;">
+      </subitem>     
+      <subitem label="Select the &quot;&lt;New Source&gt;&quot; entry and enter &quot;realTimePushSource&quot; as &quot;name&quot;.">
+      </subitem> 
+      </item>   
+   <item
+         title="Create a Stream Data Source" dialog="true">
+         <description>
+   			Now create a Stream Data Source. In this case, the data source must be polled at a defined frequency in order to provide up-to-date data to the clients.
+   			Such a source can be implemented using PollableSource interface. This class describes the data to be extracted from the external information systems. The
+			connector is responsible for translating data from a 3rd party data-source to a JSON node containing the list of rows, matching the table schema definition.
+         </description>
+         <subitem label="Select &quot;File &gt; New &gt; Class&quot; or click the arrow to the right to perform the steps.">
+            <command
+                 required="false"
+                 serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.jdt.ui.wizards.NewClassCreationWizard)"/>
+         </subitem>      
+         <subitem label="Enter the package as &quot;com.motwin.realTimePush.connectors&quot;.">
+         </subitem>      
+         <subitem label="Enter the class name as &quot;RealTimePushSource&quot;.">
+         </subitem>
+         <subitem label="Add the interface &quot;com.motwin.streamdata.spi.PollableSource&quot;.">
+         </subitem>
+         <subitem label="Click &quot;Finish&quot; to create the connector.">
+         </subitem>
+         <subitem label="You have created an empty pollable source. Click the arrow to the right to see the same source with a piece code that simulates random price changes.">
+            <action
+              pluginId="com.motwin.ide.server.cheatsheets.realtimepush"
+              class="com.motwin.ide.server.cheatsheets.samples.realtimepush.actions.CopySourceAction" />       
+         </subitem>
+        <subitem 
+          label="To make the code compile, you need to declare the packages of the external bundles used in your application. Here, we need to import two packages from the Jackson library: &quot;com.fasterxml.jackson.databind&quot; and &quot;com.fasterxml.jackson.databind.node&quot;. To do so, open the MANIFEST.MF under src/main/resource/META-INF and select the &quot;Dependencies&quot; tabulation. In the &quot;Import Package&quot; section, click &quot;Add&quot; and enter &quot;com.fasterxml.jackson.databind&quot; as package name. Click the &quot;OK&quot;. Do the same for &quot;com.fasterxml.jackson.databind.node&quot;. Or click the arrow to the right..">
+           <action
+                pluginId="com.motwin.ide.server.cheatsheets.realtimepush"
+                class="com.motwin.ide.server.cheatsheets.samples.realtimepush.actions.CopyManifestAction" />
+        </subitem>
+         <subitem label="After you&quot;ve created your source poller, you need to declare it in the Spring Bean Definition file &quot;application.xml&quot; found in &quot;src/main/resources/META-INF/spring&quot;. Click the arrow to the right to generate the declaration of the bean.">
+          <action
+              pluginId="com.motwin.ide.server.cheatsheets.realtimepush"
+              class="com.motwin.ide.server.cheatsheets.samples.realtimepush.actions.CopyApplicationXmlAction" />
+         </subitem>
+         <subitem label="Note that the source poller id &quot;realTimePushSource&quot; is the name we have defined for the source of the table &quot;RealTimePush&quot; of the virtualdatabase. This is indeed the datasource of our virtualdatabase." skip="true">
+         </subitem>
+         <onCompletion>
+           In the realTimePush sample, the code provides random price changes each time the source is polled. The application is configured to poll the quotes values every 500 milliseconds.
+           That's it!
+          <br/>Congratulations! You have developped a realTimePush-application...
+         </onCompletion>
+      </item>
+      <item
+            title="Deploy and run">
+         <description>
+          <b>Let&apos;s now deploy our application on the MOS server.</b>
+         </description>
+         <onCompletion>
+       Congratulations! You have deployed the realTimePush-application server demo. If you wish, you can continue with the Android tutorial...
+         </onCompletion>
+         <subitem
+               label="Open the server view.">
+            <command
+                  serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.wst.server.ui.ServersView)"/>
+         </subitem>
+         <subitem
+               label="Right click on your MOS server, select &quot;Add and Remove...&quot; and add &quot;realTimePush-application&quot;... Or drag-and-drop the project on the MOS server.">
+         </subitem>
+         <subitem
+               label="Launch the MOS server.">
+         </subitem>
+         <subitem 
+               label="Open the MOS web console in a browser. (The default URL is &quot;http://localhost:8080/mos&quot;.)">
+               <action
+              pluginId="com.motwin.ide.server.cheatsheets"
+              class="com.motwin.ide.server.cheatsheets.actions.OpenMOSConsoleAction" />
+         </subitem>
+         <subitem
+               label="Select &quot;Mapping Rules&quot; to create a Mapping Rule if needed.">
+         </subitem>
+      </item>           
+</cheatsheet>

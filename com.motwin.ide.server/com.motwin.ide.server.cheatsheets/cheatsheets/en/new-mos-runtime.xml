@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a new Virgo / MOS Runtime">
+   <intro>
+      <description>
+	  	This cheat sheet shows you <b>how to create and run a new Virgo / MOS server</b> within Eclipse so that you can start the MOS server (and eventually debug your Motwin application) from Eclipse.
+      </description>
+   </intro>
+    <item
+         title="Create a new server runtime" dialog="true"
+         href="/org.eclipse.virgo.ide.doc/tooling/ch03.html">
+      <description>
+        To be able to run a MOS server from Eclipse, you need first to <b>declare a MOS server runtime</b>.
+      </description>
+      <subitem
+            label="Select  &quot;Window &gt; Preferences&quot; and then &quot;Server &gt; Runtime Environment&quot;. Or click the arrow on the right."
+            skip="false">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.window.preferences(preferencePageId=org.eclipse.wst.server.ui.runtime.preferencePage)"/>
+      </subitem>
+      <subitem
+            label="Click &quot;Add...&quot;." skip="false">
+      </subitem>
+      <subitem
+            label="Select &quot;EclipseRT &gt; Virgo Runtime&quot; and click &quot;Next&quot;.">
+      </subitem>
+      <subitem
+            label="Give a name to your runtime or keep the default one.">
+      </subitem>
+      <subitem
+            label="Click &quot;Browse&quot; and select the path of your MOS server installation.">
+      </subitem>
+     
+      <subitem
+            label="Select a valid JRE / JDK Java 6 or higher and click &quot;Finish&quot;. Then click OK to close the Preferences window.">
+      </subitem>      
+   </item>
+   <item
+         title="Add a new MOS Server">
+      <description>
+         Once the MOS runtime declared, you need to <b>create a MOS server instance</b>.
+      </description>
+      <subitem
+            label="Select &quot;Window &gt; Show View &gt; Other...&quot; and then select &quot;Server &gt; Servers&quot;. Or click the arrow on the right. The Servers view opens in the Eclipse window.">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.wst.server.ui.ServersView)"/>
+      </subitem>
+      <subitem
+            label="Right click on the &quot;Servers&quot; view and select &quot;New &gt; Server&quot;. Or click the arrow on the right.">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.wst.server.ui.new.server)"/>
+      </subitem>
+      <subitem
+            label="Select &quot;EclipseRT &gt; Virgo Runtime&quot; and click &quot;Finish&quot;.">
+      </subitem>
+   </item>
+   <item
+         skip="false"
+         title="Configuring the MOS server"
+         href="/org.eclipse.virgo.ide.doc/tooling/ch05.html">
+      <description>
+         You need to <b>configure the MOS server</b> before running it for the first time.
+      </description>
+      <onCompletion>You now have a <b>ready to run MOS Server</b>.
+      </onCompletion>
+      <subitem
+            label="Double click the new Virgo / MOS server to open the configuration editor.">
+      </subitem>
+      <subitem
+            label="In the Overview tab, open the &quot;Server Startup Configuration&quot; section and check &quot;Start server with -clean option&quot;.">
+      </subitem>
+      <subitem
+            label="Open the section &quot;Publishing&quot; and choose the way modifications are published to the server. You can either publish your application automatically or manually. For more information, see Virgo tooling documentation.">
+      </subitem>
+   </item>
+   <item
+         skip="true"
+         title="Running the MOS server">
+      <command
+            required="false"
+            serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.wst.server.ui.ServersView)"/> 
+      <description>
+         You are now ready to run the MOS server. Right click on the Virgo / MOS server you have created before and select &quot;Start&quot;.
+      </description>
+      <onCompletion>That's it! You have now a <b>running MOS Server</b>. <br/><br/>If you wish you can continue with the "New Motwin project" tutorial.
+      </onCompletion>
+   </item>    
+</cheatsheet>

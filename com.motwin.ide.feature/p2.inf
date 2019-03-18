@@ -1,0 +1,8 @@
+instructions.configure=\
+ org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:_UPDATE_SITE_,name:Motwin Update Site);\
+ org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:_UPDATE_SITE_,name:Motwin Update Site);\
+ org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:http${#58}//download.eclipse.org/releases/juno,name:Juno);\
+ org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:http${#58}//download.eclipse.org/releases/juno,name:Juno);\
+ org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:http${#58}//download.eclipse.org/eclipse/updates/3.8,name:The Eclipse Project Updates);\
+ org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:http${#58}//download.eclipse.org/eclipse/updates/3.8,name:The Eclipse Project Updates);\ 
+ org.eclipse.equinox.p2.touchpoint.natives.mkdir(path:${installFolder}/dropins);

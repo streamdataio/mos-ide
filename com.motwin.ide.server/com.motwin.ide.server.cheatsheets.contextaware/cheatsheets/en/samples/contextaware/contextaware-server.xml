@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Create a Context Aware Motwin Server application">
+	<intro>
+		<description>
+			This cheat sheet demonstrates the Context Aware feature provided by the Motwin Context Aware Library.
+			<br />
+			In this sample, you will see how to enhance the RSS Reader Motwin project with a Context Aware flavour.
+            The aim is to be able to trace the navigation between the feeds read by a user. 
+			<br />
+			<br />
+			Pre-requisites:
+			<br />
+			- know how to configure a MOS server
+			<br />
+			- know how to configure a MOS mapping rule
+            <br/><br/>
+			Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+			<br />
+			<br />
+			Don&apos;t forget to check off each step before going to the next one.
+		</description>
+	</intro>
+	<item title="Create a new Motwin server project" dialog="true">
+		<description>
+			We will start by creating a Motwin RSS Reader server project that we will enhance with a Context Aware flavour. 
+		</description>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin Server Samples &gt; RSS Reader Sample&quot; and click &quot;Next&quot;. Or click the arrow to the right. And follow the wizard directives.">
+			<command required="true"
+				serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.server.ui.wizards.RssReaderSampleWizard)" />
+		</subitem>
+		<subitem
+			label="Right click the project &quot;RssReader-Server&quot; and choose &quot;Refactor &gt; Rename&quot;. Enter the new Name as &quot;ContextAware-Server&quot; and click &quot;OK&quot;.">
+		</subitem>
+        <subitem
+          label="Open the file &quot;MANIFEST.MF&quot; with the Bundle Manifest Editor (which should be the default editor). It is in the folder &quot;src/main/ressources/META-INF&quot;. Select the &quot;Overview&quot; tab. Or click the arrow to the right to perform the steps.">
+          <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+            class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.OpenOverviewManifestEditorAction" />
+        </subitem>
+       <subitem
+        label="In the &quot;General Information&quot;, replace the ID value with &quot;com.motwin.applications.contextAware&quot; and the Name value with &quot;contextAware&quot;. Save the file.">
+        </subitem>    
+	</item>
+	<item title="Add the Motwin Context Aware Library" dialog="true">
+		<description>
+			To use the Context Aware Library, you need to declare it in the MANIFEST.MF.
+		</description>
+        <onCompletion>
+        That's it: now, we can use the Context Aware Library.
+        </onCompletion>
+		<subitem
+			label="Open the file &quot;MANIFEST.MF&quot; with the Bundle Manifest Editor (which should be the default editor). It is in the folder &quot;src/main/ressources/META-INF&quot;. Select the &quot;Dependencies&quot; tab. Or click the arrow to the right to perform the steps.">
+			<action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+				class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.OpenDependenciesManifestEditorAction" />
+		</subitem>
+		<subitem
+			label="Click &quot;Add...&quot; in the &quot;Import Bundle&quot; section. Select the bundle &quot;com.motwin.context.context-aware-lib&quot;, click &quot;OK&quot; and save the file. Or click the arrow to the right to perform the steps.">
+            <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+              class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.CopyManifestAction" />
+		</subitem>
+	</item>
+	<item title="Create a Context Handler" dialog="true">
+		<description>
+			Let's create a Context Handler. This class is a simple POJO that will subscribe to Context Elements sent
+            by the device and forwarded by the Context Aware Library to any POJO interested in.
+		</description>
+		<subitem
+			label="Select &quot;File &gt; New &gt; Class&quot; or click the arrow to the right to perform the steps.">
+			<command required="false"
+				serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.jdt.ui.wizards.NewClassCreationWizard)" />
+		</subitem>
+		<subitem
+			label="Enter the package as &quot;com.motwin.rssreader.context&quot;.">
+		</subitem>
+		<subitem label="Enter the class name as &quot;ContextTagHandler&quot;.">
+		</subitem>
+		<subitem
+			label="Click &quot;Finish&quot; to create the handler">
+		</subitem>
+        <subitem
+            label="Declare a slf4j logger &quot;private final static Logger LOGGER = LoggerFactory.getLogger(ContextTagHandler.class);&quot; and add the appropriate imports (Ctrl + Shift + O).">
+        </subitem>
+		<subitem
+			label="Create a simple method &quot;public void onContextElement(ContextElement&lt;?&gt; aContextElement){}&quot;. Add the appropriate imports (Ctrl + Shift + O).">
+		</subitem>
+        <subitem
+          label="Add the following line in the method body &quot;LOGGER.info(&quot;received context element: {}&quot;, aContextElement);&quot;.">
+        </subitem>
+        <subitem
+          label="Add the annotation @Subscribe. Import &quot;com.google.common.eventbus.Subscribe&quot; and save the file.">
+        </subitem>
+        <subitem
+          label="Open the file &quot;application.xml&quot; with the Spring Config Editor (which should be the default editor). It is in the folder &quot;src/main/ressources/META-INF/spring&quot;. Select the &quot;Namespaces&quot; tab. Or click the arrow to the right to perform the steps.">
+          <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+            class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.OpenSpringConfigEditorAction" />
+        </subitem>
+        <subitem
+          label="Check &quot;ctx - http://central.motwin.net/schema/context&quot; and eventually choose &quot;http://central.motwin.net/schema/context.xsd&quot; as default schema. Save the file.">
+        </subitem>        
+        <subitem
+          label="Open the &quot;Source&quot; tab. Before any bean declaration, add &lt;import resource=&quot;classpath:META-INF/motwin/motwin-context.xml&quot; /&gt;.">
+        </subitem>
+        <subitem
+          label="Add the bean declaration of the context handler: &quot;&lt;bean id=&quot;contextTagHandler&quot; class=&quot;com.motwin.rssreader.context.ContextTagHandler&quot;/&gt;&quot;">
+        </subitem>
+        <subitem
+          label="Then add the context handler declaration: &quot;&lt;ctx:handler id=&quot;contextHandler&quot; ref=&quot;contextTagHandler&quot;/&gt;&quot;">
+        </subitem>         
+		<onCompletion>
+			That's it! You've got a simple context handler that logs any ContextElements received from the devices.
+            Instead of logging, one can imagine that the context handler can delegate the ContextElements processing to a 
+            backend service (such as a service that stores some context information into a database). 
+		</onCompletion>
+	</item>
+	<item title="Enhance the code">
+		<description>
+			Let's enhance the code to add a bit more capability to our Context Handler. 
+            <br/>What we wish is to trace for a given user his feeds navigation. To keep the things simple, we will store the feeds 
+            navigation into a file specific to the user.
+            <br/>To do so, we will create a <b>ChannelInterceptor</b> that will inject an ID. This ID will enable us to identify the user 
+            and will be automatically added by the Context Aware Library to any ContextElement so that any handler will be able to know from
+            "who" this ContextElement has been sent.
+            Thanks to this additionnal information, we will be able to trace the context per user and thus store the feeds navigation in a file
+            dedicated to the user.
+            <br/><br/>Note: if you are using the Motwin Technical Module UIS, you might be interested in using the UIS InstallationIdInjector
+            which requires a simple import declaration in the application.xml to be activated.
+		</description>
+		<subitem
+			label="Click the arrow to the right to generate the code.">
+			 <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+              class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.CopyRemainingCodeAction" />
+		</subitem>
+        <subitem
+          label="Open the class &quot;CustomInstallationIdInjector&quot; and go around line 87. Or click the arrow to the right. You will see the method used to inject the ID. For the demo, to keep the thing simple, we inject the deviceId provided by the Motwin SDK and assume that this ID is enough to identify the user (which is not the case in real-cases)">
+           <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+                  class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.ShowInjectIdAction" />
+        </subitem>
+        <subitem
+          label="If you go around line 64, you will see how the previous method is used within the injector.">
+           <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+                  class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.ShowInterceptUpAction" />
+        </subitem> 
+        <subitem
+          label="If you go around line 45 and 47 of the file &quot;application.xml&quot;, you will see how the injector is declared.">
+           <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+                  class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.ShowInterceptUpXMLAction" />
+        </subitem>  
+        <subitem
+          label="If you go around line 45 of the &quot;ContextTagHandler&quot;, you will see how the method &quot;onContextElement&quot; has been modified to process the ContextElement: since we use an InstallationIdInjector, the Context Aware Library wrapps it within a MobileContextElement which holds in addition the installationId. The handler processes ContextElement of type &quot;ContextAwareConstants.TAG_KEY&quot;: this is indeed this kind of elements that are sent by the devices Context Aware demo. The business logic is then delegated to an instance of UserActivityRepository, which simply records the ContextElements into a file under &quot;$MOS_HOME/serviceability/logs&quot; (one file per installationId, named with the installationId + the &quot;.txt&quot; extension).">
+           <action pluginId="com.motwin.ide.server.cheatsheets.contextaware"
+                  class="com.motwin.ide.server.cheatsheets.samples.contextaware.actions.ShowOnContextElementAction" />
+        </subitem> 
+        <onCompletion>
+          That's it!
+		  <br />
+		  Congratulations! You have enhanced the RSSReader with a ContextHandler that records ContextElements per installationId.
+        </onCompletion>
+	</item>
+	<item title="Deploy and run">
+		<description>
+			<b>Let&apos;s now deploy our application on the MOS server.</b>
+		</description>
+		<onCompletion>
+			Congratulations! You have deployed the
+			ContextAware server demo. If you
+			wish, you can continue
+			with the Android tutorial to see how to send ContextElements from an Android device.
+		</onCompletion>
+		<subitem label="Open the server view.">
+			<command
+				serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.wst.server.ui.ServersView)" />
+		</subitem>
+		<subitem
+			label="Right click on your MOS server, select &quot;Add and Remove...&quot; and add &quot;ContextAware-Server&quot;. Or drag-and-drop the project on the MOS server.">
+		</subitem>
+		<subitem label="Launch the MOS server.">
+		</subitem>
+		<subitem
+			label="Open the MOS web console in a browser. (The default URL is &quot;http://localhost:8080/mos&quot;.)">
+			<action pluginId="com.motwin.ide.server.cheatsheets"
+				class="com.motwin.ide.server.cheatsheets.actions.OpenMOSConsoleAction" />
+		</subitem>
+		<subitem
+			label="Select &quot;Mapping Rules&quot; to a Mapping Rule if needed.">
+		</subitem>
+	</item>
+</cheatsheet>

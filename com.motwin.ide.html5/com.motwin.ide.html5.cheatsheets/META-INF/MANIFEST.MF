@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin HTML5 Cheatsheets
+Bundle-SymbolicName: com.motwin.ide.html5.cheatsheets;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.html5.cheatsheets.internal.HTML5CheatSheetsPlugin
+Bundle-Vendor: Motwin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jface.text,
+ org.eclipse.ui.cheatsheets,
+ org.eclipse.wst.jsdt.core,
+ org.eclipse.wst.jsdt.ui,
+ com.google.guava,
+ com.motwin.ide.ui,
+ com.motwin.ide.cheatsheets,
+ com.motwin.ide.dashboard.ui;resolution:=optional,
+ org.eclipse.jdt.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.motwin.ide.html5.cheatsheets.actions,
+ com.motwin.ide.html5.cheatsheets.actions.newproject,
+ com.motwin.ide.html5.cheatsheets.operations

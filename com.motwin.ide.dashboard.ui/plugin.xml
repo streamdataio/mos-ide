@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="dashboard" name="Motwin Dashboard" schema="schema/dashboard.exsd"/>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.motwin.ide.dashboard.commands.category"
+            name="Motwin IDE">
+      </category>
+      <command
+            categoryId="com.motwin.ide.dashboard.commands.category"
+            id="com.motwin.ide.dashboard.commands.dashboardCommand"
+            name="DashBoard Command">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.motwin.ide.dashboard.internal.ui.editors.DashboardEditor"
+            default="false"
+            icon="icons/etool16/motwin_16.png"
+            id="com.motwin.ide.dashboard.ui.editors.DashboardEditor"
+            name="Dashboard">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.motwin.ide.dashboard.toolsbars.dashboardToolbar">
+            <command
+                  commandId="com.motwin.ide.dashboard.commands.dashboardCommand"
+                  icon="icons/etool16/motwin_16.png"
+                  id="com.motwin.ide.dashboard.toolbars.dashboardCommand"
+                  style="push"
+                  tooltip="Motwin Dashboard">
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:help?after=intro">
+         <command
+               commandId="com.motwin.ide.dashboard.commands.dashboardCommand"
+               id="com.motwin.ide.dashboard.toolbars.dashboardCommand"
+               label="Motwin Dashboard"
+               style="push"
+               tooltip="Motwin Dashboard">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.motwin.ide.dashboard.internal.ui.handlers.DashboardHandler"
+            commandId="com.motwin.ide.dashboard.commands.dashboardCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="com.motwin.ide.dashboard.internal.ui.editors.DashboardEditorInputFactory"
+            id="com.motwin.ide.dashboard.ui.dashboard.elementFactory">
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="com.motwin.ide.ui.commons.preferencePage"
+            class="com.motwin.ide.dashboard.internal.ui.preferences.DashboardPreferencePage"
+            id="com.motwin.ide.dashboard.ui.preferencePage"
+            name="Dashboard">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.motwin.ide.dashboard.internal.ui.preferences.DashboardPreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <page
+            class="com.motwin.ide.dashboard.internal.ui.editors.DashboardMainPage"
+            id="com.motwin.ide.dashboard.ui.page.overview"
+            label="Overview">
+      </page>
+      <part
+            class="com.motwin.ide.dashboard.internal.ui.editors.SupportDashboardPart"
+            id="com.motwin.ide.server.ui.dashboard.part.support"
+            location="com.motwin.ide.dashboard.ui.page.overview.right"
+            page="com.motwin.ide.dashboard.ui.page.overview"
+            position="1">
+      </part>
+      <part
+            class="com.motwin.ide.dashboard.internal.ui.editors.RSSDashboardPart"
+            id="com.motwin.ide.server.ui.dashboard.part.rssfeeds"
+            location="com.motwin.ide.dashboard.ui.page.overview.right"
+            page="com.motwin.ide.dashboard.ui.page.overview"
+            position="2">
+      </part>
+   </extension>
+
+</plugin>

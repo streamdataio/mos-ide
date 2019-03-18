@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Motwin Android Context Aware application">
+      <intro>
+      	<description> 
+This cheat sheet shows you how to use the Context Aware feature provided by the Motwin Context Aware Library.
+<br />
+In this sample application, you will see how to enhance the RSS Reader application with a Context Aware flavour. 
+<br/><br/>
+Pre-requisites: 
+<br/>- having the Motwin Server contextAware-application running (you can refer to the cheatsheet &apos;Create a ContextAware Motwin Server application&apos; for any help)
+<br/><br/>- having the Google Android (ADT) Eclipse plugin installed (http://developer.android.com/tools/sdk/eclipse-adt.html)
+<br/><br/>- having an Android SDK <b>API Level 4 or higher</b> installed and operational(http://developer.android.com/sdk/index.html)
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to <b>check each step</b> before going to the next one.
+      </description>
+   </intro>
+   <item
+         title="Create a new Motwin Android project" dialog="true">
+      <description>
+         We will start by creating a Motwin RSS Reader Android project that we will enhance with a Context Aware flavour.
+      </description>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Android Samples&quot; and click on the &quot;Next&quot; button. Or click on the arrow on the right. And follow the wizard directives.">
+         <command
+               required="false"
+               serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.android.ui.wizards.RssReaderSampleWizard)"/>
+      </subitem>
+      <subitem
+            label="Right click the project &quot;RssReader-Android&quot; and choose &quot;Refactor &gt; Rename&quot;. Enter the new Name as &quot;ContextAware-Android&quot; and click &quot;OK&quot;.">
+      </subitem>
+     <subitem
+            label="Open the file &quot;confServer.properties&quot; in the &quot;assets&quot; directory. Replace &quot;rssReader&quot; with &quot;contextAware&quot;.">
+      </subitem>
+   </item>
+   <item
+         title="Add Context Aware flavour">
+      <description>
+         We have now a RSS Reader application. Let's add a Context Aware flavour to it.
+         <br />What we wish is to be able to trace the feeds navigation on the device so that we can know what feed entries the user has read.
+         From the device point of view, each time the user reads a feed entry the device should send some information about the feed to the server context-aware application. This information 
+         will be then exploited by the server side to report what feed entries has been read by a given user (see the ContextAware-Server sample and its cheatsheet).
+         In this sample, the information sent will be the feed entry title as well as the feed url.
+         <br/>To do so, we will use in the MotwinFacade of the RSS Reader application some built-in objects of the Motwin Context Aware Library.
+      </description>
+      <subitem
+            label="To record the feeds navigation, we use a ready-to-use Context Aware Collector: the &quot;TagCollector&quot;. The &quot;TagCollector&quot; is a built-in Context Aware collector that sends &quot;ContextElements&quot; of type &quot;com.motwin.android.context.ContextAware.TAG_KEY&quot; to the MOS server. Basically, it can be used to trace navigation information (for instance, pages navigation). A Collector is a class that is responsible for collecting context information wrapped into entities called &quot;ContextElement&quot;s and for sending them to the server context-aware application. All collectors used are registered in and are available through a &quot;ContextCollectorRegistry&quot;. Click the arrow to the right to update the &quot;MotwinFacade&quot; code.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.contextaware"
+              class="com.motwin.ide.android.cheatsheets.contextaware.actions.MotwinFacadeCopyAction" />  
+      </subitem>
+      <subitem
+            label="If you go around line 380, you will see the declaration of the &quot;ContextCollectorRegistry&quot; and the &quot;TagCollector&quot;.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.contextaware"
+              class="com.motwin.ide.android.cheatsheets.contextaware.actions.ShowContextCollectorRegistryAction" />  
+      </subitem>
+      <subitem
+            label="If you go around line 395, you will see how the ContextCollectorRegistry is built and how the TagCollector is registered. Note that we have commented some of the ready-to-use collectors of the Context Aware Library: we won't use them in our sample but this gives you a rough idea of which collectors you can use.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.contextaware"
+              class="com.motwin.ide.android.cheatsheets.contextaware.actions.ShowGetContextCollectorRegistryAction" />            
+      </subitem>
+      <subitem 
+      		label="If you go around line 434 and 448, you will see how the &quot;ContextCollectorRegistry&quot; is started and stopped.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.contextaware"
+              class="com.motwin.ide.android.cheatsheets.contextaware.actions.ShowStartContextCollectorRegistryAction" />             
+      </subitem>
+      <subitem 
+          label="Now we need to modify our abstract class &quot;RssReaderActivity&quot; to take into account the fact we need now to start or stop the collect of the context elements. Click the arrow to the right to update the code of the &quot;RssReaderActivity&quot;. And go around line 21 and 49 to see the code.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.contextaware"
+              class="com.motwin.ide.android.cheatsheets.contextaware.actions.CopyAndShowRssReaderActivityAction" />             
+      </subitem>  
+     <subitem 
+          label="At last, we need to collect the entries read by the user: this can be done in the &quot;EntryFragment&quot;... Click the arrow to the right to update the code of the &quot;RssReaderActivity&quot;. And go around line 92 to see how the context information are processed.">
+            <action pluginId="com.motwin.ide.android.cheatsheets.contextaware"
+              class="com.motwin.ide.android.cheatsheets.contextaware.actions.CopyAndShowEntryFragmentAction" />             
+      </subitem>    
+   </item>
+   <item
+         title="Let&apos;s test it!">
+      <description>
+         Right click on the &quot;ContextAware-Android&quot; project and select &quot;Run as... &gt; Android Application&quot;. This should open the Android Emulator and run our Android Application.
+<br/><br/>The application displays a list of RSS Feeds. Selecting one of them, displays the list of RSS Entries of the feed. At last, selecting one of the Feed Entry, displays its detail.
+<br/>Navigate through several feeds details. Then go to the &quot;$MOS_HOME/serviceability/logs&quot; directory: you should find a file with all your feeds navigation (see the ContextAware-Server for more details). 
+      </description>
+      <onCompletion>Congratulations! You have run a Motwin Android Context Aware sample! If you wish, you can continue with the other tutorials...</onCompletion>
+   </item>
+</cheatsheet>

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin Spring IDE Beans Core Fragment
+Bundle-SymbolicName: com.motwin.ide.springframework.eclipse.beans.core.fragment
+Bundle-Version: 3.3.1.RELEASE
+Fragment-Host: org.springframework.ide.eclipse.beans.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: Motwin
+Require-Bundle: com.google.guava;bundle-version="11.0.1"
+Import-Package: org.apache.commons.logging,
+ org.slf4j

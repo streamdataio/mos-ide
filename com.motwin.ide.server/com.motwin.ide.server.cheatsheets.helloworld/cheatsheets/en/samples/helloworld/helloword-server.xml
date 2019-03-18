@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a Hello World Motwin Server application">
+      <intro>
+      <description>
+      This cheat sheet shows you how to create a simple Motwin server application and try it out. You will create a Motwin project and some simple Message Processors and Interceptors related to the Motwin technology.
+<br/><br/>
+Pre-requisites:
+<br/>- Know how to configure a MOS server.
+<br/>- Know how to configure a MOS mapping rule.
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to check each step before going to the next one. 
+      </description>
+   </intro>
+      <item
+            title="Create a new Motwin Server Project" dialog="true" >
+         <description>
+            We will start by creating a Motwin server project.
+         </description>
+         <onCompletion>
+         Congratulations! You have created a Motwin server project.
+         </onCompletion>
+         <subitem
+               label="Select &quot;File &gt; New &gt; Project...&quot;, choose &quot;Motwin &gt; Server Project&quot; and click &quot;Next&quot;. Or click the arrow on the right.">
+            <command
+                  required="true"
+                  serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.server.ui.wizards.EmptyProjectWizard)"/>
+         </subitem>
+         <subitem
+               label="Enter the project name as &quot;HelloWorld-Server&quot; and click &quot;Next&quot;.">
+         </subitem>
+         <subitem
+               label="Enter the Bundle Symbolic Name as &quot;com.motwin.applications.helloWorld&quot; and the Bundle Name as &quot;helloWorld&quot;.">
+         </subitem>
+         <subitem
+               label="Enter the bundle version as &quot;@SAMPLE_VERSION@&quot;.">
+         </subitem>
+         <subitem
+               label="Select your Virgo / MOS runtime, or create a new one by clicking &quot;New&quot;.">
+         </subitem>
+         <subitem
+               label="Click &quot;Finish&quot;.">
+         </subitem>
+         
+      </item>
+      <item
+            title="Create Data Model Classes">
+         <description>
+   This operation will be done for you by clicking the link below.
+         </description>
+         <action
+			pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+			class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.DataModelCopyAction" />   
+      </item>
+      <item
+            title="Create a Simple Request Processor" dialog="true">
+         <description>
+            Let&apos;s create a simple request processor which will return a response to a request sent from the mobile application.
+         </description>
+         <onCompletion>
+         Congratulations! You have created a Motwin Request Processor.
+         </onCompletion>
+         <subitem
+               label="Open the file &quot;application.xml&quot; of the folder &quot;src/main/resources&quot; and select the tab &quot;Motwin Requesting&quot;. Or click the arrow on the right.">
+               <action
+				pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+				class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.OpenRequestProcessorEditorAction" />  
+         </subitem>
+         <subitem
+               label="Click the button &quot;New Processor&quot;.">
+         </subitem>
+         <subitem
+               label="In the &quot;Element Details&quot;, enter the type of the request processor as &quot;hello&quot;.">
+         </subitem>
+         <subitem
+               label="Click the &quot;class&quot; link to create a new request processor.">
+         </subitem>
+         <subitem
+               label="Enter the package name as &quot;com.motwin.application.helloworld&quot;.">
+         </subitem>
+         <subitem
+               label="Enter the processor name as &quot;HelloWorldRequestProcessor&quot;.">
+         </subitem>
+         <subitem
+               label="Click &quot;Finish&quot;.">
+         </subitem>
+         <subitem
+               label="Open the class &quot;HelloWorldRequestProcessor&quot; and replace the two generic parameters &quot;Object&quot; with the datamodel &quot;com.motwin.application.helloworld.datamodel.Person&quot;.">
+         </subitem>
+         <subitem
+               label="Et voilà! You have an empty RequestProcessor.">
+         </subitem>
+         <subitem
+               label="Click the arrow on the right to see the processor with code that sends a response to the mobile application. The response is a &quot;Person&quot; whose name and first name were in the request but switched.">
+               <action
+					pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+					class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.RequestProcessorCopyAction" />
+         </subitem>
+         <subitem
+               label="You may have a compilation error. To fix it open the MANIFEST.MF, add the instruction &quot;Import-Package: org.slf4j&quot;. Or click the arrow on the right.">
+               <action
+					pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+					class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.AddLogToManifestAction" />
+         </subitem>
+      </item>
+      <item
+            title="Create a Message Processor" dialog="true">
+         <description>
+            Let&apos;s create a simple message processor that sends a message to the mobile application.
+         </description>
+         <onCompletion>
+    	Congratulations! You have created a Motwin Message Processor.
+         </onCompletion>
+         <subitem
+               label="Open the file &quot;application.xml&quot; from the folder &quot;src/main/resources&quot; and select the tab &quot;Motwin Messaging&quot;. Or click the arrow on the right.">
+               <action
+				pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+				class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.OpenMessageProcessorEditorAction" />  
+         </subitem>
+         <subitem
+               label="Click the &quot;New Processor&quot; button.">
+         </subitem>
+         <subitem
+               label="In the &quot;Element Details&quot;, enter the type of message processor as &quot;hello&quot;.">
+         </subitem>
+         <subitem
+               label="Click the &quot;class&quot; link to create a new message processor.">
+         </subitem>
+         <subitem
+               label="Enter the package name as &quot;com.motwin.application.helloworld&quot;.">
+         </subitem>
+         <subitem
+               label="Enter the name of the processor as &quot;HelloWorldMessageProcessor&quot;.">
+         </subitem>
+         <subitem
+               label="Click &quot;Finish&quot;.">
+         </subitem>
+         <subitem
+               label="Open the class &quot;HelloWorldMessageProcessor&quot; and replace the generic parameter &quot;Object&quot; with the datamodel &quot;com.motwin.application.helloworld.datamodel.Person&quot;.">
+         </subitem>
+         <subitem
+               label="Et voilà! You have an empty MessageProcessor.">
+         </subitem>
+         <subitem
+               label="Click the arrow on the right to see the processor that calls a class that simulates a back-end service and sends a response to the mobile application.">
+               <action
+					pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+					class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.MessageProcessorCopyAction" />
+         </subitem>
+      </item>
+      <item
+            title="Create an Interceptor" dialog="true">
+         <description>
+            Let&apos;s create a simple interceptor processor that logs an error message.
+         </description> 
+         <onCompletion>
+    	 Congratulations! You have created a Motwin Interceptor.
+         </onCompletion>  
+         <subitem
+               label="Open the file &quot;application.xml&quot; in the folder &quot;src/main/resources&quot; and select the tab &quot;Motwin Channel&quot;. Or click the arrow on the right.">
+               <action
+				pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+				class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.OpenInterceptorEditorAction" />  
+         </subitem>
+         <subitem
+               label="Click the &quot;New Interceptor&quot; button.">
+         </subitem>
+         <subitem
+               label="Click the &quot;class&quot; link to create a new interceptor.">
+         </subitem>
+         <subitem
+               label="Enter the package name as &quot;com.motwin.application.helloworld&quot;.">
+         </subitem>
+         <subitem
+               label="Enter the name of the interceptor as &quot;ExceptionInterceptor&quot;.">
+         </subitem>
+         <subitem
+          	   label="Enter the Superclass as &quot;com.motwin.sdk.application.messaging.interceptor.AbstractExceptionInterceptor&quot;.">
+         </subitem> 	   
+         <subitem
+               label="Click &quot;Finish&quot;.">
+ 		</subitem>	
+         <subitem
+               label="Et voilà! You have an empty Interceptor.">
+         </subitem>
+         <subitem
+               label="Click the arrow on the right to see the interceptor that logs an error message.">
+                <action
+					pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+					class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.InterceptorCopyAction" />
+         </subitem>        
+      </item>
+      <item
+            skip="true"
+            title="View More Code">
+         <description>
+            Click the link below to see more code.
+         </description>
+         <action
+				pluginId="com.motwin.ide.server.cheatsheets.helloworld"
+				class="com.motwin.ide.server.cheatsheets.samples.helloworld.server.actions.RemainingCodeCopyAction" />
+      </item>
+      <item
+            title="Deploy and Run">
+         <description>
+          <b>Let&apos;s now deploy our application on the MOS server.</b>
+         </description>
+         <onCompletion>
+    	 Congratulations! You have deployed the helloWorld-application server demo. If you wish, you can continue with the Android tutorial.
+         </onCompletion>
+         <subitem
+               label="Open the server view.">
+            <command
+                  serialization="org.eclipse.ui.views.showView(org.eclipse.ui.views.showView.viewId=org.eclipse.wst.server.ui.ServersView)"/>
+         </subitem>
+         <subitem
+               label="Right click on your MOS server, select  &quot;Add and Remove...&quot; and add &quot;HelloWorld-Server&quot;. Or drag-and-drop the project on the MOS server.">
+         </subitem>
+         <subitem
+               label="Launch the MOS server.">
+         </subitem>
+         <subitem
+               label="Open MOS web console in a browser. The default url is &quot;http://localhost:8080/mos&quot;.">
+               <action
+              		pluginId="com.motwin.ide.server.cheatsheets"
+              		class="com.motwin.ide.server.cheatsheets.actions.OpenMOSConsoleAction" />
+         </subitem>
+         <subitem
+               label="Select &quot;Mapping Rules&quot; and create a Mapping Rule.">
+         </subitem>
+      </item>
+   
+</cheatsheet>

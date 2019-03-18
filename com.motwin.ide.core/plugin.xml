@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.motwin.ide.core.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   
+  <extension id="com.motwin.platform.ide.core.motwinProjectNature" name="Motwin" point="org.eclipse.core.resources.natures">
+     <runtime>
+        <run class="com.motwin.ide.core.nature.MotwinProjectNature">
+        </run>
+     </runtime>
+     <content-type id="com.motwin.platform.ide.core.applicationConfigurationContentType" />
+     <!--requires-nature id="com.xyz.coolplugin.waterNature"/-->
+  </extension>
+  
+      <extension
+        point="org.eclipse.core.runtime.contentTypes">
+      <content-type
+           default-charset="UTF-8"
+           file-extensions="xml"
+           file-names="application"
+           id="com.motwin.platform.ide.core.applicationConfigurationContentType"
+           name="Motwin Application Configuration"
+           priority="high">
+      </content-type>
+    </extension>
+
+</plugin>

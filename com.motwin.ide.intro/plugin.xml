@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.intro">
+      <intro
+            class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            icon="icons/motwin2_16.png"
+            id="com.motwin.ide.intro"
+            label="Welcome">
+      </intro>
+      <introProductBinding
+            introId="com.motwin.ide.intro"
+            productId="com.motwin.ide.product.motwinIDE">
+      </introProductBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.config">
+      <config
+            content="content/introContent.xml"
+            id="com.motwin.ide.intro.config"
+            introId="com.motwin.ide.intro">
+         <presentation
+               home-page-id="root">
+            <implementation
+                  kind="html"
+                  os="win32,linux,macosx">
+            </implementation>
+         </presentation>
+      </config>
+   </extension>
+
+</plugin>

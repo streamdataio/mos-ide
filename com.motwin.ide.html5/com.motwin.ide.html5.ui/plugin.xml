@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+  <extension point="org.eclipse.wst.jsdt.ui.JsGlobalScopeContainerPage">
+    <JsGlobalScopeContainerPage
+      class="com.motwin.ide.html5.ui.libraries.pages.SDKLibraryWizardPage"
+      id="com.motwin.ide.html5.api.MotwinSDK"
+      name="Motwin SDK">
+    </JsGlobalScopeContainerPage>
+  </extension>
+   
+  <extension point="org.eclipse.wst.jsdt.ui.JsGlobalScopeUIInitializer">
+    <JsGlobalScopeUIInitializer
+      class="com.motwin.ide.html5.ui.libraries.SDKLibraryInitializer"
+      id="com.motwin.ide.html5.api.MotwinSDK">
+    </JsGlobalScopeUIInitializer>
+  </extension>
+
+
+   <extension point="org.eclipse.ui.newWizards">
+          
+      <category
+            id="com.motwin.ide.html5.ui.samples"
+            name="Motwin HTML5 Samples"/>
+      
+      <!-- NEW JQUERY EMPTY PROJECT -->
+      <wizard
+            category="com.motwin.ide.ui"
+            class="com.motwin.ide.html5.ui.wizards.EmptyProjectWizard"
+            icon="icons/motwin_newprj_wiz.gif"
+            id="com.motwin.ide.html5.ui.wizards.EmptyProjectWizard"
+            name="HTML5 Project"
+            project="true">
+      </wizard>
+      
+      <!-- HELLOWORLD SAMPLE -->
+      <wizard
+            category="com.motwin.ide.html5.ui.samples"
+            class="com.motwin.ide.html5.ui.wizards.Hello1SampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.html5.ui.wizards.Hello1SampleWizard"
+            name="Helloworld 1 Sample"
+            project="true">
+      </wizard>
+      
+      <!-- HELLOWORLD SAMPLE -->
+      <wizard
+            category="com.motwin.ide.html5.ui.samples"
+            class="com.motwin.ide.html5.ui.wizards.Hello2SampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.html5.ui.wizards.Hello2SampleWizard"
+            name="Helloworld 2 Sample"
+            project="true">
+      </wizard>
+      
+      <!-- RSS READER SAMPLE -->
+      <wizard
+            category="com.motwin.ide.html5.ui.samples"
+            class="com.motwin.ide.html5.ui.wizards.RssReaderSampleWizard"
+            icon="icons/motwin_newsampleprj_wiz.gif"
+            id="com.motwin.ide.html5.ui.wizards.RssReaderSampleWizard"
+            name="RSS Reader Sample"
+            project="true">
+      </wizard>
+      
+    <!-- REAL TIME PUSH SAMPLE -->
+    <wizard 
+      category="com.motwin.ide.html5.ui.samples"
+      class="com.motwin.ide.html5.ui.wizards.RealTimePushSampleWizard"
+      icon="icons/motwin_newsampleprj_wiz.gif"
+      id="com.motwin.ide.html5.ui.wizards.RealTimePushSampleWizard"
+      name="Real-Time Push Sample"
+      project="true">
+    </wizard>
+      
+  </extension>
+   
+  <extension point="org.eclipse.ui.exportWizards"> 
+  
+    <category
+          id="com.motwin.ide.html5.ui.exports"
+          name="Motwin HTML5"/>
+  
+    <wizard id="com.motwin.ide.html5.ui.exports.AndroidExportWizard"
+        name="Export Web Content as Android Project" 
+        class="com.motwin.ide.html5.ui.exports.AndroidExportWizard" 
+        icon="icons/motwin_16.png"
+        category="com.motwin.ide.html5.ui.exports"> 
+      <description> 
+        Wrap your Web Content as a Android Project with Cordova/PhoneGap.
+      </description> 
+      <selection class="org.eclipse.core.resources.IProject"/>
+    </wizard>
+    
+    <wizard id="com.motwin.ide.html5.ui.exports.XcodeExportWizard"
+        name="Export Web Content as iOS Project" 
+        class="com.motwin.ide.html5.ui.exports.XcodeExportWizard" 
+        icon="icons/motwin_16.png"
+        category="com.motwin.ide.html5.ui.exports"> 
+      <description> 
+        Wrap your Web Content as a XCode Project with Cordova/PhoneGap.
+      </description> 
+      <selection class="org.eclipse.core.resources.IProject"/>
+    </wizard> 
+  </extension> 
+  
+ <extension
+         point="com.motwin.ide.dashboard.ui.dashboard">
+      <part
+            class="com.motwin.ide.html5.ui.editors.HTML5DashboardPart"
+            id="com.motwin.ide.html5.ui.dashboard.part.ua"
+            location="com.motwin.ide.dashboard.ui.page.overview.left"
+            page="com.motwin.ide.dashboard.ui.page.overview"
+            position="3">
+      </part>
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.newProject"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Motwin HTML5 Project"
+            type="project"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.html5.ui.wizards.EmptyProjectWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.samples.helloWorld1"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Motwin HTML5 HelloWorld 1"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.html5.ui.wizards.Hello1SampleWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.helloWorld2"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Motwin HTML5 HelloWorld 2"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.html5.ui.wizards.Hello2SampleWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.rssReader"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Motwin HTML5 RSS Reader"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.html5.ui.wizards.RssReaderSampleWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.realTimePush"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Motwin HTML5 Real-Time Push"
+            type="sample"
+            listener="com.motwin.ide.dashboard.ui.links.NewWizardHyperlinkListener:com.motwin.ide.html5.ui.wizards.RealTimePushSampleWizard">
+      </uaLink>
+      
+      <!-- exports -->
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.exportAndroid"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Export Web Content as Android Project"
+            type="export"
+            listener="com.motwin.ide.dashboard.ui.links.ExportWizardHyperlinkListener:com.motwin.ide.html5.ui.exports.AndroidExportWizard">
+      </uaLink>
+      <uaLink
+            id="com.motwin.ide.html5.ui.dashboard.ualink.exportXcode"
+            part="com.motwin.ide.html5.ui.dashboard.part.ua"
+            text="Export Web Content as iOS Project"
+            type="export"
+            listener="com.motwin.ide.dashboard.ui.links.ExportWizardHyperlinkListener:com.motwin.ide.html5.ui.exports.XcodeExportWizard">
+      </uaLink>
+
+   </extension>
+
+</plugin>

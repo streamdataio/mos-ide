@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Motwin IDE UI
+Bundle-SymbolicName: com.motwin.ide.ui;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Vendor: Motwin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.jdt.ui;bundle-version="3.8.0",
+ org.eclipse.jdt.core;bundle-version="3.8.0",
+ org.eclipse.core.resources;bundle-version="3.8.0",
+ org.eclipse.core.runtime;bundle-version="3.8.0",
+ org.eclipse.ui.ide;bundle-version="3.8.0",
+ com.motwin.ide.core,
+ org.eclipse.ui;bundle-version="3.8.0",
+ com.google.guava;bundle-version="11.0.1"
+Import-Package: org.slf4j
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: com.motwin.ide.ui.MotwinUIPlugin
+Export-Package: com.motwin.ide.ui,
+ com.motwin.ide.ui.operations,
+ com.motwin.ide.ui.wizards

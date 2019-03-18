@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a new Motwin Android project">
+   <intro>
+   	  <description>This cheat sheet shows you how to create a simple Motwin Android project and try it out.
+<br/><br/>
+Pre-requisites: 
+<br/><br/>- Have the Google Android (ADT) Eclipse plugin installed (http://developer.android.com/tools/sdk/eclipse-adt.html).
+<br/><br/>- Have an Android SDK installed <b>API Level 4 or higher</b> and operational (http://developer.android.com/sdk/index.html).
+<br/><br/>
+Make sure you use the <b>exact values</b> indicated in the cheat sheet scenario. Otherwise, you may not be able to use automatic actions provided in the cheat sheet.
+<br/><br/>
+Don&apos;t forget to <b>check each step</b> before going to the next one. 	  
+   	  </description>
+   </intro>
+   <item title="Create a new Motwin Android project" dialog="true">
+      <description>Let&apos;s use the wizard &quot;New Motwin Android project&quot;</description>
+      <subitem
+            label="Select &quot;File &gt; New &gt; Project&quot;, choose &quot;Motwin &gt; Android Project&quot; and click &quot;Next&quot;. Or click the arrow on the right.">
+            <command
+	           required="false"
+    	       serialization="org.eclipse.ui.newWizard(newWizardId=com.motwin.ide.android.ui.wizards.EmptyProjectWizard)"/>
+      </subitem>
+      <subitem
+            label="Enter the project name as &quot;HelloWorld&quot;.">
+      </subitem>
+      <subitem
+            label="Select an Android SDK API Level 4 or higher and click &quot;Next&quot;.">
+      </subitem>
+      <subitem skip="true"
+            label="Accept the default preloaded values of &quot;Manifest Properties&quot;.">
+      </subitem>
+      <subitem skip="true"
+            label="Accept the default preloaded values of &quot;Server Properties&quot;. These properties define the location of the server that the Android application will contact.">
+      </subitem>
+      <subitem skip="true"
+            label="Accept the default preloaded values of &quot;Server Mapping Rules&quot;. These properties define the link between the Motwin Android application and the Motwin Server application.">
+      </subitem>
+      <subitem skip="true"
+            label="Click &quot;Finish&quot;.">
+      </subitem>
+      <onCompletion>Et voilà! You have a ready-to-start Motwin Android project!</onCompletion>
+   </item>
+   <item title="Brief code overview">
+      <description>By default, the wizard generates 3 classes: <b>DefaultActivity</b>, <b>Main</b> and <b>MotwinFacade</b></description>
+   	  <subitem skip="true"
+            label="&quot;MotwinFacade&quot; is a facade that gives access all the Motwin SDK features.">
+      		<action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.OpenMotwinFacadeAction" />      
+      </subitem>
+      <subitem skip="true"
+            label="If you look near line 195, you will see the method to get the &quot;ClientChannel&quot;.">
+            <action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.ShowClientChannelInitAction" />
+      </subitem>
+      <subitem skip="true"
+            label="If you look near line 209, you will see the method to get the &quot;ContinuousQueryFactory&quot;.">
+            <action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.ShowGetContinuousQueryFactoryAction" />
+      </subitem>
+      <subitem skip="true"
+            label="The &quot;Server Properties&quot; (Motwin Server URL and port) and the Server &quot;Mapping Rules&quot; are loaded by the &quot;MotwinFacade&quot; and defined in the file &quot;assets/confServer.properties&quot;.">
+            <action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.OpenConfServerPropertiesAction" />
+      </subitem>
+      <subitem skip="true"
+            label="An abstract activity &quot;DefaultActivity&quot; that handles connection initialization to the Motwin Server and the connection / disconnection of the ClientChannel is also created and can be used as the parent of the activities you will write.">
+            <action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.OpenDefaultActivityAction" />
+      </subitem>
+      <subitem skip="true"
+            label="&quot;Main&quot; is the main activity declared in the application. It inherits from &quot;DefaultActivity&quot; and provides a code skeleton that illustrates the use of the Android Motwin SDK.">
+            <action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.OpenMainAction" />
+      </subitem>
+      <subitem skip="true"
+            label="If you look near line 16, you will see a simple MQL query.">
+            <action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.ShowMQLQueryAction" />
+      </subitem>
+      <subitem skip="true"
+            label="If you look near line 26, you will see a code skeleton to initialize a new ContinuousQueryController that enables to handle the ContinuousQuery.">
+            <action pluginId="com.motwin.ide.android.cheatsheets"
+			   class="com.motwin.ide.android.cheatsheets.actions.newproject.ShowQueryControllerAction" />
+      </subitem>
+      <onCompletion>That's all for the code overview. If you wish to get more knowledge on the Motwin Android SDK, you can have a look at the Motwin Developer Guide and the JavaDoc API.</onCompletion>
+   </item>
+   <item
+         title="Let&apos;s run it!">
+      <description>
+         Right click on your project and select &quot;Run as... &gt; Android Application&quot;. This should open the Android Emulator and run our Android application.
+<br/><br/>The application displays a famous &quot;Hello World!&quot; screen.
+      </description>
+      <onCompletion>Congratulations! You have created a Motwin Android Project! If you wish, you can continue with the other Android tutorials to dive into the Motwin Android SDK concepts...</onCompletion>
+   </item>
+</cheatsheet>

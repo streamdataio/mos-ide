@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: HTML5 UI
+Bundle-SymbolicName: com.motwin.ide.html5.ui;singleton:=true
+Bundle-Version: 3.3.1.RELEASE
+Bundle-Activator: com.motwin.ide.html5.ui.MotwinHTML5UIPlugin
+Bundle-Vendor: Motwin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.wst.jsdt.core;bundle-version="1.1.0",
+ org.eclipse.wst.jsdt.ui;bundle-version="1.1.0",
+ com.motwin.ide.html5.api,
+ com.google.guava;bundle-version="11.0.1",
+ com.motwin.ide.ui,
+ org.eclipse.wst.sse.ui;bundle-version="1.3.0",
+ org.eclipse.jdt.ui;bundle-version="3.8.0",
+ org.eclipse.jdt.core;bundle-version="3.8.0",
+ org.slf4j.api;bundle-version="1.6.4",
+ com.motwin.ide.html5.templates,
+ com.motwin.ide.core,
+ org.eclipse.core.resources;bundle-version="3.8.0",
+ org.eclipse.ui.ide;bundle-version="3.8.1",
+ org.apache.commons.io;bundle-version="2.0.0",
+ com.motwin.ide.dashboard.ui,
+ org.eclipse.ui.forms;bundle-version="3.5.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>com.motwin.ide.html5</groupId>
+    <artifactId>com.motwin.ide.html5.parent</artifactId>
+    <version>3.3.1.RELEASE</version>
+  </parent>
+  
+  <artifactId>com.motwin.ide.html5.docs</artifactId>
+  <packaging>eclipse-plugin</packaging>
+
+  <properties>
+    <docs.dir>${basedir}/docs</docs.dir>
+    <jsdocs.dir>${docs.dir}/html/references/api</jsdocs.dir>
+  </properties>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${jsdocs.dir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>          
+          </filesets>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-javadoc</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <dependency>
+                  <groupId>com.motwin.javascript</groupId>
+                  <artifactId>javascript-sdk</artifactId>
+                  <version>${html5.javascript.sdk.version}</version>
+                  <classifier>doc</classifier>
+                  <type>zip</type>
+                </dependency>
+              </artifactItems>
+              <outputDirectory>${jsdocs.dir}/HTML5_SDK_API_Documentation</outputDirectory>
+              <overWriteReleases>true</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+            </configuration>
+          </execution>
+          </executions>
+      </plugin>
+    </plugins>
+  </build>  
+</project>
